@@ -1,0 +1,42 @@
+/* 
+    Document   : style
+    Created on : Sep 20, 2013, 10:03:42 AM
+    Author     : Patrik
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body {
+
+
+}
+
+/*******************************************Index Page*************************/
+#page-wrap {
+    width: 800px;
+    margin: 0 auto;
+}
+
+
+#login-square {
+    
+    margin: 0 auto;
+    width:20%;
+    height: 80px;
+    border-style:solid;
+    border-radius: 8px;
+
+}
+
+
+html body div footer ul {
+    float: left;
+    margin: 0;
+    list-style-type: none;
+
+
+}
