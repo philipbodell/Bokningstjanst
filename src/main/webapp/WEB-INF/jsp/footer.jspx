@@ -1,4 +1,5 @@
 <!-- Using static include, so no need for anything else -->
 <footer>
-    <p> ThisIsFooter</p>
+    <p>Website made by Jacob Engdahl, Patrik Fritzner, Philip Bodell, Johan Stenberg and Fredrik Lönnstam</p>
+    <p>As a project in the Chalmers course Webbapplications</p>
 </footer>
