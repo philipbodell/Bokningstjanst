@@ -2,24 +2,18 @@
 <header>
     <div>
         <h1><a href="index.jspx"><img src="images/logo.jpg" alt=""></img></a></h1>
-        
+
         <div id="slide">		
             <div class="slider">
-                <ul class="items">
-                    <li><img src="images/slider-1-small.jpg" alt="" /></li>
-                    <li><img src="images/slider-2-small.jpg" alt="" /></li>
-                    <li><img src="images/slider-3-small.jpg" alt="" /></li>
-                </ul>
+                <img src="images/slider-1-small.jpg" alt="" />
             </div>
         </div>
         <nav>
             <ul class="menu">
                 <li><a href="index.jspx">Main</a></li>
-                <li><a href="buying.html">Buying</a></li>
-                <li><a href="selling.html">Selling</a></li>
-                <li><a href="renting.html">Renting</a></li>
-                <li><a href="finance.html">Finance</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
+                <li><a href="book.jspx">Book</a></li>
+                <li><a href="about.jspx">About</a></li>
+                <li><a href="contact.jspx">Contact</a></li>
             </ul>
         </nav>
     </div>
