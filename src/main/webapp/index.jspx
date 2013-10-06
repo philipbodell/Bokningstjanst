@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
 
-    Will output HTML5 
-
--->
 <jsp:root 
     xmlns:jsp="http://java.sun.com/JSP/Page"
     xmlns:c="http://java.sun.com/jsp/jstl/core"
@@ -16,19 +12,39 @@
                 doctype-system="about:legacy-compat" />
     <html>
         <head>
-            <title>JSP Shop</title> 
+            <title>Ontour</title> 
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <link rel="stylesheet" type="text/css" href="resources/css/layout.css" />
+            <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
         </head>
         <body>
-            <!-- Static content so use static include (other option is jsp:include) -->
             <jsp:directive.include file="WEB-INF/jsp/header.jspx" />
-            <jsp:directive.include file="WEB-INF/jsp/mainMenu.jspx"/>
-            <section>
-                <p>This is the entry to other parts of the application</p>
-            </section>
+            <h1>Welcom to this bokningssystem!</h1>
+            <div id="welcome_text">
+                dsfsggrredsfsdsfsggrregregregretgrtgregregrtegtregrtegtregrt
+                egretgrtegrtegrt4egretgtrgtreg
+                ertgregretgretgretgretgrtegretgretgretgretgtregrtegretgrtegretgretgergergerg
+                ggrregregregretgrtgregregrtegtregrtegtregrtegretgrtegrtegrt4egretgtrgtreg
+                ertgregretgretgretgretgrtegretgretgretgretgtregrtegretgrtegretgretgergergerg
+                gregregretgrtgregregrtegtregrtegtregrtegretgrtegrtegrt4egretgtrgtreg
+                ertgregretgretgretgretgrtegretgretgretgretgtregrtegretgrtegretgretgergerger
+            </div>
+            <div id="login">
+                <form name="login">
+                    <h2>Login or creat an account!</h2>
+                    <span id="login_text">User:</span>
+                    <input id="input" type="text" value="Username" />
+
+                    <span id="login_text">Password:</span>
+                    <input id="input" type="password" value="Password" />
+                    <input id="button" type="button" value="Login" />
+
+                </form>
+            </div>
+
             <jsp:directive.include file="WEB-INF/jsp/footer.jspx" />
+
         </body>
     </html>
 </jsp:root>

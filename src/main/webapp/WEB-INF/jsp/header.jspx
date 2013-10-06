@@ -1,19 +1,20 @@
 <!-- Using static include, so no need for anything else -->
 <header>
-    <div>
-        <h1><a href="index.jspx"><img src="images/logo.jpg" alt=""></img></a></h1>
-
-        <div id="slide">		
-            <div class="slider">
-                <img src="images/slider-1-small.jpg" alt="" />
-            </div>
-        </div>
+    <div id="header_wrapper">
         <nav>
-            <ul class="menu">
-                <li><a href="index.jspx">Main</a></li>
-                <li><a href="book.jspx">Book</a></li>
-                <li><a href="about.jspx">About</a></li>
-                <li><a href="contact.jspx">Contact</a></li>
+            <ul id="menu-bar">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Tickets</a>
+                    <ul>
+                        <li><a href="#">Train</a></li>
+                        <li><a href="#">Flight</a></li>
+                        <li><a href="#">Bus</a></li>
+                        <li><a href="#">Boat</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact Us</a></li>
             </ul>
         </nav>
     </div>

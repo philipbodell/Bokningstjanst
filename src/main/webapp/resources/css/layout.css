@@ -1,28 +1,67 @@
-/* 
-    Document   : layout
-    Author     : hajo
-    Description: This is all layout NO style
-*/
 
 body { 
-    /* Over all width */
     display: block;
-    width: 60em;
+    width: 70em;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+    padding: 0px;
+
+    background-color:#272727;
+}
+footer {
+    clear: both;
+    position:absolute; 
+    bottom:0;
+    background-color:#131313;
+    height:6em;
+
+
 }
 
-.menu ul li {
-    /* Make menu horizontal */
-    display: inline;
+
+#header_wrapper {
+    height:25em;
+    background-image:url('../pictures/train.jpg');
+    background-position:center; 
 }
 
-.submenu ul li {
-    /* Make submenu horizontal */
-    display: inline;
+#welcome_text {
+    position:relative;
+    float:left;
+    width: 50em;
 }
 
-fieldset label{
-    /* Make input form vertical */
-    display: block;
+#login {
+    position:relative;
+    float:right;
+    background:none;
+    width: 16em;
 }
+
+#input {
+    float:right;
+    background-color:#131313;
+    border: none;
+    height:2em;
+    padding-left:0.5em;
+    margin-bottom:0.5em;
+}
+#login_text {
+    float:left;
+    margin: 0.3em;
+}
+#button {
+    background-color:#2099f6;
+    border: none;
+    color:#FFF;
+    font-family:Tahoma, Geneva, sans-serif;
+    font-size: 1em;
+
+    margin: 0.3em;
+
+
+}
+
