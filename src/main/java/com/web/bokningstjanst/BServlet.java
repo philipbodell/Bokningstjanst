@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 /**
  *
  * @author Patrik
@@ -33,8 +34,11 @@ public class BServlet extends HttpServlet {
 
         //Get the view parameter.
         String view = request.getParameter("view");
-        
-         if (view != null) {
+
+        //Used when ticket of some sort should handeled
+        String tickets = request.getParameter("tickets");
+
+        if (view != null) {
             switch (view) {
 
                 case "train":
@@ -45,7 +49,17 @@ public class BServlet extends HttpServlet {
                     request.getRequestDispatcher("WEB-INF/jsp/products/editProduct.jspx").forward(request, response);
                     break;
             }
-    }
+        }
+            if (tickets != null) {
+                switch (tickets) {
+
+                    case "train":
+                        System.out.println("Något här!"+request.getParameter("departure_time"));
+                        break;
+
+                }
+            }
+        
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -68,12 +82,11 @@ public class BServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    
+
     }
 
     /**
@@ -89,7 +102,7 @@ public class BServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-             
+
     }
 
     /**

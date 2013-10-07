@@ -21,12 +21,13 @@
         <body>
             <jsp:directive.include file="../header.jspx" />
             <section id="pageSection">
-                <form  action="products" method="POST">
+                <form  action="ticket" method="POST">
+                    <input type="hidden" name="tickets" value="train"/>
                     <fieldset id="ticket-container">
                         <legend>Från</legend>
                         <p>
                             <label for="city_list">Destination</label>
-                            <input id="city_list" name="city" list="browsers" value="Kungsbacka">
+                            <input id="city_list" name="depature_city" list="browsers" value="Kungsbacka">
 
                                 <datalist id="city">
                                     <option value="Göteborg"/>
@@ -40,9 +41,9 @@
                         <legend>Avresa</legend>
                         <p>
                             <label for="datepicker">Datum </label>
-                            <input id="datepicker" type="date"/>
+                            <input id="datepicker" name="depature_date" type="date"/>
                             <label for="timepicker"> Tid </label>
-                            <input id="timepicker" type="time" value="20:13" />
+                            <input type="text" id="timepicker"  name="departure_time" value="20:13" />
                             <br/>
                         </p>
                         <p>
@@ -53,7 +54,7 @@
                         <legend>Till</legend>
                         <p>
                             <label for="city_list">Destination</label>
-                            <input id="city_list" name="city" list="browsers" value="Göteborg">
+                            <input id="city_list" name="arrival_city" list="browsers" value="Göteborg">
 
                                 <datalist id="city">
                                     <option value="Göteborg"/>
@@ -67,9 +68,9 @@
                         <legend>Hemresa</legend>
                         <p>
                             <label for="datepicker">Datum </label>
-                            <input id="datepicker" type="date"/>
+                            <input id="datepicker" name="arrival_date" type="date"/>
                             <label for="timepicker"> Tid </label>
-                            <input id="timepicker" type="time" value="18:30"/>
+                            <input id="timepicker" name="arrival_time" type="time" value="18:30"/>
                             <br/>
                         </p>
                         <p>
