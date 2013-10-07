@@ -4,6 +4,8 @@
  */
 package com.web.bokningstjanst;
 
+import com.web.ticketsystem.TicketCore;
+import com.web.ticketsystem.Train;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -54,7 +56,10 @@ public class BServlet extends HttpServlet {
                 switch (tickets) {
 
                     case "train":
-                        System.out.println("Något här!"+request.getParameter("departure_time"));
+                        
+                        TicketCore test = new TicketCore();
+                        test.add(new Train("aaaa","1","","","",""));
+                   
                         break;
 
                 }
