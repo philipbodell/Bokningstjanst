@@ -61,7 +61,29 @@ footer {
     font-size: 1em;
 
     margin: 0.3em;
-
-
 }
+    
+    #ticket-container {
+        float:left;   
+}
+
+#ticket-container legend {
+    color:#2099f6;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#ticket-container input {
+    background-color:#131313;
+    border: none;
+    height:2em;
+    margin-bottom:0.5em;
+    opacity: 0.5;
+    
+    color:#7D7D7D;
+    font-family:Tahoma, Geneva, sans-serif;
+    font-size: 0.8em;
+}
+
+
 

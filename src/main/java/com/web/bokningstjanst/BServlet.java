@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Booking;
+package com.web.bokningstjanst;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,13 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 /**
  *
- * @author Dator
+ * @author Patrik
  */
-@WebServlet(name = "ProductServlet", urlPatterns = {"/products/*"})
-public class ProductServlet extends HttpServlet {
+@WebServlet(name = "BookingServlet", urlPatterns = {"/ticket/*"})
+public class BServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -32,18 +31,24 @@ public class ProductServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        //request.setAttribute("PRODUCT_LIST", Shop.INSTANCE.getProductCatalogue());
-        request.getRequestDispatcher("WEB-INF/jsp/products/products.jspx").forward(request, response);
+        //Get the view parameter.
+        String view = request.getParameter("view");
+        
+         if (view != null) {
+            switch (view) {
 
-
-
-
-        String action = request.getParameter("action");
-
-        if (action != null) {
-        }
+                case "train":
+                    request.getRequestDispatcher("WEB-INF/jsp/ticket/train.jspx").forward(request, response);
+                    break;
+                case "edit":
+                    request.setAttribute("id", request.getParameter("data"));
+                    request.getRequestDispatcher("WEB-INF/jsp/products/editProduct.jspx").forward(request, response);
+                    break;
+            }
+    }
     }
 
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP
      * <code>GET</code> method.
@@ -53,10 +58,22 @@ public class ProductServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP
+     * <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+    
     }
 
     /**
@@ -72,6 +89,7 @@ public class ProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+             
     }
 
     /**
@@ -82,5 +100,5 @@ public class ProductServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 }

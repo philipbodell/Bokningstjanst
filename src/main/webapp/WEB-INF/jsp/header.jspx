@@ -6,7 +6,7 @@
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#">Tickets</a>
                     <ul>
-                        <li><a href="#">Train</a></li>
+                        <li><a href="ticket?view=train">Train</a></li>
                         <li><a href="#">Flight</a></li>
                         <li><a href="#">Bus</a></li>
                         <li><a href="#">Boat</a></li>
