@@ -20,13 +20,28 @@
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <link rel="stylesheet" type="text/css" href="resources/css/layout.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+            <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
         </head>
         <body>
-             <!-- Static content so use static include (other option is jsp:include) -->
+            <!-- Static content so use static include (other option is jsp:include) -->
             <jsp:directive.include file="../header.jspx" />
-            <jsp:directive.include file="../mainMenu.jspx"/>
-            <section id="pageSection">
-                Start Orders
+
+            <section>
+                <form>
+                    <fieldset id="fieldset-container">
+                        <legend>Contact us</legend>
+                        <label for="name">Name </label>
+                        <input id="name" name="name" type="text"/>
+                        <br/>
+                        <label for="email">E-mail </label>
+                        <input id="email" name="email" type="text"/>
+                        <br/>
+                        <label for="subject">Subject </label>
+                        <input id="subject" name="subject" type="text"/>
+                        <br/>
+                        <button id="button" type="submit">Send</button>
+                    </fieldset>
+                </form>
             </section>
             <jsp:directive.include file="../footer.jspx" />
         </body>

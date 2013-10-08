@@ -23,8 +23,8 @@
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         </head>
         <body>
-            <c:if test="${param['view'] eq 'customers'}" >
-                <jsp:forward page="WEB-INF/jsp/customers/customers.jspx" />
+            <c:if test="${param['view'] eq 'abouttt'}" >
+                <jsp:forward page="WEB-INF/jsp/about/about.jspx" />
             </c:if>
              <c:if test="${param['view'] eq 'orders'}" >
                 <jsp:forward page="WEB-INF/jsp/orders/orders.jspx" />

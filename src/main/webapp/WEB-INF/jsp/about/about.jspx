@@ -22,9 +22,8 @@
             <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
         </head>
         <body>
-             <!-- Static content so use static include (other option is jsp:include) -->
             <jsp:directive.include file="../header.jspx" />
-            <jsp:directive.include file="../mainMenu.jspx"/>
+            <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
             <section>
                 <h3>About</h3>
                 Website made by Jacob Engdahl, Patrik Fritzner, Philip Bodell, Johan Stenberg and Fredrik Lönnstam

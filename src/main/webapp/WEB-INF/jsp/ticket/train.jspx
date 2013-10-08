@@ -23,34 +23,34 @@
             <section id="pageSection">
                 <form  action="ticket" method="POST">
                     <input type="hidden" name="tickets" value="train"/>
-                    <fieldset id="ticket-container">
+                    <fieldset id="fieldset-container">
                         <legend>Från</legend>
-                        <p>
-                            <label for="city_list">Destination</label>
-                            <input id="city_list" name="depature_city" list="browsers" value="Kungsbacka">
+                        <br/>
+                        <label for="city_list">Destination</label>
+                        <input id="city_list" name="depature_city" list="browsers" value="Kungsbacka">
 
-                                <datalist id="city">
-                                    <option value="Göteborg"/>
-                                    <option value="Kungsbacka"/>
-                                    <option value="Lerum"/>
-                                    <option value="Partille"/>
-                                    <option value="Alingsås"/>
-                                </datalist> 
-                            </input>
-                        </p>
+                            <datalist id="city">
+                                <option value="Göteborg"/>
+                                <option value="Kungsbacka"/>
+                                <option value="Lerum"/>
+                                <option value="Partille"/>
+                                <option value="Alingsås"/>
+                            </datalist> 
+                        </input>
+                        <br/>
                         <legend>Avresa</legend>
-                        <p>
-                            <label for="datepicker">Datum </label>
-                            <input id="datepicker" name="depature_date" type="date"/>
-                            <label for="timepicker"> Tid </label>
-                            <input type="text" id="timepicker"  name="departure_time" value="20:13" />
-                            <br/>
-                        </p>
-                        <p>
-                            <button id="button" type="submit">Gå vidare</button>
-                        </p>
+                        <br/>
+                        <label for="datepicker">Datum </label>
+                        <input id="datepicker" name="depature_date" type="date"/>
+                        <label for="timepicker"> Tid </label>
+                        <input type="text" id="timepicker"  name="departure_time" value="20:13" size="6" />
+
+                        <br/>
+
+                        <button id="button" type="submit">Gå vidare</button>
+
                     </fieldset>
-                    <fieldset id="ticket-container">
+                    <fieldset id="fieldset-container">
                         <legend>Till</legend>
                         <p>
                             <label for="city_list">Destination</label>
@@ -70,7 +70,7 @@
                             <label for="datepicker">Datum </label>
                             <input id="datepicker" name="arrival_date" type="date"/>
                             <label for="timepicker"> Tid </label>
-                            <input id="timepicker" name="arrival_time" type="time" value="18:30"/>
+                            <input id="timepicker" name="arrival_time" type="time" value="18:30" size="6"/>
                             <br/>
                         </p>
                         <p>

@@ -54,26 +54,27 @@ footer {
     margin: 0.3em;
 }
 #button {
+    float:right;
     background-color:#2099f6;
     border: none;
     color:#FFF;
     font-family:Tahoma, Geneva, sans-serif;
     font-size: 1em;
-
     margin: 0.3em;
 }
     
-    #ticket-container {
-        float:left;   
+    #fieldset-container {
+        float:left;
+        padding: 1em;
 }
 
-#ticket-container legend {
+#fieldset-container legend {
     color:#2099f6;
     margin-left: auto;
     margin-right: auto;
 }
 
-#ticket-container input {
+#fieldset-container input {
     background-color:#131313;
     border: none;
     height:2em;
