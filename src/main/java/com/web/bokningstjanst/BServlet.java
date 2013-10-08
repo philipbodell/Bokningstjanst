@@ -58,7 +58,7 @@ public class BServlet extends HttpServlet {
                     case "train":
                         
                         TicketCore test = new TicketCore();
-                        test.add(new Train("aaaa","1","","","",""));
+                        test.add(new Train("aaaa","bbb","ccc","ddd","eee","fff"));
                    
                         break;
 

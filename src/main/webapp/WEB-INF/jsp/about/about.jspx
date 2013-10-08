@@ -16,7 +16,7 @@
                 doctype-system="about:legacy-compat" />
     <html>
         <head>
-            <title>Customers</title> 
+            <title>About</title> 
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <link rel="stylesheet" type="text/css" href="resources/css/layout.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
@@ -25,8 +25,10 @@
              <!-- Static content so use static include (other option is jsp:include) -->
             <jsp:directive.include file="../header.jspx" />
             <jsp:directive.include file="../mainMenu.jspx"/>
-            <section id="pageSection">
-                Start Customers
+            <section>
+                <h3>About</h3>
+                Website made by Jacob Engdahl, Patrik Fritzner, Philip Bodell, Johan Stenberg and Fredrik Lönnstam
+                 As a project in the Chalmers course Webbapplications
             </section>
             <jsp:directive.include file="../footer.jspx" />
         </body>
