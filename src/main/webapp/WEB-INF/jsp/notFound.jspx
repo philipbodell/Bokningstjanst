@@ -18,13 +18,16 @@
         <head>
             <title>notFound.jspx</title> 
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-            <link rel="stylesheet" type="text/css" href="css/layout.css" />
-            <link rel="stylesheet" type="text/css" href="css/style.css" />
+            <link rel="stylesheet" type="text/css" href="resources/css/layout.css" />
+            <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+            <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
         </head>
         <body>
+            <jsp:directive.include file="header.jspx" />
             <section>
-                NOT FOUND ${request}
+                This page is under construction.
             </section>
+            <jsp:directive.include file="footer.jspx" />
         </body>
     </html>
 </jsp:root>
