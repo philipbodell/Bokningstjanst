@@ -21,7 +21,8 @@ public class JPABookingFactory {
 
         // Add new data
         booking.getTicketCatalogue().add(new Ticket("Tåg","Göteborg", "Lerum", 20));
-/*
+        
+        /*
         booking.getCustomerRegistry().add(new Customer(new Address("aaa", 1, "aaa"),
                 "arne", "arnesson", "arne@gmail.com"));
         booking.getCustomerRegistry().add(new Customer(new Address("bbbb", 2, "bbb"),

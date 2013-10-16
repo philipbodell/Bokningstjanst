@@ -51,12 +51,17 @@ public class BServlet extends HttpServlet {
                     break;
             }
         }
-        if (tickets != null) {
-            switch (tickets) {
-                case "train":
-                    break;
+            if (tickets != null) {
+                switch (tickets) {
+
+                    case "train":
+                        
+                   
+                        break;
+
+                }
             }
-        }
+        
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Philip
+ * @author ed
  */
 public class TestCustomerRegistry {
 
