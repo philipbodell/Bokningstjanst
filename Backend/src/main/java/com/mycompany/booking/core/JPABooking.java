@@ -17,7 +17,7 @@ public class JPABooking implements IBooking {
    
 
     public JPABooking(String puName) {
-        Logger.getAnonymousLogger().log(Level.INFO, "Booing alive {0}", this.hashCode());
+        Logger.getAnonymousLogger().log(Level.INFO, "Booking alive {0}", this.hashCode());
         ticketCatalogue = TicketCatalogue.newInstance(puName);
         customerRegistry = CustomerRegistry.newInstance(puName);
     }

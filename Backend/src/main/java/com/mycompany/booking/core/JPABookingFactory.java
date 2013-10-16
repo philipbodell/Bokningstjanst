@@ -1,10 +1,6 @@
 package com.mycompany.booking.core;
 
-/**
- * Static factory for Shops
- *
- * @author hajo
- */
+
 public class JPABookingFactory {
 
     private JPABookingFactory() {
@@ -13,6 +9,7 @@ public class JPABookingFactory {
     // If initTestData there will be some data to use
     public static IBooking getBooking(String persistenceUnitName) {
         JPABooking s = new JPABooking(persistenceUnitName);
+        initTestData(s);
         return s;
     }
 
@@ -22,20 +19,16 @@ public class JPABookingFactory {
         // Add new data
         booking.getTicketCatalogue().add(new Ticket("Tåg","Göteborg", "Lerum", 20));
         
-        /*
-        booking.getCustomerRegistry().add(new Customer(new Address("aaa", 1, "aaa"),
-                "arne", "arnesson", "arne@gmail.com"));
-        booking.getCustomerRegistry().add(new Customer(new Address("bbbb", 2, "bbb"),
-                "berit", "beritsson", "berit@gmail.com"));
-        booking.getCustomerRegistry().add(new Customer(new Address("ccc", 3, "ccc"),
-                "cecilia", "cecilia", "cecila@gmail.com"));
-
+        
+        booking.getCustomerRegistry().add(new Customer("arne", "arnesson","arne", "1234", "6112032314", "arne@arne.arne"));
+        booking.getCustomerRegistry().add(new Customer("Björn", "Magasinsson","Coolbitch", "ilovehorses", "9712031567", "björne@magasin.pung"));
+        booking.getCustomerRegistry().add(new Customer("Sven", "Svensson","xxvitmakt", "ponny", "8507178573", "coolboii@hotmail.com"));
         Customer c = booking.getCustomerRegistry().getByName("arne").get(0);
-        c.addTicketToCart(booking.getTicketCatalogue().getByName("banana").get(0));
-        c.addTicketToCart(booking.getTicketCatalogue().getByName("apple").get(0));
-        c.addTicketToCart(booking.getTicketCatalogue().getByName("pear").get(0));
+        c.addTicketToCart(booking.getTicketCatalogue().getByName("båt").get(0));
+        c.addTicketToCart(booking.getTicketCatalogue().getByName("tåg").get(0));
+        c.addTicketToCart(booking.getTicketCatalogue().getByName("hest").get(0));
 
-        booking.getOrderBook().add(new PurchaseOrder(c, c.getCart().getAsOrderItems()));
-*/
+        //booking.getTicketCatalogue().add(new Ticket(c, c.getCart().getAsOrderItems()));
+
     }
 }

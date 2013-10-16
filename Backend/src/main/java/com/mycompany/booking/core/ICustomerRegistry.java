@@ -12,5 +12,7 @@ public interface ICustomerRegistry extends IDAO<Customer, Long> {
 
     List<Customer> getByName(String name);
     
+    boolean authenticate(String name, String password);
+    
 }
 

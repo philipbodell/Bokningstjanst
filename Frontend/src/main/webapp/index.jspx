@@ -42,7 +42,7 @@
 
                 </form>
             </div>
-
+            <jsp:directive.include file="WEB-INF/jsp/login.jspx" />
             <jsp:directive.include file="WEB-INF/jsp/footer.jspx" />
 
         </body>

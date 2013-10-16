@@ -6,38 +6,45 @@ import javax.persistence.Transient;
 
 /**
  * A Customer
+ *
  * @author hajo
  */
 @Entity
-public class Customer extends AbstractEntity implements Serializable{
-   
+public class Customer extends AbstractEntity implements Serializable {
+
     @Transient
     private Cart cart = new Cart();
     private String fname;
     private String lname;
     private String pNumber;
     private String email;
+    private String username;
+    private String password;
 
     public Customer() {
     }
 
-    public Customer(String fname,
-            String lname,String pNumber, String email) {
+    public Customer(String fname, String lname, String username, String password,
+             String pNumber, String email) {
         //this.address = address;
         this.fname = fname;
         this.lname = lname;
         this.pNumber = pNumber;
         this.email = email;
+        this.username=username;
+        this.password=password;
     }
-    
-    public Customer(Long id, String fname,
-            String lname, String pNumber,String email) {
+
+    public Customer(Long id, String fname, String username, String password,
+            String lname, String pNumber, String email) {
         super(id);
-       // this.address = address;
+        // this.address = address;
         this.fname = fname;
         this.lname = lname;
         this.pNumber = pNumber;
         this.email = email;
+        this.username=username;
+        this.password=password;
     }
 
     public void addTicketToCart(Ticket ticket) {
@@ -52,10 +59,9 @@ public class Customer extends AbstractEntity implements Serializable{
         cart = new Cart();
     }
 
-   /* public Address getAddress() {
-        return address;
-    }*/
-
+    /* public Address getAddress() {
+     return address;
+     }*/
     public Cart getCart() {
         return cart;
     }
@@ -71,9 +77,17 @@ public class Customer extends AbstractEntity implements Serializable{
     public String getLname() {
         return lname;
     }
-    
-    public String getPnumber(){
+
+    public String getPnumber() {
         return pNumber;
+    }
+
+    public String getPass() {
+        return password;
+    }
+
+    public String getUserName() {
+        return username;
     }
 
     @Override
@@ -85,4 +99,3 @@ public class Customer extends AbstractEntity implements Serializable{
         this.id = id;
     }
 }
-
