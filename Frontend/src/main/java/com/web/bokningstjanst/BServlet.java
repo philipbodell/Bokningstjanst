@@ -4,8 +4,7 @@
  */
 package com.web.bokningstjanst;
 
-import com.web.ticketsystem.TicketCore;
-import com.web.ticketsystem.Train;
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -57,8 +56,6 @@ public class BServlet extends HttpServlet {
 
                     case "train":
                         
-                        TicketCore test = new TicketCore();
-                        test.add(new Train("aaaa","bbb","ccc","ddd","eee","fff"));
                    
                         break;
 
