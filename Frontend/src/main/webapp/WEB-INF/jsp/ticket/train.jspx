@@ -22,7 +22,7 @@
             <jsp:directive.include file="../header.jspx" />
             <section id="pageSection">
                 <form  action="ticket" method="POST">
-                    <input type="hidden" name="tickets" value="train"/>
+                    <input type="hidden" name="tickets" value="Confirm"/>
                     <fieldset id="fieldset-container">
                         <legend>Från</legend>
                         <br/>

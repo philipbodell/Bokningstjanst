@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -54,8 +55,11 @@ public class BServlet extends HttpServlet {
             if (tickets != null) {
                 switch (tickets) {
 
-                    case "train":
-                        
+                    case "Confirm":   
+                       HttpSession session =  request.getSession();
+                       session.setMaxInactiveInterval(30);
+                       request.getRequestDispatcher("WEB-INF/jsp/ticket/ticketValidation.jspx").forward(request, response);
+                       
                    
                         break;
 
