@@ -29,6 +29,9 @@ public class Departure implements Serializable {
     
     private Time travelTime;
 
+    public Departure() {
+    }
+
     public Departure(String departureLocation, String destination, Time depTime,Date depDate,Time travelTime){
         this.departureLocation = departureLocation;
         this.destination = destination;
