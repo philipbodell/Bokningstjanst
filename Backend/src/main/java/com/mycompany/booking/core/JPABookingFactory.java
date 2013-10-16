@@ -20,7 +20,7 @@ public class JPABookingFactory {
     private static void initTestData(JPABooking booking) {
 
         // Add new data
-        booking.getTicketCatalogue().add(new Ticket("Tåg","Göteborg", "Lerum", 20));
+       // booking.getTicketCatalogue().add(new Ticket("Tåg","Göteborg", "Lerum", 20));
 /*
         booking.getCustomerRegistry().add(new Customer(new Address("aaa", 1, "aaa"),
                 "arne", "arnesson", "arne@gmail.com"));

@@ -9,17 +9,20 @@ import java.util.logging.Logger;
  * NOTE: Uses Java 1.7
  *
  * @author hajo
+ * Modified for our project
  */
 public class JPABooking implements IBooking {
 
     private ITicketCatalogue ticketCatalogue;
     private ICustomerRegistry customerRegistry;
+    private IDepartureCatalogue departureCatalogue;
    
 
     public JPABooking(String puName) {
         Logger.getAnonymousLogger().log(Level.INFO, "Booing alive {0}", this.hashCode());
         ticketCatalogue = TicketCatalogue.newInstance(puName);
         customerRegistry = CustomerRegistry.newInstance(puName);
+        departureCatalogue =DepartureCatalogue.newInstance(puName);
     }
 
     @Override
@@ -30,5 +33,10 @@ public class JPABooking implements IBooking {
     @Override
     public ICustomerRegistry getCustomerRegistry(){
         return customerRegistry;
+    }
+    
+    @Override
+    public IDepartureCatalogue getDepartureCatalogue(){
+        return departureCatalogue;
     }
 }

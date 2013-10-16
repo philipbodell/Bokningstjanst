@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
  * All products
  *
  * @author hajo
+ * Modified for our project
  */
 public final class TicketCatalogue extends AbstractDAO<Ticket, Long>
         implements ITicketCatalogue {

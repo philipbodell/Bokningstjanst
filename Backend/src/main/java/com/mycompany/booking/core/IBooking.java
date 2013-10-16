@@ -11,4 +11,5 @@ package com.mycompany.booking.core;
 public interface IBooking {
     public ITicketCatalogue getTicketCatalogue();
     public ICustomerRegistry getCustomerRegistry();
+    public IDepartureCatalogue getDepartureCatalogue();
 }

@@ -4,11 +4,9 @@
  */
 package com.mycompany.booking.core;
 
-import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Temporal;
 
 /**
@@ -16,10 +14,10 @@ import javax.persistence.Temporal;
  * @author Philip och Johan
  */
 @Entity
-public class Departure implements Serializable {
+public class Departure extends AbstractEntity {
 
-    @Id
-    private Long id;
+    private String type;
+    
     private String departureLocation;
     private String destination;
     
@@ -32,12 +30,17 @@ public class Departure implements Serializable {
     public Departure() {
     }
 
-    public Departure(String departureLocation, String destination, Time depTime,Date depDate,Time travelTime){
+    public Departure(String type, String departureLocation, String destination, Time depTime,Date depDate,Time travelTime){
+        this.type = type;
         this.departureLocation = departureLocation;
         this.destination = destination;
         this.departureTime = depTime;
         this.departureDate = depDate;
         this.travelTime = travelTime;
+    }    
+    
+    public String getType(){
+        return type;
     }
     
     public String getDepartureLocation() {
@@ -54,5 +57,17 @@ public class Departure implements Serializable {
 
     public Date getDepartureDate() {
         return departureDate;
+    }
+
+    public Time getTravelTime(){
+        return travelTime;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

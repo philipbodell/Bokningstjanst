@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * Interface to product catalogue
  * @author hajo
+ * Modified for our projects
  */
 public interface ITicketCatalogue extends IDAO<Ticket, Long> {
 
