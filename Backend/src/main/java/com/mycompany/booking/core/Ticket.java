@@ -3,6 +3,7 @@ package com.mycompany.booking.core;
 import java.sql.Time;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Temporal;
 
 /**
@@ -14,35 +15,28 @@ import javax.persistence.Temporal;
 @Entity
 public class Ticket extends AbstractEntity {
     
-   // @OneToMany(mappedBy="product",cascade={CascadeType.REMOVE})
-  //  private List<OrderItem> orderItemList;
-    private String ticketType;
-    private String destination;
-    private String departureLocation;
-    private Time departureTime;
-    private Time travelTime;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date departureDate;
+    @Id
+    private Long id;
+    private Departure departure;
     private double ticketPrice;
-
+   
+    
     public Ticket() {
     }
 
-    public Ticket(String ticketType, String destination, String departureLocation, double ticketPrice) {
-        this.ticketType = ticketType;
-        this.destination = destination;
-        this.departureLocation = departureLocation;
+    public Ticket(Departure departure, double ticketPrice) {
+        this.departure  = departure;
         this.ticketPrice = ticketPrice;
     }
 
-    public Ticket(Long id, String destination, double ticketPrice) {
+    public Ticket(Long id, Departure departure, double ticketPrice) {
         super(id);
-        this.destination = destination;
+        this.departure = departure;
         this.ticketPrice = ticketPrice;
     }
 
-    public String getDestination() {
-        return destination;
+    public Departure getDeparture() {
+        return departure;
     }
 
     public double getTicketPrice() {
@@ -51,6 +45,8 @@ public class Ticket extends AbstractEntity {
      
     @Override
     public String toString() {
-        return "Product{" + "id=" + getId() + ", destination=" + destination + ", ticketPrice=" + ticketPrice + '}';
+        //TODO hej
+
+        return "Product{" + "id=" + getId() + ", departure=" + departure + ", ticketPrice=" + ticketPrice + '}';
     }      
 }
