@@ -10,6 +10,7 @@ body {
     padding: 0px;
 
     background-color:#272727;
+    overflow:auto;
 }
 footer {
     clear: both;
@@ -63,7 +64,7 @@ footer {
     margin: 0.3em;
 }
     
-    #fieldset-container {
+#fieldset-container {
         float:left;
         padding: 1em;
 }

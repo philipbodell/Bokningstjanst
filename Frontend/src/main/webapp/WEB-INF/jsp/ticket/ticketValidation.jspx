@@ -17,11 +17,63 @@
             <link rel="stylesheet" type="text/css" href="resources/css/layout.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
+            <link rel="stylesheet" type="text/css" href="resources/css/ticket.css" />
         </head>
         <body>
             <jsp:directive.include file="../header.jspx" />
             <section id="pageSection">
-            
+                <div id="ticket">
+
+                    <h1>Ticket</h1>
+                    <span id="person">Name:</span>
+                    <span id="person">Lastname:</span>
+                    <span id="person">Phone:</span>
+                    <span id="person">E-mail:</span>
+                    <hr/>
+                    <table>
+                        <tr>
+                            <td>
+                                Göteborg - Kungsbacka
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Departure</td>
+                            <td>2012-06-02</td>
+                            <td>18:15</td>
+                        </tr>
+                        <tr>
+                            <td>Persons</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Price</td>
+                            <td>20$</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>Kungsbacka - Göteborg</td>
+                        </tr>
+                        <tr>
+                            <td>Departure</td>
+                            <td>2012-06-02</td>
+                            <td>18:15</td>
+                        </tr>
+                        <tr>
+                            <td>Persons</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Price</td>
+                            <td>20$</td>
+                        </tr>
+                    </table> 
+                    <hr/>
+                    <span id="sumup">Departure ticket 2x20$</span>
+                    <span id="sumup">Departure ticket 2x20$</span>
+                    <span id="sumup">Sum 80$</span>
+                    <button id="button" type="submit">Accept and go to payment</button>
+                </div>
             </section>
             <jsp:directive.include file="../footer.jspx" />
         </body>
