@@ -33,7 +33,7 @@
                     <table>
                         <tr>
                             <td>
-                                Göteborg - Kungsbacka
+                               ${SessionScope(name="departure_time")}
                             </td>
                         </tr>
                         <tr>
