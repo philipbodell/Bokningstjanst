@@ -17,17 +17,23 @@ public class Customer extends AbstractEntity implements Serializable{
     private String lname;
     private String pNumber;
     private String email;
+    private String username;
+    private String password;
 
     public Customer() {
     }
 
-    public Customer(String fname,
-            String lname,String pNumber, String email) {
+    public Customer(Long id, String fname, String username, String password,
+            String lname, String pNumber, String email) {
+
         //this.address = address;
         this.fname = fname;
         this.lname = lname;
         this.pNumber = pNumber;
         this.email = email;
+        this.username=username;
+        this.password=password;
+
     }
     
     public Customer(Long id, String fname,
@@ -63,6 +69,15 @@ public class Customer extends AbstractEntity implements Serializable{
     public String getEmail() {
         return email;
     }
+    
+    public String getPass() {
+        return password;
+    }
+
+    public String getUserName() {
+        return username;
+    }
+
 
     public String getFname() {
         return fname;

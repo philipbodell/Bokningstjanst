@@ -1,6 +1,5 @@
 package com.mycompany.booking.core;
 
-
 import com.mycompany.booking.utils.AbstractDAO;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,12 +7,11 @@ import java.util.List;
 /**
  * All customers
  *
- * @author hajo
- * Details changed to fit our project
- *  
+ * @author hajo Details changed to fit our project
+ *
  */
-public final class CustomerRegistry 
-    extends AbstractDAO<Customer, Long> implements ICustomerRegistry {
+public final class CustomerRegistry
+        extends AbstractDAO<Customer, Long> implements ICustomerRegistry {
 
     public CustomerRegistry(String puName) {
         super(Customer.class, puName);
@@ -33,5 +31,15 @@ public final class CustomerRegistry
             }
         }
         return found;
+    }
+
+    @Override
+    public boolean authenticate(String name, String password) {
+        for (Customer c : getRange(0, getCount())) {
+            if (c.getUserName().equalsIgnoreCase(name)) {
+                return c.getPass().equals(Encrypter.enCrypt(password));
+            }
+        }
+        return false;
     }
 }
