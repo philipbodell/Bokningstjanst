@@ -21,31 +21,29 @@
         <body>
             <jsp:directive.include file="../header.jspx" />
             <div id="payment">
-            <form>
-                <h1>Order Payment</h1>
+                <form  action="ticket" method="POST">
+                    <input type="hidden" name="tickets" value="PaymentComplete"/>
+                    <h1>Order Payment</h1>
 
-                <label for="name">Surename: </label>
-                <input id="name" name="name" type="text" required="true" autofocus="true"/>
+                    <label for="name">Surename: </label>
+                    <input id="name" name="name" type="text" required="true" autofocus="true"/>
 
-                <label for="lastname">Lastname:</label>
-                <input id="lastname" name="lastname" type="text" required="true"/>
+                    <label for="lastname">Lastname:</label>
+                    <input id="lastname" name="lastname" type="text" required="true"/>
 
-                <label for="name">Name: </label>
-                <input id="name" name="name" type="text" required="true"/>
-
-<label for="cardtype">Select card: </label>
+                    <label for="cardtype">Select card: </label>
                     <select id="cardtype">
                         <option value="visa">Visa</option>
                         <option value="mastercard">MasterCard</option>
                     </select>
 
-                <label for="cardnr">Card Number: </label>
-                <input id="cardnr" name="cardnr" type="number" required="true"/>
-                <label for="ccv">Ccv Code </label>
-                <input id="cardnr" name="ccv" type="ccv" required="true"/>
+                    <label for="cardnr">Card Number: </label>
+                    <input id="cardnr" name="cardnr" type="number" required="true"/>
+                    <label for="ccv">Ccv Code </label>
+                    <input id="cardnr" name="ccv" type="ccv" required="true"/>
 
-                <button id="button" type="submit">Submit payment</button>
-            </form>
+                    <button id="button" type="submit">Submit payment</button>
+                </form>
             </div>
             <jsp:directive.include file="../footer.jspx" />
         </body>
