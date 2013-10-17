@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jsp:root 
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns="http://www.w3.org/1999/xhtml"
+    version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" 
+                doctype-system="about:legacy-compat" /> 
+    <html>
+        <head>
+            <title>Order Payment</title> 
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <link rel="stylesheet" type="text/css" href="resources/css/layout.css" />
+            <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+            <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
+        </head>
+        <body>
+            <jsp:directive.include file="../header.jspx" />
+            <form>
+                <h1>Order Payment</h1>
+
+                <label for="name">Name </label>
+                <input id="name" name="name" type="text" required="true"/>
+
+                <label for="lastname">Lastname</label>
+                <input id="lastname" name="lastname" type="text" required="true"/>
+
+                <label for="name">Name </label>
+                <input id="name" name="name" type="text" required="true"/>
+
+                <input id="cardtype" name="cardtype" list="browsers" value="Visa">
+
+                    <datalist id="cardtype">
+                        <option value="Visa"/>
+                        <option value="MasterCard"/>
+                    </datalist> 
+
+                    <label for="cardnr">Card Number: </label>
+                    <input id="cardnr" name="cardnr" type="number" required="true"/>
+                    <label for="ccv">Ccv Code </label>
+                    <input id="cardnr" name="ccv" type="ccv" required="true"/>
+
+                    <button id="button" type="submit">Submit payment</button>
+            </form>
+            <jsp:directive.include file="../footer.jspx" />
+        </body>
+    </html>   
+
+</jsp:root>
+
+
