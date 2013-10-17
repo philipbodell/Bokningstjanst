@@ -33,13 +33,13 @@
                     <table>
                         <tr>
                             <td>
-                               ${SessionScope(name="departure_time")}
+                               ${sessionScope.departure_city} - ${sessionScope.arrival_city}
                             </td>
                         </tr>
                         <tr>
                             <td>Departure</td>
-                            <td>2012-06-02</td>
-                            <td>18:15</td>
+                            <td>${sessionScope.departure_date}</td>
+                            <td>${sessionScope.departure_time}</td>
                         </tr>
                         <tr>
                             <td>Persons</td>
@@ -52,12 +52,12 @@
                     </table>
                     <table>
                         <tr>
-                            <td>Kungsbacka - Göteborg</td>
+                            <td>${sessionScope.arrival_city} - ${sessionScope.departure_city}</td>
                         </tr>
                         <tr>
                             <td>Departure</td>
-                            <td>2012-06-02</td>
-                            <td>18:15</td>
+                            <td>${sessionScope.arrival_date}</td>
+                            <td>${sessionScope.arrival_time}</td>
                         </tr>
                         <tr>
                             <td>Persons</td>

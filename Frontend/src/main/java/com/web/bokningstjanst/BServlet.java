@@ -59,12 +59,13 @@ public class BServlet extends HttpServlet {
                        HttpSession session =  request.getSession();
                        session.setMaxInactiveInterval(30);
                        
-                       session.setAttribute("depature_city", request.getAttribute("depature_cit"));
-                       session.setAttribute("depature_time", request.getAttribute("depature_time"));
-                       session.setAttribute("depature_date", request.getAttribute("depature_date"));
-                       session.setAttribute("arrival_city", request.getAttribute("arrival_city"));
-                       session.setAttribute("arrival_date", request.getAttribute("arrival_date"));
-                       session.setAttribute("arrival_time", request.getAttribute("arrival_time"));
+
+                       session.setAttribute("departure_city", request.getParameter("departure_city"));
+                       session.setAttribute("departure_time", request.getParameter("departure_time"));
+                       session.setAttribute("departure_date", request.getParameter("departure_date"));
+                       session.setAttribute("arrival_city", request.getParameter("arrival_city"));
+                       session.setAttribute("arrival_date", request.getParameter("arrival_date"));
+                       session.setAttribute("arrival_time", request.getParameter("arrival_time"));
                        
                        request.getRequestDispatcher("WEB-INF/jsp/ticket/ticketValidation.jspx").forward(request, response);
                        

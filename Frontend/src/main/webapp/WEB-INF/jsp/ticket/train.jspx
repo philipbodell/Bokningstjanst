@@ -27,7 +27,7 @@
                         <legend>Från</legend>
                         <br/>
                         <label for="city_list">Destination</label>
-                        <input id="city_list" name="depature_city" list="browsers" value="Kungsbacka">
+                        <input id="city_list" name="departure_city" list="browsers" value="Kungsbacka">
 
                             <datalist id="city">
                                 <option value="Göteborg"/>
@@ -41,7 +41,7 @@
                         <legend>Avresa</legend>
                         <br/>
                         <label for="datepicker">Datum </label>
-                        <input id="datepicker" name="depature_date" type="date"/>
+                        <input id="datepicker" name="departure_date" type="date"/>
                         <label for="timepicker"> Tid </label>
                         <input type="text" id="timepicker"  name="departure_time" value="20:13" size="6" />
 
