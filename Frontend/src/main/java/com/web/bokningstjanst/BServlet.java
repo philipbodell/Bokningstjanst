@@ -71,6 +71,15 @@ public class BServlet extends HttpServlet {
                        
                    
                         break;
+                        
+                        case"Payment":
+                            //Check so the session has not died
+                            if(request.getSession(false) != null) {
+                                request.getRequestDispatcher("WEB-INF/jsp/ticket/payment.jspx").forward(request, response);
+                            } else {
+                                request.getRequestDispatcher("WEB-INF/jsp/ticket/ticketValidation.jspx").forward(request, response);
+                            }
+                            break;
 
                 }
             }
