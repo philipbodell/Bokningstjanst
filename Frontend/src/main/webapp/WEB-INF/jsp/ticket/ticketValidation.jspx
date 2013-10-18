@@ -18,6 +18,8 @@
             <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/ticket.css" />
+     
+
         </head>
         <body>
             <jsp:directive.include file="../header.jspx" />
@@ -75,11 +77,14 @@
                         <span id="sumup">Departure ticket 2x20$</span>
                         <span id="sumup">Sum 80$</span>
                         <button id="button" type="submit">Accept and go to payment</button>
+                        <span id="countdownClock">a</span>
                     </form>
                 </div>
             </section>
             <jsp:directive.include file="../footer.jspx" />
+
         </body>
+        
     </html>   
 
 </jsp:root>
