@@ -23,8 +23,8 @@ public class Customer extends AbstractEntity implements Serializable{
     public Customer() {
     }
 
-    public Customer(Long id, String fname, String username, String password,
-            String lname, String pNumber, String email) {
+    public Customer(String fname, String lname, String username, String password,
+            String pNumber, String email) {
 
         //this.address = address;
         this.fname = fname;
