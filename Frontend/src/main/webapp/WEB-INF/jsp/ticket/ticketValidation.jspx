@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jsp:root 
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns="http://www.w3.org/1999/xhtml"
+    version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" 
+                doctype-system="about:legacy-compat" /> 
+    <html>
+        <head>
+            <title>Confirm Ticket</title> 
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <link rel="stylesheet" type="text/css" href="resources/css/layout.css" />
+            <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+            <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
+            <link rel="stylesheet" type="text/css" href="resources/css/ticket.css" />
+     
+
+        </head>
+        <body>
+            <jsp:directive.include file="../header.jspx" />
+            <section id="pageSection">
+                <div id="ticket">
+                    <form  action="ticket" method="POST">
+                        <input type="hidden" name="tickets" value="Payment"/>
+
+                        <h1>Ticket</h1>
+                        <span id="person">Name:</span>
+                        <span id="person">Lastname:</span>
+                        <span id="person">Phone:</span>
+                        <span id="person">E-mail:</span>
+                        <hr/>
+                        <table>
+                            <tr>
+                                <td>
+                                    ${sessionScope.departure_city} - ${sessionScope.arrival_city}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Departure</td>
+                                <td>${sessionScope.departure_date}</td>
+                                <td>${sessionScope.departure_time}</td>
+                            </tr>
+                            <tr>
+                                <td>Persons</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Price</td>
+                                <td>20$</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td>${sessionScope.arrival_city} - ${sessionScope.departure_city}</td>
+                            </tr>
+                            <tr>
+                                <td>Departure</td>
+                                <td>${sessionScope.arrival_date}</td>
+                                <td>${sessionScope.arrival_time}</td>
+                            </tr>
+                            <tr>
+                                <td>Persons</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Price</td>
+                                <td>20$</td>
+                            </tr>
+                        </table> 
+                        <hr/>
+                        <span id="sumup">Departure ticket 2x20$</span>
+                        <span id="sumup">Departure ticket 2x20$</span>
+                        <span id="sumup">Sum 80$</span>
+                        <button id="button" type="submit">Accept and go to payment</button>
+                        <span id="countdownClock">a</span>
+                    </form>
+                </div>
+            </section>
+            <jsp:directive.include file="../footer.jspx" />
+
+        </body>
+        
+    </html>   
+
+</jsp:root>
+
+

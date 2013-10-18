@@ -4,13 +4,13 @@
  */
 package com.web.bokningstjanst;
 
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -53,10 +53,39 @@ public class BServlet extends HttpServlet {
         }
         if (tickets != null) {
             switch (tickets) {
-                case "train":
+
+                case "Confirm":
+                    HttpSession session = request.getSession();
+                    session.setMaxInactiveInterval(30);
+
+
+                    session.setAttribute("departure_city", request.getParameter("departure_city"));
+                    session.setAttribute("departure_time", request.getParameter("departure_time"));
+                    session.setAttribute("departure_date", request.getParameter("departure_date"));
+                    session.setAttribute("arrival_city", request.getParameter("arrival_city"));
+                    session.setAttribute("arrival_date", request.getParameter("arrival_date"));
+                    session.setAttribute("arrival_time", request.getParameter("arrival_time"));
+
+                    request.getRequestDispatcher("WEB-INF/jsp/ticket/ticketValidation.jspx").forward(request, response);
+
+
+                    break;
+
+                case "Payment":
+                    //Check so the session has not died
+                    if (request.getSession(false) != null) {
+                        request.getRequestDispatcher("WEB-INF/jsp/ticket/payment.jspx").forward(request, response);
+                    } else {
+                        request.getRequestDispatcher("WEB-INF/jsp/ticket/ticketValidation.jspx").forward(request, response);
+                    }
+                    break;
+
+                case "PaymentComplete":
+                    request.getRequestDispatcher("WEB-INF/jsp/ticket/paymentSuccess.jspx").forward(request, response);
                     break;
             }
         }
+
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

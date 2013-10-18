@@ -1,0 +1,43 @@
+#ticket {
+    width: 100%;
+    padding: 2em;
+}
+
+#person {
+    width:100%;
+    float:left;
+}
+
+
+#ticket hr {
+    width:100%;
+    float:left;
+}
+
+
+#ticket table {
+    margin-right: auto;
+    float:left;
+    border-collapse:collapse;
+    background-color:#04ACEC;
+}
+
+#ticket table:last-child {
+    margin-left: auto;
+    float:right;
+}
+#ticket table tr {
+    width: 30em;
+}
+#ticket table tr:first-child {
+    text-align:center;
+    vertical-align:middle;
+}
+#sumup {
+    clear:both;
+    float:right;
+}
+
+
+
+

@@ -10,6 +10,7 @@ body {
     padding: 0px;
 
     background-color:#272727;
+    overflow:auto;
 }
 footer {
     clear: both;
@@ -54,18 +55,16 @@ footer {
     margin: 0.3em;
 }
 #button {
-    float:right;
     background-color:#2099f6;
     border: none;
     color:#FFF;
     font-family:Tahoma, Geneva, sans-serif;
     font-size: 1em;
-    margin: 0.3em;
 }
-    
-    #fieldset-container {
-        float:left;
-        padding: 1em;
+
+#fieldset-container {
+    float:left;
+    padding: 1em;
 }
 
 #fieldset-container legend {
@@ -80,11 +79,28 @@ footer {
     height:2em;
     margin-bottom:0.5em;
     opacity: 0.5;
-    
+
     color:#7D7D7D;
     font-family:Tahoma, Geneva, sans-serif;
     font-size: 0.8em;
 }
+
+#payment input,select , label , button {
+    float:left;
+    clear:both;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+#payment button {
+    margin-top: 0.4em;
+}
+
+
+
+
+
+
 
 
 
