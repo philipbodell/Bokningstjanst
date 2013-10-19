@@ -4,7 +4,11 @@
  */
 package com.web.bokningstjanst;
 
+import com.mycompany.booking.core.Cart;
+import com.mycompany.booking.core.Departure;
+import com.mycompany.booking.core.Ticket;
 import java.io.IOException;
+import java.sql.Time;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -57,8 +61,18 @@ public class BServlet extends HttpServlet {
                 case "Confirm":
                     HttpSession session = request.getSession();
                     session.setMaxInactiveInterval(30);
-
-
+                    Cart c = new Cart();
+                    //TODO Insert type here
+                    String dep = request.getParameter("departure_city");
+                    String[] timeString = request.getParameter("departure_time").split(":");
+                    Time depTime = new Time(Integer.valueOf(timeString[0]),Integer.valueOf(timeString[1]),0);
+                    //TODO Insert date here
+                    String arr = request.getParameter("arrival_city");
+                    timeString = request.getParameter("arrival_time").split(":");
+                    //TODO Insert price here
+                    Time arrTime = new Time(Integer.valueOf(timeString[0]),Integer.valueOf(timeString[1]),0);
+                    c.add(new Ticket(new Departure("Train",dep,arr,depTime,null,arrTime),100));
+                    
                     session.setAttribute("departure_city", request.getParameter("departure_city"));
                     session.setAttribute("departure_time", request.getParameter("departure_time"));
                     session.setAttribute("departure_date", request.getParameter("departure_date"));

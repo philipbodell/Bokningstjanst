@@ -4,6 +4,7 @@ import java.sql.Time;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -15,8 +16,7 @@ import javax.persistence.Temporal;
 @Entity
 public class Ticket extends AbstractEntity {
     
-    @Id
-    private Long id;
+    @OneToOne
     private Departure departure;
     private double ticketPrice;
    

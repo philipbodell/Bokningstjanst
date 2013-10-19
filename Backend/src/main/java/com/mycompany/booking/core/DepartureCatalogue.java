@@ -21,13 +21,6 @@ public final class DepartureCatalogue extends AbstractDAO<Departure, Long>
     public static IDepartureCatalogue newInstance(String puName) {
         return new DepartureCatalogue(puName);
     }
-
-    @Override
-    public List<Departure> getByName(String name) {
-      
-        return getEntityManager().createQuery("SELECT p FROM Departure p WHERE p.name = :name",Departure.class)
-                .setParameter("name", name).getResultList();
-    }
     
     public List<Departure> getAll(){
         EntityManager em = getEntityManager();
@@ -37,7 +30,6 @@ public final class DepartureCatalogue extends AbstractDAO<Departure, Long>
     @Override
     public Departure getById(Long id){
         return find(id);
-        
     }  
     
     @Override
@@ -52,9 +44,16 @@ public final class DepartureCatalogue extends AbstractDAO<Departure, Long>
                 .setParameter("destination", dest).getResultList();
     }
     
-    public List<Departure> getByAny(String name, Long id){
+    @Override
+    public List<Departure> getByDepartureLocation(String depLocation){
+        return getEntityManager().createQuery("SELECT p FROM Departure p WHERE p.departureLocation= :departureLocation",Departure.class)
+                .setParameter("departureLocation", depLocation).getResultList();
+    }
+/*
+    public List<Departure> getByAny(String na, Long id){
          return getEntityManager().createQuery(
                  "SELECT p FROM Departure p WHERE p.name '"+name+"'OR p.id'"+id+"'",Departure.class)
                 .getResultList();
     }
+*/
 }

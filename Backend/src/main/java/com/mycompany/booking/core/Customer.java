@@ -1,6 +1,7 @@
 package com.mycompany.booking.core;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.Transient;
 
@@ -13,6 +14,7 @@ public class Customer extends AbstractEntity implements Serializable{
    
     @Transient
     private Cart cart = new Cart();
+    private ArrayList<Ticket> history = new ArrayList<Ticket>();
     private String fname;
     private String lname;
     private String pNumber;

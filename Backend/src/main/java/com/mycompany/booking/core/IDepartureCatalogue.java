@@ -10,13 +10,13 @@ import java.util.List;
  * Modified for our project
  */
 public interface IDepartureCatalogue extends IDAO<Departure, Long> {
-
-    public List<Departure> getByName(String name);
     
     public Departure getById(Long id);
     
     public List<Departure> getByType(String type);
     
     public List<Departure> getByDestination(String dest);
+    
+    public List<Departure> getByDepartureLocation(String depLocation);
      
 }
