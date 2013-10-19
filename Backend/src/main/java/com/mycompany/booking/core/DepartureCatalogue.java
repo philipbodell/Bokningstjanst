@@ -34,20 +34,37 @@ public final class DepartureCatalogue extends AbstractDAO<Departure, Long>
     
     @Override
     public List<Departure> getByType(String type){
-        return getEntityManager().createQuery("SELECT p FROM Departure p WHERE p.type = :type",Departure.class)
+        return getEntityManager()
+                .createQuery("SELECT p FROM Departure p WHERE p.type = :type",Departure.class)
                 .setParameter("type", type).getResultList();
     }
     
     @Override
     public List<Departure> getByDestination(String dest){
-        return getEntityManager().createQuery("SELECT p FROM Departure p WHERE p.destination = :destination",Departure.class)
+        return getEntityManager()
+                .createQuery("SELECT p FROM Departure p WHERE p.destination = :destination",Departure.class)
                 .setParameter("destination", dest).getResultList();
     }
     
     @Override
     public List<Departure> getByDepartureLocation(String depLocation){
-        return getEntityManager().createQuery("SELECT p FROM Departure p WHERE p.departureLocation= :departureLocation",Departure.class)
+        return getEntityManager()
+                .createQuery("SELECT p FROM Departure p WHERE p.departureLocation= :departureLocation",Departure.class)
                 .setParameter("departureLocation", depLocation).getResultList();
+    }
+    
+    @Override
+    public List<Departure> getByDepartureLocationAndDestination(String depLocation, String dest){
+        return getEntityManager().createQuery("SELECT p FROM Departure p WHERE p.departureLocation = :departureLocation AND p.dest = :dest ",Departure.class)
+                .setParameter("departureLocation", depLocation)
+                .setParameter("destination", dest)
+                .getResultList();
+
+    }
+    
+    @Override
+    public List<Departure> getAllDepartureLocations(){
+         return getEntityManager().createNamedQuery("Departure.getAll",Departure.class).getResultList();
     }
 /*
     public List<Departure> getByAny(String na, Long id){

@@ -18,5 +18,9 @@ public interface IDepartureCatalogue extends IDAO<Departure, Long> {
     public List<Departure> getByDestination(String dest);
     
     public List<Departure> getByDepartureLocation(String depLocation);
+    
+    public List<Departure> getByDepartureLocationAndDestination(String depLocation, String dest);
+    
+    public List<Departure> getAllDepartureLocations();
      
 }

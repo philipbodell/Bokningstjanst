@@ -4,6 +4,7 @@ package com.web.bokningstjanst;
 
 import com.mycompany.booking.core.IBooking;
 import com.mycompany.booking.core.ICustomerRegistry;
+import com.mycompany.booking.core.IDepartureCatalogue;
 import com.mycompany.booking.core.ITicketCatalogue;
 import com.mycompany.booking.core.JPABookingFactory;
 
@@ -22,5 +23,9 @@ public enum Booking {
 
     public ICustomerRegistry getCustomerRegistry() {
         return b.getCustomerRegistry();
+    }
+    
+    public IDepartureCatalogue getDepartureCatalogue(){
+        return b.getDepartureCatalogue();
     }
 }

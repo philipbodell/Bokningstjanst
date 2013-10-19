@@ -30,11 +30,9 @@
                         <input id="city_list" name="departure_city" list="browsers" value="Kungsbacka">
 
                             <datalist id="city">
-                                <option value="Göteborg"/>
-                                <option value="Kungsbacka"/>
-                                <option value="Lerum"/>
-                                <option value="Partille"/>
-                                <option value="Alingsås"/>
+                                <c:forEach var="i" items="${requestScope.DEPARTURE_CATALOGUE}">
+                                    <option value=${i.departurelocation}/>
+                                </c:forEach>
                             </datalist> 
                         </input>
                         <br/>
