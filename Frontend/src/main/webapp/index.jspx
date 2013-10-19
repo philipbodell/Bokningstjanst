@@ -10,6 +10,7 @@
     <jsp:output omit-xml-declaration="true" />
     <jsp:output doctype-root-element="HTML" 
                 doctype-system="about:legacy-compat" />
+
     <html>
         <head>
             <title>Ontour</title> 
@@ -31,16 +32,25 @@
                 ertgregretgretgretgretgrtegretgretgretgretgtregrtegretgrtegretgretgergerger
             </div>
             <div id="login">
-                <form name="login">
-                    <h2>Login or creat an account!</h2>
-                    <span id="login_text">User:</span>
-                    <input id="input" type="text" value="Username" />
-
-                    <span id="login_text">Password:</span>
-                    <input id="input" type="password" value="Password" />
-                    <input id="button" type="button" value="Login" />
-
-                </form>
+                <form method="post" action="util">
+                    <input type="hidden" name="action" value="login" />
+                    <fieldset>
+                        <legend>Login</legend>
+                        
+                        <c:if test="${not empty param.authInvalid}" >
+                            <p class="error"> Authorization failed!</p>
+                        </c:if>
+                        <p>
+                            <label>User Name (arne)</label>  
+                            <input type="text" name="name" maxlength="20"/>
+                            <label>Password (1234)</label>  
+                            <input type="password" name="passwd" maxlength="20"/>
+                        </p>
+                        <p>
+                            <input type="submit" value="Login"/> 
+                        </p>
+                    </fieldset>  
+                </form> 
             </div>
 
             <jsp:directive.include file="WEB-INF/jsp/footer.jspx" />

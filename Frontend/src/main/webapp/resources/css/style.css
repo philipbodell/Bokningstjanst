@@ -20,6 +20,10 @@ h2 {
 
 }
 
+.error{
+    color:red;
+}
+
 #input {
     color:#7D7D7D;
     font-family:Tahoma, Geneva, sans-serif;

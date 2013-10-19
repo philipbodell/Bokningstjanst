@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author anon
  */
-@WebFilter(filterName = "LoginFilter", urlPatterns = {"/products/*"})
+@WebFilter(filterName = "LoginFilter", urlPatterns = {"/tickets/*"})
 public class UtilFilter implements Filter {
     
     /** Initial method just printing information to the Log to show status.
@@ -67,7 +67,7 @@ public class UtilFilter implements Filter {
          */
         if (session == null || session.getAttribute("USER") == null) {
             System.out.println("Sending " +"IP "+ipAddress + " to the login screen, Time "+ new Date().toString()); //Prints the information about systems not currently logged on.
-            response.sendRedirect(request.getContextPath() + "/auth?view=login"); // No logged-in user found, so redirect to auth Servlet.
+            response.sendRedirect(request.getContextPath() + "/util?view=login"); // No logged-in user found, so redirect to auth Servlet.
         } else {
             chain.doFilter(req, res); // Logged-in user found, so just continue request.
         }

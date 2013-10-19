@@ -42,7 +42,7 @@ public class TestTicketCatalogue {
     public void before() {
         booking = JPABookingFactory.getBooking(PU);  
     }
-
+/*
     @Test
     public void testGetRange() {
         ITicketCatalogue tc = booking.getTicketCatalogue();
@@ -78,7 +78,7 @@ public class TestTicketCatalogue {
          * Id NOT changed here we have two Tickets with
          * same id but different state! 
          * Seems to be no single simple solution to this..?!
-         */
+         
 
         assertTrue(p2.equals(p1));
         assertFalse(p2.getDestination().equals(p1.getDestination()));
@@ -114,4 +114,5 @@ public class TestTicketCatalogue {
         em.getTransaction().commit();
         em.close();
     }
+*/
 }

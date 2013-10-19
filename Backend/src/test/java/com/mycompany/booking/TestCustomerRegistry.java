@@ -33,8 +33,8 @@ public class TestCustomerRegistry {
         ICustomerRegistry cr = booking.getCustomerRegistry();
         System.out.println(cr.toString());
         
-        Customer c1 = new Customer("Philip","Bodell","900703","p@b.se");
-        cr.add(c1);
+        ///Customer c1 = new Customer("Philip","Bodell","900703","p@b.se");
+        //cr.add(c1);
         assertTrue(cr.getCount()==1);
     }
 }
