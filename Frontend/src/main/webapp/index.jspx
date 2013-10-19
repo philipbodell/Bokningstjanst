@@ -20,6 +20,8 @@
             <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
         </head>
         <body>
+
+
             <jsp:directive.include file="WEB-INF/jsp/header.jspx" />
             <h1>Welcom to this bokningssystem!</h1>
             <div id="welcome_text">
@@ -36,7 +38,7 @@
                     <input type="hidden" name="action" value="login" />
                     <fieldset>
                         <legend>Login</legend>
-                        
+
                         <c:if test="${not empty param.authInvalid}" >
                             <p class="error"> Authorization failed!</p>
                         </c:if>
@@ -48,6 +50,48 @@
                         </p>
                         <p>
                             <input type="submit" value="Login"/> 
+
+                            <div id="fb-root"></div>
+                            <script>
+                                var appId = 'YOUR_APP_ID';
+                                var siteRoot = 'YOUR_HOST_NAME';
+
+                                window.fbAsyncInit = function() {
+                                    FB.init({
+                                        appId: appId,
+                                        channelURL: '//' + siteRoot + '/channel.html', // Channel File
+                                        status: true,
+                                        cookie: true,
+                                        oauth: true,
+                                        xfbml: true
+                                    });
+                                };
+
+
+                                (function(d) {
+                                    var js, id = 'facebook-jssdk';
+                                    if (d.getElementById(id)) {
+                                        return;
+                                    }
+                                    js = d.createElement('script');
+                                    js.id = id;
+                                    js.async = true;
+                                    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&amp;appId=440894206020617";
+                                    d.getElementsByTagName('head')[0].appendChild(js);
+                                }(document));
+
+                            </script>
+
+
+                            <div class="fb-login-button" data-show-faces="false" autologoutlink="true" data-width="200" data-max-rows="1">Login w/ Facebook</div>
+
+                            <div id="auth-info">
+                                <b>Id: </b>${fbUser.id}
+                                <b>Email: </b>${fbUser.email}
+                                <b>First Name: </b>${fbUser.firstName}
+                                <b>Last Name: </b>${fbUser.lastName}
+                            </div>
+                            
                         </p>
                     </fieldset>  
                 </form> 

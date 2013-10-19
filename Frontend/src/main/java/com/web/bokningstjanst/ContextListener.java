@@ -13,7 +13,7 @@ public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         Logger.getAnonymousLogger().log(Level.INFO,"Putting Booking in application scope");
-        sce.getServletContext().setAttribute(Keys.BOOKING.toString(), Booking.INSTANCE);
+        //sce.getServletContext().setAttribute(Keys.BOOKING.toString(), Booking.INSTANCE);
     }
 
     @Override

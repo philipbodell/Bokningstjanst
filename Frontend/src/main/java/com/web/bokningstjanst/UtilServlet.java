@@ -67,7 +67,8 @@ public final class UtilServlet extends HttpServlet {
                         request.getRequestDispatcher("index.jspx?authInvalid=true").forward(request, response);
                     }
                     break;
-                    
+                case "fblogin":
+                    request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
                     
             }
 
