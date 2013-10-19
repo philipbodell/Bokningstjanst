@@ -20,27 +20,16 @@
         </head>
         <body>
             <jsp:directive.include file="../header.jspx" />
-            <form  action="ticket" method="POST">
-                
-                <input type="hidden" name="tickets" value="chooseDeparture"/>
-                <input id="city_list" name="departure_city" list="browsers" value="">
-                    <datalist id="city">
-                        <c:forEach items="${departureList}" var="departure">  
-                            <option value="${departure.departureCity}"/>
+            <c:forEach items="${departureList}" var="departure"> 
+                <form  action="ticket" method="POST">
+                    <input type="hidden" name="tickets" value="Confirm"/>
+                    <input type="hidden" name="id" value="${departure.id}"/>
+                    
+                    ${departure.departureCity} - ${departure.arrivalCity} - ${departure.departureTime} - ${departure.arrivalTime} - ${departure.cost}
+                    <button id="button" type="submit">Accept</button>
+                </form>                        
+            </c:forEach>  
 
-                        </c:forEach>  
-                    </datalist> 
-                </input>
-                <input id="city_list" name="arrival_city" list="browsers" value="">
-                    <datalist id="city">
-                        <c:forEach items="${departureList}" var="departure">  
-                            <option value="${departure.arrivalCity}"/>
-
-                        </c:forEach>  
-                    </datalist> 
-                </input>
-                <button id="button" type="submit">Next</button>
-            </form>
             <jsp:directive.include file="../footer.jspx" />
         </body>
     </html>   

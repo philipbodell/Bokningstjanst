@@ -12,7 +12,7 @@ var refreshIntervalId = setInterval(function() {
 
     if (secondsLeft === 0) {
         clearInterval(refreshIntervalId);
-        document.getElementById('countdownClock').innerHTML = "stop";
+        document.getElementById('countdownClock').innerHTML = "";
     }
     //Update countdownId inner html with seconds 
     document.getElementById('countdownClock').innerHTML = secondsLeft + "s";

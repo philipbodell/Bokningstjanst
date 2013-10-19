@@ -13,11 +13,10 @@ body {
     overflow:auto;
 }
 footer {
-    clear: both;
+
     position:absolute; 
     bottom:0;
     background-color:#131313;
-    height:6em;
 
 
 }
