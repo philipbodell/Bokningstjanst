@@ -33,11 +33,18 @@
             <input type="text" name="lname" maxlength="20"/>
             <label>E-mail</label>  
             <input type="text" name="email"/>
+<<<<<<< HEAD
             <label>password</label>  
             <input type="password" name="name"/>
             <label>repeat password</label>  
             <input type="rPassword" name="name"/>
             <input type="text" name="validationstring" hidden="true"/>
+=======
+            <label>Password</label>  
+            <input type="password" name="name" maxlength="20"/>
+            <label>Repeat password</label>  
+            <input type="rPassword" name="name" maxlength="20"/>
+>>>>>>> 231ce87ce1fddb4d997468c449b6ef78ae288e78
             <button type="submit">Register</button>
         </form>
         <script>
