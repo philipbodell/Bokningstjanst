@@ -23,17 +23,57 @@
     </head>
     <body>
         <jsp:directive.include file="header.jspx" />
-        <form method="post" action="util">
+        <h1>Register</h1>
+        <form name="registerform" onsubmit="return validateForm();" method="post" action="util">
             <input type="hidden" name="action" value="register" />
-            <label>Username</label>  
-            <input type="text" name="username" maxlength="20"/>
+
+            <label>First name</label>  
+            <input type="text" name="fname" maxlength="20"/>
+            <label>Last name</label>  
+            <input type="text" name="lname" maxlength="20"/>
             <label>email</label>  
-            <input type="email" name="email"/>
+            <input type="text" name="email"/>
             <label>password</label>  
             <input type="password" name="name" maxlength="20"/>
             <label>repeat password</label>  
-            <input type="password" name="name" maxlength="20"/>
+            <input type="rPassword" name="name" maxlength="20"/>
+            <input type="submit" value="register"/>
         </form>
+        <script>
+            function validateForm()
+            {
+                var x = document.forms["registerform"]["fname"].value;
+                if (x === null || x === "")
+                {
+                    alert("First name must be filled out");
+                    return false;
+                }
+                var x = document.forms["registerform"]["lname"].value;
+                if (x === null || x === "")
+                {
+                    alert("Last name must be filled out");
+                    return false;
+                }
+                var x = document.forms["registerform"]["email"].value;
+                if (x === null || x === "")
+                {
+                    alert("Not a valid e-mail address");
+                    return false;
+                }
+                var atpos = x.indexOf("@");
+                var dotpos = x.lastIndexOf(".");
+                if (atpos === -1 || dotpos === -1){
+                    alert("Not a valid e-mail address");
+                    return false;
+                }
+                if (1 > atpos ||  atpos + 2>dotpos || dotpos + 2 >= x.length)
+                {
+                    alert("Not a valid e-mail address");
+                    return false;
+                }
+                return true;
+            }
+        </script>
         <jsp:directive.include file="footer.jspx" />
     </body>
 

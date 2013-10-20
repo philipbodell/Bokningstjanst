@@ -75,7 +75,14 @@ public final class UtilServlet extends HttpServlet {
                     request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
                     break;
                 case "register":
+                    request.getParameter("fname");
+                    request.getParameter("lname");
+                    request.getParameter("email");
+                    request.getParameter("password");
                     
+                    //send userinformation to database
+                    
+                    request.getRequestDispatcher("index.jspx").forward(request, response);
                     break;
 
             }
