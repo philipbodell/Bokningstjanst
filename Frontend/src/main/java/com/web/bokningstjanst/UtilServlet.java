@@ -63,14 +63,14 @@ public final class UtilServlet extends HttpServlet {
                  */
                 
                 case "login":
-                    if (((JPABooking) request.getServletContext().getAttribute("JPABooking")).getCustomerRegistry().authenticate(request.getParameter("name"), request.getParameter("passwd"))) {
+                    /*if (((JPABooking) request.getServletContext().getAttribute("JPABooking")).getCustomerRegistry().authenticate(request.getParameter("name"), request.getParameter("passwd"))) {
                         request.getSession().setAttribute("USER", request.getParameter("name"));
                         request.getSession().setMaxInactiveInterval(timeout); // Timeout interval 
                         response.sendRedirect("login?view=login");
                     } else {
                         request.getRequestDispatcher("WEB-INF/jsp/login.jspx?auth-error").forward(request, response);
                     }
-                    break;
+                    break;*/
                     
                     
             }

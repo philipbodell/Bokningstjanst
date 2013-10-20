@@ -1,5 +1,7 @@
 package com.mycompany.booking.core;
 
+import javax.persistence.EntityManagerFactory;
+
 /**
  * Static factory for Shops
  *
@@ -11,8 +13,8 @@ public class JPABookingFactory {
     }
 
     // If initTestData there will be some data to use
-    public static IBooking getBooking(String persistenceUnitName) {
-        JPABooking s = new JPABooking(persistenceUnitName);
+    public static IBooking getBooking(EntityManagerFactory emf) {
+        JPABooking s = new JPABooking(emf);
         return s;
     }
 

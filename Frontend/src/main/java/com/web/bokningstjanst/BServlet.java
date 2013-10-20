@@ -4,7 +4,11 @@
  */
 package com.web.bokningstjanst;
 
+
+import com.mycompany.booking.core.Departure;
+import com.mycompany.booking.core.IDepartureCatalogue;
 import java.io.IOException;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,11 +47,26 @@ public class BServlet extends HttpServlet {
             switch (view) {
 
                 case "train":
+                    Logger logger = Logger.getLogger(getClass().getName());
                     //TODO Lägg till all tåg  info till request här
-                    List <String> myList = new ArrayList<String>();
+                    /*ArrayList <String> myList = new ArrayList<String>();
                     myList.add("stad1");
                     myList.add("stad2");
-                    request.setAttribute("train_departure", view);
+                    request.setAttribute("train_departure", view);*/
+                    
+                    IDepartureCatalogue d =  Booking.INSTANCE.getDepartureCatalogue();
+                    
+                    //Departure dep = d.getAll(emf.createEntityMnager().getAl);
+                    request.getSession().setAttribute("DEPARTURES", d.getAll());
+                    for(Object o :d.getAll()){
+                        logger.severe(o.toString());
+                    }
+                    
+                    //request.setAttribute("DEPARTURE_LIST", d.getAll());
+                    
+                /*    for(Departure dep:d){
+                        logger.severe(dep.getDepartureLocation());
+                    }*/
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/train.jspx").forward(request, response);
                     break;
             }
@@ -57,6 +76,16 @@ public class BServlet extends HttpServlet {
                 case "chooseDeparture":
                     //HITTA alla avgångar från departure request.getParameter(departure_city)
                     //och till request.getParameter(arrival_city)
+                    Logger logger = Logger.getLogger(getClass().getName());
+                    String tmp = request.getParameter("destination");
+                    logger.severe("Destination: "+tmp);
+                    IDepartureCatalogue d =  Booking.INSTANCE.getDepartureCatalogue();
+                    logger.severe(d.getByDestination(tmp).toString());
+                    //logger.severe(JPABookingFactory.getBooking(Persistence.createEntityManagerFactory("test")).getDepartureCatalogue().getByDestination("Ostersund").toString());
+                    
+                    
+                    request.getSession().setAttribute("MATCHING_DEST", d.getMatchingDeparture(request.getParameter("departure"),request.getParameter("destination")));
+                    //logger.severe(d.getMatchingDeparture(request.getParameter("departure"),request.getParameter("destination")).toString());
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/allDepartures.jspx").forward(request, response);
                     
                     break;
@@ -76,6 +105,10 @@ public class BServlet extends HttpServlet {
                     //session.setAttribute("arrival_city", request.getParameter("arrival_city"));
                     //session.setAttribute("arrival_date", request.getParameter("arrival_date"));
                     //session.setAttribute("arrival_time", request.getParameter("arrival_time"));
+                    
+                    IDepartureCatalogue dc = Booking.INSTANCE.getDepartureCatalogue();
+                    
+                    request.getSession().setAttribute("DEP", dc.getById(Long.valueOf(request.getParameter("id"))));
 
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/ticketValidation.jspx").forward(request, response);
 

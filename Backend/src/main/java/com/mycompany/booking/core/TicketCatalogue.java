@@ -3,6 +3,7 @@ package com.mycompany.booking.core;
 import com.mycompany.booking.utils.AbstractDAO;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 /**
  * All products
@@ -13,13 +14,13 @@ import javax.persistence.EntityManager;
 public final class TicketCatalogue extends AbstractDAO<Ticket, Long>
         implements ITicketCatalogue {
 
-    private TicketCatalogue(String puName) {
-        super(Ticket.class,puName);
+    private TicketCatalogue(EntityManagerFactory emf) {
+        super(Ticket.class,emf);
     }
 
     // Factory method
-    public static ITicketCatalogue newInstance(String puName) {
-        return new TicketCatalogue(puName);
+    public static ITicketCatalogue newInstance(EntityManagerFactory emf) {
+        return new TicketCatalogue(emf);
     }
 
     @Override

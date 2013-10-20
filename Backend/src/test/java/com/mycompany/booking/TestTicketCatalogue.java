@@ -5,21 +5,6 @@ package com.mycompany.booking;
  * and open the template in the editor.
  */
 
-import static com.mycompany.booking.TestTicketCatalogue.booking;
-import com.mycompany.booking.core.Departure;
-import com.mycompany.booking.core.IBooking;
-import com.mycompany.booking.core.ITicketCatalogue;
-import com.mycompany.booking.core.JPABookingFactory;
-import com.mycompany.booking.core.Ticket;
-import java.util.List;
-import javax.persistence.Query;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
-
 /**
  * Test for Ticket catalog.
  *
@@ -35,7 +20,7 @@ import org.junit.Test;
  */
 public class TestTicketCatalogue {
 
-    static IBooking booking;
+    /*static IBooking booking;
     final static String PU = "booking_pu";
     
 

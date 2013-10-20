@@ -22,7 +22,7 @@ public class TestCustomerRegistry {
     static IBooking booking;
     final static String PU = "booking_pu";
     
-
+/*
     @Before // Run before each test
     public void before() {
         booking = JPABookingFactory.getBooking(PU);
@@ -36,5 +36,5 @@ public class TestCustomerRegistry {
         Customer c1 = new Customer("Philip","Bodell","Philip","1234","900703","p@b.se");
         cr.add(c1);
         assertTrue(cr.getCount()==1);
-    }
+    }*/
 }

@@ -23,9 +23,10 @@ public abstract class AbstractDAO<T, K>
     private EntityManagerFactory emf;
     private final Class<T> clazz;
 
-    protected AbstractDAO(Class<T> clazz, String puName) {
+    protected AbstractDAO(Class<T> clazz, EntityManagerFactory emf){
         this.clazz = clazz;
-        emf = Persistence.createEntityManagerFactory(puName);
+        this.emf = emf;
+        //emf = Persistence.createEntityManagerFactory(emf);
     }
 
     protected EntityManager getEntityManager(){
