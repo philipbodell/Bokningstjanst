@@ -69,6 +69,7 @@ public final class UtilServlet extends HttpServlet {
                     break;
                 case "fblogin":
                     request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
+                    break;
                     
             }
 

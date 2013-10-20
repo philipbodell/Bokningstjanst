@@ -23,7 +23,7 @@
 
 
             <jsp:directive.include file="WEB-INF/jsp/header.jspx" />
-            <h1>Welcom to this bokningssystem!</h1>
+            <h1>Welcome to this bokningssystem!</h1>
             <div id="welcome_text">
                 dsfsggrredsfsdsfsggrregregregretgrtgregregrtegtregrtegtregrt
                 egretgrtegrtegrt4egretgtrgtreg
@@ -48,51 +48,52 @@
                             <label>Password (1234)</label>  
                             <input type="password" name="passwd" maxlength="20"/>
                         </p>
-                        <p>
-                            <input type="submit" value="Login"/> 
 
-                            <div id="fb-root"></div>
-                            <script>
-                                var appId = 'YOUR_APP_ID';
-                                var siteRoot = 'YOUR_HOST_NAME';
+                        <input type="submit" value="Login"/> 
 
-                                window.fbAsyncInit = function() {
-                                    FB.init({
-                                        appId: appId,
-                                        channelURL: '//' + siteRoot + '/channel.html', // Channel File
-                                        status: true,
-                                        cookie: true,
-                                        oauth: true,
-                                        xfbml: true
-                                    });
-                                };
+                        <div id="fb-root"></div>
+                        <script type="text/javascript">
+                            var appId = '440894206020617';
+                            var siteRoot = 'localhost/index.jspx';
 
+                            window.fbAsyncInit = function() {
+                                FB.init({
+                                    appId: appId,
+                                    channelURL: '//' + siteRoot + '/channel.html', // Channel File
+                                    status: true,
+                                    cookie: true,
+                                    oauth: true,
+                                    xfbml: true
 
-                                (function(d) {
-                                    var js, id = 'facebook-jssdk';
-                                    if (d.getElementById(id)) {
-                                        return;
-                                    }
-                                    js = d.createElement('script');
-                                    js.id = id;
-                                    js.async = true;
-                                    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&amp;appId=440894206020617";
-                                    d.getElementsByTagName('head')[0].appendChild(js);
-                                }(document));
-
-                            </script>
+                                });
+                            };
 
 
-                            <div class="fb-login-button" data-show-faces="false" autologoutlink="true" data-width="200" data-max-rows="1">Login w/ Facebook</div>
 
-                            <div id="auth-info">
-                                <b>Id: </b>${fbUser.id}
-                                <b>Email: </b>${fbUser.email}
-                                <b>First Name: </b>${fbUser.firstName}
-                                <b>Last Name: </b>${fbUser.lastName}
-                            </div>
-                            
-                        </p>
+                            (function(d) {
+                                var js, id = 'facebook-jssdk';
+                                if (d.getElementById(id)) {
+                                    return;
+                                }
+
+                                js = d.createElement('script');
+                                js.id = id;
+                                js.async = true;
+                                js.src = "//connect.facebook.net/en_US/all.js";
+                                d.getElementsByTagName('head')[0].appendChild(js);
+
+                            }(document));
+
+
+
+
+                        </script>
+
+
+                        <div class="fb-login-button" data-show-faces="false" autologoutlink="true" data-width="200" data-max-rows="1">Login w/ Facebook</div>
+
+
+
                     </fieldset>  
                 </form> 
             </div>

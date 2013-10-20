@@ -43,6 +43,7 @@ public class BServlet extends HttpServlet {
             switch (view) {
 
                 case "train":
+                    
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/train.jspx").forward(request, response);
                     break;
                 case "edit":
