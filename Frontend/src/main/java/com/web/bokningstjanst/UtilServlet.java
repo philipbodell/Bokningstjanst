@@ -4,6 +4,7 @@
  */
 package com.web.bokningstjanst;
 
+import com.mycompany.booking.core.Customer;
 import com.mycompany.booking.core.JPABooking;
 import java.io.IOException;
 import javax.servlet.ServletContext;
@@ -72,11 +73,14 @@ public final class UtilServlet extends HttpServlet {
                     request.getSession().setAttribute("lname", request.getParameter("lname"));
 
                     request.getSession().setAttribute("name", request.getParameter("fname") + " " + request.getParameter("lname"));
-                    request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
+                    request.getRequestDispatcher("index.jspx").forward(request, response);
                     break;
                 case "validate":
                     if (request.getSession().getAttribute("validationstring").equals(request.getParameter("validation"))){
                         //add user to database
+                        Booking.INSTANCE.getCustomerRegistry().add(new Customer((String)request.getAttribute("fname"), (String)request.getAttribute("lname")
+                                , (String)request.getAttribute("email"), (String)request.getAttribute("password"), (String)request.getAttribute("pnum")
+                                , (String)request.getAttribute("email")));
                         request.getRequestDispatcher("index.jspx").forward(request, response);
                     }else{
                         request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
@@ -105,6 +109,7 @@ public final class UtilServlet extends HttpServlet {
                     if(request.getSession().getAttribute("validationstring").equals("error")){
                         request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
                     }
+                    request.getSession().setAttribute("pnum", request.getParameter("pnum"));
                     request.getSession().setAttribute("fname", request.getParameter("fname"));
                     request.getSession().setAttribute("lname", request.getParameter("lname"));
                     request.getSession().setAttribute("password", request.getParameter("password"));
