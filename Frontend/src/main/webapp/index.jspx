@@ -82,6 +82,7 @@
                                              if (element.innerHTML === 'Login using facebook')
                                                  element.innerHTML = 'Logout from facebook';
                                              else {
+                                                 FB.logout;
                                                  element.innerHTML = 'Login using facebook';
                                              }
                                              document.getElementById("fbform").submit();
