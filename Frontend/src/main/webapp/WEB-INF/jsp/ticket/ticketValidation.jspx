@@ -37,13 +37,22 @@
                         <table>
                             <tr>
                                 <td>
-                                    ${sessionScope.DEP.departurelocation} - ${sessionScope.DEP.destination}
+                                    Departure Station: ${sessionScope.DEP.departurelocation}
+                                    <input type="hidden" name="departurelocation" value="${sessionScope.DEP.departureLocation}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Destination: ${sessionScope.DEP.destination}
+                                    <input type="hidden" name="destination" value="${sessionScope.DEP.desination}"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Departure</td>
                                 <td>${sessionScope.DEP.departuredate}</td>
                                 <td>${sessionScope.DEP.departuretime}</td>
+                                <input type="hidden" name="departuredate" value="${sessionScope.DEP.departuredate}"/>
+                                <input type="hidden" name="departuretime" value="${sessionScope.DEP.departuretime}"/>
                             </tr>
                             <tr>
                                 <td>Persons</td>
@@ -54,7 +63,7 @@
                                 <td>20$</td>
                             </tr>
                         </table>
-                        
+
                         <span id="sumup">Departure ticket 1x20$</span>
                         <span id="sumup">Sum 20$</span>
                         <button id="button" type="submit">Accept and go to payment</button>

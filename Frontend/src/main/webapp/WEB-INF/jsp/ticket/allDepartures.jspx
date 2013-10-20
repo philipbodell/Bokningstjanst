@@ -27,10 +27,7 @@
                     <input type="hidden" name="tickets" value="Confirm"/>
                     <input type="hidden" name="id" value="${d.id}"/>
                     
-                    Departure Station: ${d.departurelocation}
-                    Destination: ${d.destination}
-                    Departure Time: ${d.departuretime} 
-                    Arrival Time: ${d.traveltime}
+                    ${d.departurelocation} - ${d.destination} - Deparu${d.departuretime} - ${d.traveltime}
                     <button id="button" type="submit">Accept</button>
                 </form>                        
             </c:forEach>  

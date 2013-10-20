@@ -5,8 +5,9 @@
 package com.web.bokningstjanst;
 
 
-import com.mycompany.booking.core.Departure;
 import com.mycompany.booking.core.IDepartureCatalogue;
+import com.mycompany.booking.core.ITicketCatalogue;
+import com.mycompany.booking.core.Ticket;
 import java.io.IOException;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -118,6 +119,8 @@ public class BServlet extends HttpServlet {
                 case "Payment":
                     //Check so the session has not died
                     if (request.getSession(false) != null) {
+                        ITicketCatalogue tc =  Booking.INSTANCE.getTicketCatalogue();
+                        //tc.add(new Ticket(/*CustomerId*/,, ticketPrice));
                         request.getRequestDispatcher("WEB-INF/jsp/ticket/payment.jspx").forward(request, response);
                     } else {
                         request.getRequestDispatcher("WEB-INF/jsp/ticket/ticketValidation.jspx").forward(request, response);
