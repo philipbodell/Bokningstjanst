@@ -74,16 +74,7 @@ public final class UtilServlet extends HttpServlet {
                     request.getSession().setAttribute("name", request.getParameter("fname") + " " + request.getParameter("lname"));
                     request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
                     break;
-                case "register":
-                    request.getParameter("fname");
-                    request.getParameter("lname");
-                    request.getParameter("email");
-                    request.getParameter("password");
-                    
-                    //send userinformation to database
-                    
-                    request.getRequestDispatcher("index.jspx").forward(request, response);
-                    break;
+
 
             }
 
@@ -98,6 +89,19 @@ public final class UtilServlet extends HttpServlet {
                     break;
                 case "register":
                     request.getRequestDispatcher("WEB-INF/jsp/register.jspx").forward(request, response);
+                    break;
+                case "validate":
+                    request.getSession().setAttribute("email", request.getParameter("email"));
+                    request.getSession().setAttribute("validationstring", request.getParameter("validationstring"));
+
+
+                    request.getParameter("fname");
+                    request.getParameter("lname");
+                    request.getParameter("email");
+                    request.getParameter("password");
+
+
+                    request.getRequestDispatcher("WEB-INF/jsp/validate.jsp").forward(request, response);
                     break;
                 default:
                     break;

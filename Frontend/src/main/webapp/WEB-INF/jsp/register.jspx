@@ -25,7 +25,7 @@
         <jsp:directive.include file="header.jspx" />
         <h1>Register</h1>
         <form name="registerform" onsubmit="return validateForm();" method="post" action="util">
-            <input type="hidden" name="action" value="register" />
+            <input type="hidden" name="view" value="validate" />
 
             <label>First name</label>  
             <input type="text" name="fname" maxlength="20"/>
@@ -34,9 +34,10 @@
             <label>email</label>  
             <input type="text" name="email"/>
             <label>password</label>  
-            <input type="password" name="name" maxlength="20"/>
+            <input type="password" name="name"/>
             <label>repeat password</label>  
-            <input type="rPassword" name="name" maxlength="20"/>
+            <input type="rPassword" name="name"/>
+            <input type="text" name="validationstring" hidden="true"/>
             <input type="submit" value="register"/>
         </form>
         <script>
@@ -62,15 +63,22 @@
                 }
                 var atpos = x.indexOf("@");
                 var dotpos = x.lastIndexOf(".");
-                if (atpos === -1 || dotpos === -1){
+                if (atpos === -1 || dotpos === -1) {
                     alert("Not a valid e-mail address");
                     return false;
                 }
-                if (1 > atpos ||  atpos + 2>dotpos || dotpos + 2 >= x.length)
+                if (1 > atpos || atpos + 2 > dotpos || dotpos + 2 >= x.length)
                 {
                     alert("Not a valid e-mail address");
                     return false;
                 }
+                var text = "";
+                var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+                for (var i = 0; 5 > i; i++) {
+                    text += possible.charAt(Math.floor(Math.random() * possible.length));
+                }
+                document.getElementById('validationstring').value = text;
                 return true;
             }
         </script>
