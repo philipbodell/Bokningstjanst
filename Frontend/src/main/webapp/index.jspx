@@ -59,7 +59,7 @@
                 </form>
                 <form  method="post" action="util">
                     <input type="hidden" name="view" value="register" />
-                        <input type="submit" value="Register"/>
+                        <input type="submit" value="register"/>
                     
                 </form>
 

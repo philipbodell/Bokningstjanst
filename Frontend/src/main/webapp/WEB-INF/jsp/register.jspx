@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : newjsp
+    Created on : Oct 20, 2013, 5:04:03 PM
+    Author     : Philip
+-->
+<jsp:root 
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns="http://www.w3.org/1999/xhtml"
+    version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" 
+                doctype-system="about:legacy-compat" />
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/layout.css" />
+        <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
+        <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+    </head>
+    <body>
+        <jsp:directive.include file="header.jspx" />
+        <form method="post" action="util">
+            <input type="hidden" name="action" value="register" />
+            <label>Username</label>  
+            <input type="text" name="username" maxlength="20"/>
+            <label>email</label>  
+            <input type="email" name="email"/>
+            <label>password</label>  
+            <input type="password" name="name" maxlength="20"/>
+            <label>repeat password</label>  
+            <input type="password" name="name" maxlength="20"/>
+        </form>
+        <jsp:directive.include file="footer.jspx" />
+    </body>
+
+
+</jsp:root>

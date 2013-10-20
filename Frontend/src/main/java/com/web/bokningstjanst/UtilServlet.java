@@ -89,6 +89,9 @@ public final class UtilServlet extends HttpServlet {
                 case "login":
                     request.getRequestDispatcher("index.jspx").forward(request, response);
                     break;
+                case "register":
+                    request.getRequestDispatcher("WEB-INF/jsp/register.jspx").forward(request, response);
+                    break;
                 default:
                     break;
             }
