@@ -74,6 +74,14 @@ public final class UtilServlet extends HttpServlet {
                     request.getSession().setAttribute("name", request.getParameter("fname") + " " + request.getParameter("lname"));
                     request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
                     break;
+                case "validate":
+                    if (request.getSession().getAttribute("validationstring").equals(request.getParameter("validation"))){
+                        //add user to database
+                        request.getRequestDispatcher("index.jspx").forward(request, response);
+                    }else{
+                        request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
+                    }
+                    break;
 
 
             }
@@ -92,16 +100,17 @@ public final class UtilServlet extends HttpServlet {
                     break;
                 case "validate":
                     request.getSession().setAttribute("email", request.getParameter("email"));
-                    request.getSession().setAttribute("validationstring", request.getParameter("validationstring"));
+                    request.getSession().setAttribute("validationstring",Mail.sendMail(request.getParameter("email")));
+                    
+                    if(request.getSession().getAttribute("validationstring").equals("error")){
+                        request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
+                    }
+                    request.getSession().setAttribute("fname", request.getParameter("fname"));
+                    request.getSession().setAttribute("lname", request.getParameter("lname"));
+                    request.getSession().setAttribute("password", request.getParameter("password"));
+                    
 
-
-                    request.getParameter("fname");
-                    request.getParameter("lname");
-                    request.getParameter("email");
-                    request.getParameter("password");
-
-
-                    request.getRequestDispatcher("WEB-INF/jsp/validate.jsp").forward(request, response);
+                    request.getRequestDispatcher("WEB-INF/jsp/validate.jspx").forward(request, response);
                     break;
                 default:
                     break;
