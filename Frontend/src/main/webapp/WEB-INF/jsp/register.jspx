@@ -33,10 +33,13 @@
             <input type="text" name="lname" maxlength="20"/>
             <label>E-mail</label>  
             <input type="text" name="email"/>
+
             <label>Password</label>  
-            <input type="password" name="name" maxlength="20"/>
+            <input type="password" name="name"/>
             <label>Repeat password</label>  
-            <input type="rPassword" name="name" maxlength="20"/>
+            <input type="rPassword" name="name"/>
+            <input type="text" name="validationstring" hidden="true"/>
+
             <button type="submit">Register</button>
         </form>
         <script>
@@ -62,15 +65,22 @@
                 }
                 var atpos = x.indexOf("@");
                 var dotpos = x.lastIndexOf(".");
-                if (atpos === -1 || dotpos === -1){
+                if (atpos === -1 || dotpos === -1) {
                     alert("Not a valid e-mail address");
                     return false;
                 }
-                if (1 > atpos ||  atpos + 2>dotpos || dotpos + 2 >= x.length)
+                if (1 > atpos || atpos + 2 > dotpos || dotpos + 2 >= x.length)
                 {
                     alert("Not a valid e-mail address");
                     return false;
                 }
+                var text = "";
+                var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+                for (var i = 0; 5 > i; i++) {
+                    text += possible.charAt(Math.floor(Math.random() * possible.length));
+                }
+                document.getElementById('validationstring').value = text;
                 return true;
             }
         </script>
