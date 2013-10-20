@@ -38,31 +38,25 @@
             <div id="login">
                 <form method="post" action="util">
                     <input type="hidden" name="action" value="login" />
-                    <fieldset>
-                        <legend>Login</legend>
 
-                        <c:if test="${not empty param.authInvalid}" >
-                            <p class="error"> Authorization failed!</p>
-                        </c:if>
-                        <p>
-                            <label>User Name (arne)</label>  
-                            <input type="text" name="name" maxlength="20"/>
-                            <label>Password (1234)</label>
-                            <input type="password" name="passwd" maxlength="20"/>
-                            <input type="submit" value="Login"/>
+                    <c:if test="${not empty param.authInvalid}" >
+                        <p class="error"> Authorization failed!</p>
+                    </c:if>
 
-                        </p>
-
-                    </fieldset> 
-
-
+                    <label>User Name</label>  
+                    <input type="text" name="name" maxlength="20"/>
+                    <label>Password</label>
+                    <input type="password" name="passwd" maxlength="20"/>
+                    <p></p>
+                    <button type="submit">Login</button> 
+                    
                 </form>
                 <form  method="post" action="util">
                     <input type="hidden" name="view" value="register" />
-                        <input type="submit" value="register"/>
-                    
+                    <button type="submit">Register</button> 
+                
                 </form>
-
+                <a href = "#" id="facebookloginlink" onClick = "fblogin()">Login using facebook</a>
             </div>
             <div>
                 <form id="fbform" method="post" action="util">
@@ -76,63 +70,63 @@
                     <div id="fb-root"></div>
 
                     <script>
-                        function fblogin() {
-                            FB.login(function(response) {
-                                if (response.authResponse) {
+                             function fblogin() {
+                                 FB.login(function(response) {
+                                     if (response.authResponse) {
 
-                                    FB.api('/me', function(response) {
-                                        alert(response.last_name);
-                                        document.getElementById('fname').value = response.first_name;
-                                        document.getElementById('lname').value = response.last_name;
-                                        var element = document.getElementById('facebookloginlink');
-                                        if (element.innerHTML === 'Login using facebook')
-                                            element.innerHTML = 'Logout from facebook';
-                                        else {
-                                            element.innerHTML = 'Login using facebook';
-                                        }
-                                        document.getElementById("fbform").submit();
-                                    });
-                                } else {
-                                    alert('User cancelled login or did not fully authorize.');
-                                }
+                                         FB.api('/me', function(response) {
+                                             alert(response.last_name);
+                                             document.getElementById('fname').value = response.first_name;
+                                             document.getElementById('lname').value = response.last_name;
+                                             var element = document.getElementById('facebookloginlink');
+                                             if (element.innerHTML === 'Login using facebook')
+                                                 element.innerHTML = 'Logout from facebook';
+                                             else {
+                                                 element.innerHTML = 'Login using facebook';
+                                             }
+                                             document.getElementById("fbform").submit();
+                                         });
+                                     } else {
+                                         alert('User cancelled login or did not fully authorize.');
+                                     }
 
-                            });
-                        }
-                        ;
-                        // Additional JS functions here
-                        window.fbAsyncInit = function() {
-                            FB.init({
-                                appId: '440894206020617', // App ID
-                                channelUrl: '//localhost:8080/Frontend/channel.html', // Channel File
-                                status: true, // check login status
-                                cookie: true, // enable cookies to allow the server to access the session
-                                xfbml: true  // parse XFBML
-                            });
+                                 });
+                             }
+                             ;
+                             // Additional JS functions here
+                             window.fbAsyncInit = function() {
+                                 FB.init({
+                                     appId: '440894206020617', // App ID
+                                     channelUrl: '//localhost:8080/Frontend/channel.html', // Channel File
+                                     status: true, // check login status
+                                     cookie: true, // enable cookies to allow the server to access the session
+                                     xfbml: true  // parse XFBML
+                                 });
 
-                            // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
-                            // for any authentication related change, such as login, logout or session refresh. This means that
-                            // whenever someone who was previously logged out tries to log in again, the correct case below 
-                            // will be handled. 
+                                 // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
+                                 // for any authentication related change, such as login, logout or session refresh. This means that
+                                 // whenever someone who was previously logged out tries to log in again, the correct case below 
+                                 // will be handled. 
 
-                        };
+                             };
 
 
-                        // Load the SDK asynchronously
-                        (function(d) {
-                            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-                            if (d.getElementById(id)) {
-                                return;
-                            }
-                            js = d.createElement('script');
-                            js.id = id;
-                            js.async = true;
-                            js.src = "//connect.facebook.net/en_US/all.js";
-                            ref.parentNode.insertBefore(js, ref);
-                        }(document));
+                             // Load the SDK asynchronously
+                             (function(d) {
+                                 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                                 if (d.getElementById(id)) {
+                                     return;
+                                 }
+                                 js = d.createElement('script');
+                                 js.id = id;
+                                 js.async = true;
+                                 js.src = "//connect.facebook.net/en_US/all.js";
+                                 ref.parentNode.insertBefore(js, ref);
+                             }(document));
 
                     </script>
 
-                    <a href = "#" id="facebookloginlink" onClick = "fblogin()">Login using facebook</a>
+
 
                 </form>
 

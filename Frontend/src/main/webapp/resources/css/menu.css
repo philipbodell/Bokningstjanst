@@ -42,6 +42,7 @@
     margin: 0;
 }
 
+
 #menu-bar ul li:hover a, #menu-bar li:hover li a {
     background: none;
     border: none;
