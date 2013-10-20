@@ -25,9 +25,8 @@
                 <input type="hidden" name="tickets" value="chooseDeparture"/>
                 <input id="city_list" name="departure_city" list="browsers" value="">
                     <datalist id="city">
-                        <c:forEach items="${departureList}" var="departure">  
-                            <option value="${departure.departureCity}"/>
-
+                        <c:forEach items="${DEPARTURE_CATALOGUE}" var="departure">  
+                            <option value="hej"/>
                         </c:forEach>  
                     </datalist> 
                 </input>
@@ -39,8 +38,15 @@
                         </c:forEach>  
                     </datalist> 
                 </input>
+                
                 <button id="button" type="submit">Next</button>
             </form>
+            aseaease
+           ${sessionScope.DEPARTURE_CATALOGUE}
+            <c:forEach var="departure" items="${sessionScope.DEPARTURE_CATALOGUE}">  
+                asd
+                ${DEPARTURE_CATALOGUE.departure.departureLocation}
+            </c:forEach> 
             <jsp:directive.include file="../footer.jspx" />
         </body>
     </html>   

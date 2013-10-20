@@ -11,7 +11,9 @@ import java.util.List;
  */
 public interface IDepartureCatalogue extends IDAO<Departure, Long> {
 
-    public List<Departure> getByName(String name);
+    public List<Departure> getAll();
+    
+    public List<Departure> getDummy();
     
     public Departure getById(Long id);
     

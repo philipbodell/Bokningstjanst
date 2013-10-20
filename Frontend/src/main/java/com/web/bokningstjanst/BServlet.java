@@ -4,7 +4,12 @@
  */
 package com.web.bokningstjanst;
 
+import com.mycompany.booking.core.IBooking;
+import com.mycompany.booking.core.ICustomerRegistry;
+import com.mycompany.booking.core.IDepartureCatalogue;
+import com.mycompany.booking.core.JPABookingFactory;
 import java.io.IOException;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +23,8 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "BookingServlet", urlPatterns = {"/ticket/*"})
 public class BServlet extends HttpServlet {
+
+    private IBooking b;
 
     /**
      * Processes requests for both HTTP
@@ -43,11 +50,25 @@ public class BServlet extends HttpServlet {
             switch (view) {
 
                 case "train":
+                    Logger logger = Logger.getLogger(getClass().getName());
+                    //logger.severe("test");
                     //TODO Lägg till all tåg  info till request här
-                    List <String> myList = new ArrayList<String>();
-                    myList.add("stad1");
-                    myList.add("stad2");
-                    request.setAttribute("train_departure", view);
+                    /*List <String> myList = new ArrayList<String>();
+                     myList.add("stad1");
+                     myList.add("stad2");
+                     request.setAttribute("train_departure", view);*/
+                    IDepartureCatalogue d = Booking.INSTANCE.getDepartureCatalogue();
+                    ICustomerRegistry c = Booking.INSTANCE.getCustomerRegistry();
+                    //ArrayList<Departure> list = new ArrayList<Departure>();
+                    //list = (ArrayList) d.getByDestination("Stockholm");
+                    request.getSession().setAttribute("TEST2", view);
+                    request.getSession().setAttribute("DEPARTURE_CATALOGUE", Booking.INSTANCE.getDepartureCatalogue().getDummy());
+                    request.getSession().setAttribute("test", Booking.INSTANCE.getDepartureCatalogue().getByType("Train").size());
+                    /*for(Departure dep : d.getAll()){
+                     logger.severe("dep: "+dep.getDepartureLocation());
+                     }*/
+                    logger.severe(d.getByType("Train").toString());
+
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/train.jspx").forward(request, response);
                     break;
             }
@@ -58,20 +79,20 @@ public class BServlet extends HttpServlet {
                     //HITTA alla avgångar från departure request.getParameter(departure_city)
                     //och till request.getParameter(arrival_city)
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/allDepartures.jspx").forward(request, response);
-                    
+
                     break;
                 case "Confirm":
-                    
+
                     //Resan som valts  är 
-                   //ID till departure = request.getParameter(id)
-                    
-                    
+                    //ID till departure = request.getParameter(id)
+
+
                     HttpSession session = request.getSession();
                     session.setMaxInactiveInterval(30);
 
                     //ändra request.getParam här till värdena från databasen i stället
-                 //   session.setAttribute("departure_city", request.getParameter("departure_city"));
-                   // session.setAttribute("departure_time", request.getParameter("departure_time"));
+                    //   session.setAttribute("departure_city", request.getParameter("departure_city"));
+                    // session.setAttribute("departure_time", request.getParameter("departure_time"));
                     //session.setAttribute("departure_date", request.getParameter("departure_date"));
                     //session.setAttribute("arrival_city", request.getParameter("arrival_city"));
                     //session.setAttribute("arrival_date", request.getParameter("arrival_date"));

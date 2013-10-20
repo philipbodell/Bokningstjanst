@@ -7,12 +7,14 @@ package com.mycompany.booking.core;
 import java.sql.Time;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 
 /**
  *
  * @author Philip och Johan
  */
+@NamedQuery(name = "Departure.getAll",query = "SELECT d FROM Departure d")
 @Entity
 public class Departure extends AbstractEntity {
 
@@ -63,6 +65,7 @@ public class Departure extends AbstractEntity {
         return travelTime;
     }
 
+    @Override
     public Long getId() {
         return id;
     }

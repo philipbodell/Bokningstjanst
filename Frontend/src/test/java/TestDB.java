@@ -1,42 +1,38 @@
+
+import com.mycompany.booking.core.Departure;
+import com.mycompany.booking.core.ICustomerRegistry;
+import com.mycompany.booking.core.IDepartureCatalogue;
+import com.web.bokningstjanst.Booking;
+import java.util.ArrayList;
+import org.junit.Test.*;
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 /**
  *
- * @author Patrik
+ * @author ed
  */
 public class TestDB {
     
-    public TestDB() {
+    @Before // Run before each test
+    public void before() {
+       // booking = JPABookingFactory.getBooking("PU");
     }
     
-    @BeforeClass
-    public static void setUpClass() {
+    @Test
+    public void testDB(){
+        ICustomerRegistry cr = Booking.INSTANCE.getCustomerRegistry();
+        /*IDepartureCatalogue dc = Booking.INSTANCE.getDepartureCatalogue();
+        ArrayList<Departure> deps = (ArrayList)dc.getAll();
+        for(Departure d : deps){
+            System.out.println(d.getDepartureLocation());
+        }*/
+        assertTrue(true);
     }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }
