@@ -47,16 +47,16 @@ public final class UtilServlet extends HttpServlet {
         String action = request.getParameter("action");
         String view = request.getParameter("view");
 
-       
-        
+
+
         if (action != null) {
             switch (action) {
                 /*
                  * 
                  */
-                
-                
-                
+
+
+
                 case "login":
                     //if (true){
                     if (((JPABooking) request.getServletContext().getAttribute(Keys.BOOKING.toString())).getCustomerRegistry().authenticate(request.getParameter("name"), request.getParameter("passwd"))) {
@@ -68,9 +68,16 @@ public final class UtilServlet extends HttpServlet {
                     }
                     break;
                 case "fblogin":
+                    request.getSession().setAttribute("fname", request.getParameter("fname"));
+                    request.getSession().setAttribute("lname", request.getParameter("lname"));
+
+                    request.getSession().setAttribute("name", request.getParameter("fname") + " " + request.getParameter("lname"));
                     request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
                     break;
+                case "register":
                     
+                    break;
+
             }
 
         }

@@ -11,13 +11,15 @@
     <jsp:output doctype-root-element="HTML" 
                 doctype-system="about:legacy-compat" />
 
-    <html>
+    <html xmlns:fb="http://www.facebook.com/2008/fbml">
+
         <head>
             <title>Ontour</title> 
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <link rel="stylesheet" type="text/css" href="resources/css/layout.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"><jsp:text /></script>
         </head>
         <body>
 
@@ -45,57 +47,95 @@
                         <p>
                             <label>User Name (arne)</label>  
                             <input type="text" name="name" maxlength="20"/>
-                            <label>Password (1234)</label>  
+                            <label>Password (1234)</label>
                             <input type="password" name="passwd" maxlength="20"/>
+                            <input type="submit" value="Login"/>
+
                         </p>
 
-                        <input type="submit" value="Login"/> 
-
-                        <div id="fb-root"></div>
-                        <script type="text/javascript">
-                            var appId = '440894206020617';
-                            var siteRoot = 'localhost/index.jspx';
-
-                            window.fbAsyncInit = function() {
-                                FB.init({
-                                    appId: appId,
-                                    channelURL: '//' + siteRoot + '/channel.html', // Channel File
-                                    status: true,
-                                    cookie: true,
-                                    oauth: true,
-                                    xfbml: true
-
-                                });
-                            };
+                    </fieldset> 
 
 
+                </form>
+                <form  method="post" action="util">
+                    <input type="hidden" name="view" value="register" />
+                        <input type="submit" value="Register"/>
+                    
+                </form>
 
-                            (function(d) {
-                                var js, id = 'facebook-jssdk';
-                                if (d.getElementById(id)) {
-                                    return;
+            </div>
+            <div>
+                <form id="fbform" method="post" action="util">
+                    <p>
+                        <input type="hidden" name="action" value="fblogin" />
+                        <input type="hidden" id="fname" name="fname" value=""/>
+                        <input type="hidden" id="lname" name="lname" value=""/>
+                    </p>
+
+
+                    <div id="fb-root"></div>
+
+                    <script>
+                        function fblogin() {
+                            FB.login(function(response) {
+                                if (response.authResponse) {
+
+                                    FB.api('/me', function(response) {
+                                        alert(response.last_name);
+                                        document.getElementById('fname').value = response.first_name;
+                                        document.getElementById('lname').value = response.last_name;
+                                        var element = document.getElementById('facebookloginlink');
+                                        if (element.innerHTML === 'Login using facebook')
+                                            element.innerHTML = 'Logout from facebook';
+                                        else {
+                                            element.innerHTML = 'Login using facebook';
+                                        }
+                                        document.getElementById("fbform").submit();
+                                    });
+                                } else {
+                                    alert('User cancelled login or did not fully authorize.');
                                 }
 
-                                js = d.createElement('script');
-                                js.id = id;
-                                js.async = true;
-                                js.src = "//connect.facebook.net/en_US/all.js";
-                                d.getElementsByTagName('head')[0].appendChild(js);
+                            });
+                        }
+                        ;
+                        // Additional JS functions here
+                        window.fbAsyncInit = function() {
+                            FB.init({
+                                appId: '440894206020617', // App ID
+                                channelUrl: '//localhost:8080/Frontend/channel.html', // Channel File
+                                status: true, // check login status
+                                cookie: true, // enable cookies to allow the server to access the session
+                                xfbml: true  // parse XFBML
+                            });
 
-                            }(document));
+                            // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
+                            // for any authentication related change, such as login, logout or session refresh. This means that
+                            // whenever someone who was previously logged out tries to log in again, the correct case below 
+                            // will be handled. 
+
+                        };
 
 
+                        // Load the SDK asynchronously
+                        (function(d) {
+                            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                            if (d.getElementById(id)) {
+                                return;
+                            }
+                            js = d.createElement('script');
+                            js.id = id;
+                            js.async = true;
+                            js.src = "//connect.facebook.net/en_US/all.js";
+                            ref.parentNode.insertBefore(js, ref);
+                        }(document));
 
+                    </script>
 
-                        </script>
+                    <a href = "#" id="facebookloginlink" onClick = "fblogin()">Login using facebook</a>
 
+                </form>
 
-                        <div class="fb-login-button" data-show-faces="false" autologoutlink="true" data-width="200" data-max-rows="1">Login w/ Facebook</div>
-
-
-
-                    </fieldset>  
-                </form> 
             </div>
 
             <jsp:directive.include file="WEB-INF/jsp/footer.jspx" />

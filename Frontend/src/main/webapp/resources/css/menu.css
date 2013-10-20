@@ -100,6 +100,11 @@
     -webkit-border-bottom-right-radius: 10px;
     -moz-border-radius-bottomright: 10px;
 }
+#menu-bar nav loggedin {
+    
+    float: right;
+}
+    
 #menu-bar:after {
     content: ".";
     display: block;

@@ -1,7 +1,10 @@
 <!-- Using static include, so no need for anything else -->
-<header>
+<header xmlns:c="http://java.sun.com/jsp/jstl/core">
+
     <div id="header_wrapper">
         <nav>
+
+
             <ul id="menu-bar">
                 <li class="active"><a href="navigate?view=home">Home</a></li>
                 <li><a href="#">Tickets</a>
@@ -15,8 +18,14 @@
                 <li><a href="navigate?view=notFound">Services</a></li>
                 <li><a href="navigate?view=about">About</a></li>
                 <li><a href="navigate?view=contact">Contact Us</a></li>
+
             </ul>
+            <c:if test="${not empty sessionScope.name}" >
+                <div id="loggedin"> You are logged in as ${sessionScope.name}</div>
+            </c:if>
         </nav>
+
     </div>
+
 </header>   
 
