@@ -47,32 +47,35 @@ public final class UtilServlet extends HttpServlet {
         String action = request.getParameter("action");
         String view = request.getParameter("view");
 
-        ServletContext sc=request.getServletContext();
-       
-        
-        /*
-         * Handling log in attempts. Sends successful login to products tab. Failed attempts get an error paramter.
-         * 
-         * I did some modification to the shop model to make authentication easier and made the Customer registry
-         * available from the Shop Instance.
-         */
+
+
         if (action != null) {
             switch (action) {
                 /*
                  * 
                  */
-                
+
+
+
                 case "login":
-                    if (((JPABooking) request.getServletContext().getAttribute("JPABooking")).getCustomerRegistry().authenticate(request.getParameter("name"), request.getParameter("passwd"))) {
+                    //if (true){
+                    if (((JPABooking) request.getServletContext().getAttribute(Keys.BOOKING.toString())).getCustomerRegistry().authenticate(request.getParameter("name"), request.getParameter("passwd"))) {
                         request.getSession().setAttribute("USER", request.getParameter("name"));
-                        request.getSession().setMaxInactiveInterval(timeout); // Timeout interval 
-                        response.sendRedirect("login?view=login");
+                        request.getSession().setMaxInactiveInterval(timeout); // Timeout interval
+                        response.sendRedirect("index.jspx");
                     } else {
-                        request.getRequestDispatcher("WEB-INF/jsp/login.jspx?auth-error").forward(request, response);
+                        request.getRequestDispatcher("index.jspx?authInvalid=true").forward(request, response);
                     }
                     break;
-                    
-                    
+                case "fblogin":
+                    request.getSession().setAttribute("fname", request.getParameter("fname"));
+                    request.getSession().setAttribute("lname", request.getParameter("lname"));
+
+                    request.getSession().setAttribute("name", request.getParameter("fname") + " " + request.getParameter("lname"));
+                    request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
+                    break;
+
+
             }
 
         }
@@ -82,7 +85,23 @@ public final class UtilServlet extends HttpServlet {
         if (view != null) {
             switch (view) {
                 case "login":
-                    request.getRequestDispatcher("WEB-INF/jsp/login.jspx").forward(request, response);
+                    request.getRequestDispatcher("index.jspx").forward(request, response);
+                    break;
+                case "register":
+                    request.getRequestDispatcher("WEB-INF/jsp/register.jspx").forward(request, response);
+                    break;
+                case "validate":
+                    request.getSession().setAttribute("email", request.getParameter("email"));
+                    request.getSession().setAttribute("validationstring", request.getParameter("validationstring"));
+
+
+                    request.getParameter("fname");
+                    request.getParameter("lname");
+                    request.getParameter("email");
+                    request.getParameter("password");
+
+
+                    request.getRequestDispatcher("WEB-INF/jsp/validate.jsp").forward(request, response);
                     break;
                 default:
                     break;

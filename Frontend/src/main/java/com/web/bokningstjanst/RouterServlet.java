@@ -37,6 +37,7 @@ public class RouterServlet extends HttpServlet {
             switch (view) {
 
                 case "about":
+                   
                     request.getRequestDispatcher("WEB-INF/jsp/about/about.jspx").forward(request, response);
                     break;
                 case "contact":

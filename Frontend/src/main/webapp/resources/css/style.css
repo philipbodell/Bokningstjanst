@@ -20,7 +20,18 @@ h2 {
 
 }
 
-#input {
+.error{
+    color:red;
+}
+
+button {
+    
+    
+    font-family:Tahoma, Geneva, sans-serif;
+    color:#FFF;
+    font-size: 1em;
+}
+input {
     color:#7D7D7D;
     font-family:Tahoma, Geneva, sans-serif;
     font-size: 0.8em;

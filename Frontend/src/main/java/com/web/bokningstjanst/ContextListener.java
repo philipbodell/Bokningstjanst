@@ -1,5 +1,5 @@
 
-/*
+
 package com.web.bokningstjanst;
 
 import java.util.logging.*;
@@ -13,13 +13,12 @@ public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         Logger.getAnonymousLogger().log(Level.INFO,"Putting Booking in application scope");
-        sce.getServletContext().setAttribute("booking", Booking.INSTANCE);
+        //sce.getServletContext().setAttribute(Keys.BOOKING.toString(), Booking.INSTANCE);
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         Logger.getAnonymousLogger().log(Level.INFO,"Removing Booking in application scope");
-        sce.getServletContext().removeAttribute("booking");
+        sce.getServletContext().removeAttribute(Keys.BOOKING.toString());
     }
 }
-*/

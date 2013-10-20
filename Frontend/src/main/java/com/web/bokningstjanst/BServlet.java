@@ -43,7 +43,7 @@ public class BServlet extends HttpServlet {
             switch (view) {
 
                 case "train":
-                    //TODO LÃ¤gg till all tÃ¥g  info till request hÃ¤r
+                    //TODO Lägg till all tåg  info till request här
                     List <String> myList = new ArrayList<String>();
                     myList.add("stad1");
                     myList.add("stad2");
@@ -55,21 +55,21 @@ public class BServlet extends HttpServlet {
         if (tickets != null) {
             switch (tickets) {
                 case "chooseDeparture":
-                    //HITTA alla avgÃ¥ngar frÃ¥n departure request.getParameter(departure_city)
+                    //HITTA alla avgångar från departure request.getParameter(departure_city)
                     //och till request.getParameter(arrival_city)
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/allDepartures.jspx").forward(request, response);
                     
                     break;
                 case "Confirm":
                     
-                    //Resan som valts  Ã¤r 
+                    //Resan som valts  är 
                    //ID till departure = request.getParameter(id)
                     
                     
                     HttpSession session = request.getSession();
                     session.setMaxInactiveInterval(30);
 
-                    //Ã¤ndra request.getParam hÃ¤r till vÃ¤rdena frÃ¥n databasen i stÃ¤llet
+                    //ändra request.getParam här till värdena från databasen i stället
                  //   session.setAttribute("departure_city", request.getParameter("departure_city"));
                    // session.setAttribute("departure_time", request.getParameter("departure_time"));
                     //session.setAttribute("departure_date", request.getParameter("departure_date"));

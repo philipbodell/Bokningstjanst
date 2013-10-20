@@ -10,17 +10,22 @@
     <jsp:output omit-xml-declaration="true" />
     <jsp:output doctype-root-element="HTML" 
                 doctype-system="about:legacy-compat" />
-    <html>
+
+    <html xmlns:fb="http://www.facebook.com/2008/fbml">
+
         <head>
             <title>Ontour</title> 
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <link rel="stylesheet" type="text/css" href="resources/css/layout.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"><jsp:text /></script>
         </head>
         <body>
+
+
             <jsp:directive.include file="WEB-INF/jsp/header.jspx" />
-            <h1>Welcom to this bokningssystem!</h1>
+            <h1>Welcome to this bokningssystem!</h1>
             <div id="welcome_text">
                 dsfsggrredsfsdsfsggrregregregretgrtgregregrtegtregrtegtregrt
                 egretgrtegrtegrt4egretgtrgtreg
@@ -31,16 +36,100 @@
                 ertgregretgretgretgretgrtegretgretgretgretgtregrtegretgrtegretgretgergerger
             </div>
             <div id="login">
-                <form name="login">
-                    <h2>Login or creat an account!</h2>
-                    <span id="login_text">User:</span>
-                    <input id="input" type="text" value="Username" />
+                <form method="post" action="util">
+                    <input type="hidden" name="action" value="login" />
 
-                    <span id="login_text">Password:</span>
-                    <input id="input" type="password" value="Password" />
-                    <input id="button" type="button" value="Login" />
+                    <c:if test="${not empty param.authInvalid}" >
+                        <p class="error"> Authorization failed!</p>
+                    </c:if>
+
+                    <label>User Name</label>  
+                    <input type="text" name="name" maxlength="20"/>
+                    <label>Password</label>
+                    <input type="password" name="passwd" maxlength="20"/>
+                    <p></p>
+                    <button type="submit">Login</button> 
+                    
+                </form>
+                <form  method="post" action="util">
+                    <input type="hidden" name="view" value="register" />
+                    <button type="submit">Register</button> 
+                
+                </form>
+                <a href = "#" id="facebookloginlink" onClick = "fblogin()">Login using facebook</a>
+            </div>
+            <div>
+                <form id="fbform" method="post" action="util">
+                    <p>
+                        <input type="hidden" name="action" value="fblogin" />
+                        <input type="hidden" id="fname" name="fname" value=""/>
+                        <input type="hidden" id="lname" name="lname" value=""/>
+                    </p>
+
+
+                    <div id="fb-root"></div>
+
+                    <script>
+                             function fblogin() {
+                                 FB.login(function(response) {
+                                     if (response.authResponse) {
+
+                                         FB.api('/me', function(response) {
+                                             alert(response.last_name);
+                                             document.getElementById('fname').value = response.first_name;
+                                             document.getElementById('lname').value = response.last_name;
+                                             var element = document.getElementById('facebookloginlink');
+                                             if (element.innerHTML === 'Login using facebook')
+                                                 element.innerHTML = 'Logout from facebook';
+                                             else {
+                                                 element.innerHTML = 'Login using facebook';
+                                             }
+                                             document.getElementById("fbform").submit();
+                                         });
+                                     } else {
+                                         alert('User cancelled login or did not fully authorize.');
+                                     }
+
+                                 });
+                             }
+                             ;
+                             // Additional JS functions here
+                             window.fbAsyncInit = function() {
+                                 FB.init({
+                                     appId: '440894206020617', // App ID
+                                     channelUrl: '//localhost:8080/Frontend/channel.html', // Channel File
+                                     status: true, // check login status
+                                     cookie: true, // enable cookies to allow the server to access the session
+                                     xfbml: true  // parse XFBML
+                                 });
+
+                                 // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
+                                 // for any authentication related change, such as login, logout or session refresh. This means that
+                                 // whenever someone who was previously logged out tries to log in again, the correct case below 
+                                 // will be handled. 
+
+                             };
+
+
+                             // Load the SDK asynchronously
+                             (function(d) {
+                                 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                                 if (d.getElementById(id)) {
+                                     return;
+                                 }
+                                 js = d.createElement('script');
+                                 js.id = id;
+                                 js.async = true;
+                                 js.src = "//connect.facebook.net/en_US/all.js";
+                                 ref.parentNode.insertBefore(js, ref);
+                             }(document));
+
+                    </script>
+
+
 
                 </form>
+
             </div>
 
             <jsp:directive.include file="WEB-INF/jsp/footer.jspx" />

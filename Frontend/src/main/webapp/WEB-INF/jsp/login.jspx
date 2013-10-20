@@ -25,7 +25,7 @@
     <body>
         <jsp:directive.include file="header.jspx" />
         <jsp:directive.include file="mainMenu.jspx" />
-        <form method="post" action="auth">
+        <form method="post" action="util">
             <input type="hidden" name="action" value="login" />
             <fieldset>
                 <legend>Login</legend>
