@@ -34,16 +34,12 @@
             <label>E-mail</label>  
             <input type="text" name="email"/>
 
-            <label>password</label>  
-            <input type="password" name="name"/>
-            <label>repeat password</label>  
-            <input type="rPassword" name="name"/>
-            <input type="text" name="validationstring" hidden="true"/>
-            
+
             <label>Password</label>  
             <input type="password" name="name"/>
             <label>Repeat password</label>  
             <input type="rPassword" name="name"/>
+
             
             <input type="text" name="validationstring" hidden="true"/>
 

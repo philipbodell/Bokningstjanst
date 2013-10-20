@@ -9,6 +9,7 @@
 --%>
 <%@ page import="java.io.*,java.util.*,javax.mail.*"%>
 <%@ page import="javax.mail.internet.*,javax.activation.*"%>
+<%@ page import="javax.mail.Session"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
 <%
     final String username = "username@gmail.com";
