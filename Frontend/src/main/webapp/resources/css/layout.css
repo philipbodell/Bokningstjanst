@@ -21,7 +21,6 @@ footer {
 
 }
 
-
 #header_wrapper {
     height:25em;
     background-image:url('../pictures/train.jpg');
@@ -41,27 +40,19 @@ footer {
     width: 16em;
 }
 
-#input {
-    float:right;
+input {
+
     background-color:#131313;
     border: none;
     height:2em;
     padding-left:0.5em;
     margin-bottom:0.5em;
 }
-#login_text {
-    float:left;
-    margin: 0.3em;
+#clear {
+    clear:both;
 }
-#button {
-    float:right;
-    background-color:#2099f6;
-    border: none;
-    color:#FFF;
-    font-family:Tahoma, Geneva, sans-serif;
-    font-size: 1em;
-    margin: 0.3em;
-}
+
+
     
     #fieldset-container {
         float:left;
@@ -85,6 +76,42 @@ footer {
     font-family:Tahoma, Geneva, sans-serif;
     font-size: 0.8em;
 }
+#login label {
+    float:left;
+    margin: 0.3em;
+        
+    
+}
+#login input {
+    float:left;
+    background-color:#131313;
+    border: none;
+    height:2em;
+    padding-left:0.5em;
+    margin-bottom:0.5em;
+    
+}
+
+#login button {
+    float:right;
+    background-color:#2099f6;
+    border: none;
+    margin: 0.3em;
+}
+
+
+
+#register input , label , button {
+    float:left;
+    clear: both;
+}
+
+#register button {
+    background-color:#2099f6;
+    border: none;
+    margin: 0.3em;
+}
+
 
 
 
