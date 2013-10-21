@@ -82,7 +82,7 @@ public class BServlet extends HttpServlet {
                     //Resan som valts  är 
                    //ID till departure = request.getParameter(id)
                     HttpSession session = request.getSession();
-                    session.setMaxInactiveInterval(30);
+                    session.setMaxInactiveInterval(60);
                     IDepartureCatalogue dc = Booking.INSTANCE.getDepartureCatalogue();
                     
                     request.getSession().setAttribute("DEP", Booking.INSTANCE.getDepartureCatalogue().getById(Long.valueOf(request.getParameter("id"))));
