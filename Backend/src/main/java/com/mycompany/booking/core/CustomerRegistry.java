@@ -34,7 +34,7 @@ public final class CustomerRegistry
         return found;
     }
 
-/*    @Override
+    @Override
     public boolean authenticate(String name, String password) {
         for (Customer c : getRange(0, getCount())) {
             if (c.getEmail().equalsIgnoreCase(name)) {
@@ -42,9 +42,5 @@ public final class CustomerRegistry
             }
         }
         return false;
-    }*/
-
-    public boolean authenticate(String name, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
