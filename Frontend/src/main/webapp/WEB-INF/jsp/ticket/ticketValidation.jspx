@@ -28,10 +28,9 @@
                         <input type="hidden" name="tickets" value="Payment"/>
                         <input type="hidden" name="id" value="${sessionScope.DEP.id}"/>
                         <h1>Ticket</h1>
-                        <span id="personinf">Name:</span>
-                        <span id="personinf">Lastname:</span>
-                        <span id="personinf">Phone:</span>
-                        <span id="personinf">E-mail:</span>
+                        <span id="personinf">Name: ${sessionScope.fname}</span>
+                        <span id="personinf">Lastname: ${sessionScope.lname}</span>
+                        <span id="personinf">E-mail: ${sessionScope.email}</span>
                         <hr/>
                         <table>
                             <tr>
@@ -54,12 +53,10 @@
                                 <td>Departure Date:</td>
                                 <td>${sessionScope.DEP.departuredate}</td>
                                 <td>${sessionScope.DEP.departuretime}</td>
-
                             </tr>
                         </table>
                         <hr/>
-                        <span id="sumup">Price ${sessionScope.DEP.price}$</span>
-                        <span id="sumup">Sum 20$</span>
+                        <span id="sumup">Price ${sessionScope.DEP.price}:-</span>
                         <button id="button" type="submit">Accept and go to payment</button>
                         <span id="countdownClock"></span>
                     </form>

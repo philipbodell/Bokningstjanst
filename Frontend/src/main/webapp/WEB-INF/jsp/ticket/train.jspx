@@ -11,37 +11,30 @@
     <jsp:output omit-xml-declaration="true" />
     <jsp:output doctype-root-element="HTML" 
                 doctype-system="about:legacy-compat" /> 
-
     <html xmlns:fb="http://www.facebook.com/2008/fbml">
-
         <head>
             <title>Departures</title> 
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <link rel="stylesheet" type="text/css" href="resources/css/layout.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
-
-
         </head>
         <body>
             <jsp:directive.include file="../header.jspx" />
-            <h1>Select Departure</h1>
+            <h1>Choose your desired departure location and destination</h1>
             <div id="city_choose">
                 <form  action="ticket" method="POST">
                     <input type="hidden" name="tickets" value="chooseDeparture"/>
-                    
                     <select id="city" name="departure">
                         <c:forEach var="d" items="${sessionScope.DEPARTURES}">
                             <option value="${d}">${d}</option>
                         </c:forEach>
                     </select> 
-                    
                     <select id="city" name="destination">
                         <c:forEach var="d" items="${sessionScope.DESTINATIONS}">
                             <option value="${d}">${d}</option>
                         </c:forEach>
                     </select> 
-                    
                     <button id="button" type="submit">Next</button>
                 </form>
             </div>

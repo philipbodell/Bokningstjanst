@@ -27,7 +27,7 @@ public final class CustomerRegistry
 
     @Override
     public List<Customer> getByName(String name) {
-       EntityManager em = getEntityManager();
+        EntityManager em = getEntityManager();
         em.getTransaction().begin();
         Query q = em.createQuery("SELECT d from Customer d WHERE d.fname = :name", Departure.class).setParameter("name", name);
         List<Customer> p = q.getResultList();
@@ -35,14 +35,76 @@ public final class CustomerRegistry
         em.close();
         return p;
     }
+    
+    public List<Customer> getMail(String email) {
+       EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        Query q = em.createQuery("SELECT d from Customer d WHERE d.email = :email", Departure.class).setParameter("email", email);
+        List<Customer> p = q.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return p;
+    }
+    
+    private String getUserPassword(String email) {
+       EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        Query q = em.createQuery("SELECT d.password from Customer d WHERE d.email = :email", Departure.class).setParameter("email", email);
+        String p = (String)q.getResultList().get(0);
+        em.getTransaction().commit();
+        em.close();
+        return p;
+    }
+    
+    @Override
+    public String getLnameByEmail(String email) {
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        Query q = em.createQuery("SELECT c.lname from Customer c WHERE c.email = :email", Departure.class).setParameter("email", email);
+        String p = (String)q.getResultList().get(0);
+        em.getTransaction().commit();
+        em.close();
+        return p;
+    }
+
+    @Override
+    public String getFnameByEmail(String email) {
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        Query q = em.createQuery("SELECT c.fname from Customer c WHERE c.email = :email", Departure.class).setParameter("email", email);
+        String p = (String)q.getResultList().get(0);
+        em.getTransaction().commit();
+        em.close();
+        return p;   
+    }
+
 
     @Override
     public boolean authenticate(String name, String password) {
-        for (Customer c : getRange(0, getCount())) {
-            if (c.getEmail().equalsIgnoreCase(name)) {
-                return c.getPassword().equals(Encrypter.enCrypt(password));
-            }
+        
+        
+        if(getMail(name).size()<1){
+            return false;
+        }else if(getUserPassword(name).equals(password)){
+            return true;
         }
+            
+             //c.getPassword().equals(Encrypter.enCrypt(password));
+            
+            
+        
         return false;
     }
+
+    public long getIdByEmail(String email) {
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        Query q = em.createQuery("SELECT c.id from Customer c WHERE d.email = :email", Departure.class).setParameter("email", email);
+        long p = (Long) q.getResultList().get(0);
+        em.getTransaction().commit();
+        em.close();
+        return p;
+    }
+
+    
 }

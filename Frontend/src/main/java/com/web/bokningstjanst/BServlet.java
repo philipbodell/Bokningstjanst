@@ -5,8 +5,7 @@
 package com.web.bokningstjanst;
 
 
-import com.mycompany.booking.core.DepartureCatalogue;
-import com.mycompany.booking.core.IDepartureCatalogue;
+import com.mycompany.booking.core.Ticket;
 import java.io.IOException;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -46,25 +45,26 @@ public class BServlet extends HttpServlet {
             switch (view) {
 
                 case "train":
-
-
                     Logger logger = Logger.getLogger(getClass().getName());
                     //TODO Lägg till all tåg  info till request här
-                    IDepartureCatalogue d =  Booking.INSTANCE.getDepartureCatalogue();
-                    
+                   
                     //Departure dep = d.getAll(emf.createEntityMnager().getAl);
                     request.getSession().setAttribute("DEPARTURES", Booking.INSTANCE.getDepartureCatalogue().getDepartures());
                     request.getSession().setAttribute("DESTINATIONS", Booking.INSTANCE.getDepartureCatalogue().getDestinations());
-                    
-                    request.getRequestDispatcher("WEB-INF/jsp/ticket/train.jspx").forward(request, response);
+                    if(request.getSession().getAttribute("loggedin") == null){
+                        request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
+                    }else if((boolean)request.getSession().getAttribute("loggedin")){
+                        request.getRequestDispatcher("WEB-INF/jsp/ticket/train.jspx").forward(request, response);
+                    }else{
+                        request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
+                    }
+                   
                     break;
             }
         }
         if (tickets != null) {
             switch (tickets) {
                 case "chooseDeparture":
-
-                   
                     request.getSession().setAttribute("MATCHING_DEST", Booking.INSTANCE.getDepartureCatalogue()
                             .getMatchingDeparture(request.getParameter("departure"),request.getParameter("destination")));
                     //logger.severe(d.getMatchingDeparture(request.getParameter("departure"),request.getParameter("destination")).toString());
@@ -76,12 +76,7 @@ public class BServlet extends HttpServlet {
                     //ID till departure = request.getParameter(id)
                     HttpSession session = request.getSession();
                     session.setMaxInactiveInterval(60);
-                    IDepartureCatalogue dc = Booking.INSTANCE.getDepartureCatalogue();
-                    
-                    session.setMaxInactiveInterval(60);
-
-
-request.getSession().setAttribute("DEP", Booking.INSTANCE.getDepartureCatalogue().getById(Long.valueOf(request.getParameter("id"))));
+                    request.getSession().setAttribute("DEP", Booking.INSTANCE.getDepartureCatalogue().getById(Long.valueOf(request.getParameter("id"))));
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/ticketValidation.jspx").forward(request, response);
                     break;
 
@@ -94,17 +89,20 @@ request.getSession().setAttribute("DEP", Booking.INSTANCE.getDepartureCatalogue(
                         request.getRequestDispatcher("WEB-INF/jsp/ticket/allDepartures.jspx").forward(request, response);
                     }
                     break;
-                /*case "PaymentSuccess":
-                    /*Booking.INSTANCE.getTicketCatalogue().add(new Ticket(
+                case "PaymentSuccess":
+                   /* Booking.INSTANCE.getTicketCatalogue().add(new Ticket(
                             request.getParameter("departurelocation"), 
                             request.getParameter("destination"), 
                             request.getParameter("departuredate"), 
                             request.getParameter("traveltime"), 
                             request.getParameter("type"), 
-                            request.getParameter("price"), 
-                            /*CustomerID/));*/
+                            Integer.valueOf(request.getParameter("price")), 
+                            Booking.INSTANCE.getCustomerRegistry().getIdByEmail(request.getSession().getAttribute("email").toString())));
+                    /*Mail.sendMail((String)request.getSession()
+                            .getAttribute("email"),"Departure Location: \n"+request.getParameter("departurelocation")+"\n"+
+                            ,"ticket");*/
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/paymentSuccess.jspx").forward(request, response);
-                    break;*/
+                    break;
             }
         }
 

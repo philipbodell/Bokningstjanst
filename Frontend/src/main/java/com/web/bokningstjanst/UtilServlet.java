@@ -61,10 +61,13 @@ public final class UtilServlet extends HttpServlet {
 
                 case "login":
                     //if (true){
-                    if (((JPABooking) request.getServletContext().getAttribute(Keys.BOOKING.toString())).getCustomerRegistry().authenticate(request.getParameter("name"), request.getParameter("passwd"))) {
+                    if (Booking.INSTANCE.getCustomerRegistry().authenticate(request.getParameter("name"), request.getParameter("passwd"))) {
                         request.getSession().setAttribute("USER", request.getParameter("name"));
                         request.getSession().setMaxInactiveInterval(timeout); // Timeout interval
                         request.getSession().setAttribute("loggedin", true);
+                        request.getSession().setAttribute("lname", Booking.INSTANCE.getCustomerRegistry().getLnameByEmail(request.getParameter("name")));
+                        request.getSession().setAttribute("email", request.getParameter("name"));
+                        request.getSession().setAttribute("fname", Booking.INSTANCE.getCustomerRegistry().getFnameByEmail(request.getParameter("name")));
                         response.sendRedirect("index.jspx");
                     } else {
                         request.getRequestDispatcher("index.jspx?authInvalid=true").forward(request, response);
@@ -100,7 +103,7 @@ public final class UtilServlet extends HttpServlet {
                     }
                     break;
                 case "resend":
-                    request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getSession().getAttribute("password")));
+                    request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getSession().getAttribute("password"),"validation"));
                     request.getRequestDispatcher("WEB-INF/jsp/validate.jspx").forward(request, response);
                     break;
 
@@ -130,7 +133,7 @@ public final class UtilServlet extends HttpServlet {
                     request.getSession().setAttribute("password", request.getParameter("password"));
 
                     request.getSession().setAttribute("email", request.getParameter("email"));
-                    request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getAttribute("password")));
+                    request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getAttribute("password"),"validation"));
 
                     if (request.getSession().getAttribute("validationstring").equals("error")) {
                         request.getRequestDispatcher("WEB-INF/jsp/register.jspx").forward(request, response);
