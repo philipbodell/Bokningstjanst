@@ -98,17 +98,18 @@ request.getSession().setAttribute("DEP", Booking.INSTANCE.getDepartureCatalogue(
                         request.getRequestDispatcher("WEB-INF/jsp/ticket/allDepartures.jspx").forward(request, response);
                     }
                     break;
-                case "PaymentSuccess":
+                /*case "PaymentSuccess":
                     Booking.INSTANCE.getTicketCatalogue().add(new Ticket(
-                            request.getParameter("departurelocation"), 
-                            request.getParameter("destination"), 
-                            request.getParameter("departuredate"), 
-                            request.getParameter("traveltime"), 
-                            request.getParameter("type"), 
-                            request.getParameter("price"), 
-                            /*CustomerID*/));
+                            (String)request.getParameter("departurelocation"), 
+                            (String)request.getParameter("destination"),
+                            
+                            Date.parse(request.getParameter("departuredate")), 
+                            (String)request.getParameter("traveltime"),
+                            Double.parseDouble(request.getParameter("type")), 
+                            (String)request.getParameter("price"), 
+                            Long.parseLong(2+"")));
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/paymentSuccess.jspx").forward(request, response);
-                    break;
+                    break;*/
             }
         }
 
