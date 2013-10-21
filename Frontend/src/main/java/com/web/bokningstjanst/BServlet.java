@@ -78,7 +78,12 @@ public class BServlet extends HttpServlet {
                     //ID till departure = request.getParameter(id)
                     HttpSession session = request.getSession();
                     session.setMaxInactiveInterval(60);
+<<<<<<< HEAD
                    
+=======
+                    IDepartureCatalogue dc = Booking.INSTANCE.getDepartureCatalogue();
+                    
+>>>>>>> faad9f34b18bcc9dbfb4ebd660de724719b33181
                     request.getSession().setAttribute("DEP", Booking.INSTANCE.getDepartureCatalogue().getById(Long.valueOf(request.getParameter("id"))));
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/ticketValidation.jspx").forward(request, response);
                     break;
@@ -89,7 +94,7 @@ public class BServlet extends HttpServlet {
                         request.getSession().setAttribute("DEP", Booking.INSTANCE.getDepartureCatalogue().getById(Long.valueOf(request.getParameter("id"))));
                         request.getRequestDispatcher("WEB-INF/jsp/ticket/payment.jspx").forward(request, response);
                     } else {
-                        request.getRequestDispatcher("WEB-INF/jsp/ticket/ticketValidation.jspx").forward(request, response);
+                        request.getRequestDispatcher("WEB-INF/jsp/ticket/allDepartures.jspx").forward(request, response);
                     }
                     break;
                 case "PaymentSuccess":

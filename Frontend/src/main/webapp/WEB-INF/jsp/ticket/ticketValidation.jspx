@@ -28,43 +28,40 @@
                         <input type="hidden" name="tickets" value="Payment"/>
                         <input type="hidden" name="id" value="${sessionScope.DEP.id}"/>
                         <h1>Ticket</h1>
-                        <span id="person">Name:</span>
-                        <span id="person">Lastname:</span>
-                        <span id="person">Phone:</span>
-                        <span id="person">E-mail:</span>
+                        <span id="personinf">Name:</span>
+                        <span id="personinf">Lastname:</span>
+                        <span id="personinf">Phone:</span>
+                        <span id="personinf">E-mail:</span>
                         <hr/>
                         <table>
                             <tr>
                                 <td>
-                                    Departure Station: ${sessionScope.DEP.departurelocation}
+                                    Departure:
+                                </td>
+                                <td>
+                                    ${sessionScope.DEP.departurelocation} 
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    Destination: ${sessionScope.DEP.destination}
-                                    
+                                    Destination:
+                                </td>
+                                <td>
+                                    ${sessionScope.DEP.destination}
                                 </td>
                             </tr>
                             <tr>
-                                <td>Departure</td>
+                                <td>Departure Date:</td>
                                 <td>${sessionScope.DEP.departuredate}</td>
                                 <td>${sessionScope.DEP.departuretime}</td>
-                                
-                            </tr>
-                            <tr>
-                                <td>Persons</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>Price</td>
-                                <td>20$</td>
+
                             </tr>
                         </table>
-
-                        <span id="sumup">Departure ticket 1x20$</span>
+                        <hr/>
+                        <span id="sumup">Price 20$</span>
                         <span id="sumup">Sum 20$</span>
                         <button id="button" type="submit">Accept and go to payment</button>
-                        <span id="countdownClock">a</span>
+                        <span id="countdownClock"></span>
                     </form>
                 </div>
             </section>

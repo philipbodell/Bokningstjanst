@@ -3,7 +3,7 @@
     padding: 2em;
 }
 
-#person {
+#personinf {
     width:100%;
     float:left;
 }
@@ -19,16 +19,9 @@
     margin-right: auto;
     float:left;
     border-collapse:collapse;
-    background-color:#04ACEC;
 }
 
-#ticket table:last-child {
-    margin-left: auto;
-    float:right;
-}
-#ticket table tr {
-    width: 30em;
-}
+
 #ticket table tr:first-child {
     text-align:center;
     vertical-align:middle;
