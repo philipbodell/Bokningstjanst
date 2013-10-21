@@ -43,10 +43,8 @@ public class BServlet extends HttpServlet {
             switch (view) {
 
                 case "train":
-                    //TODO Lägg till all tåg  info till request här
-                    List <String> myList = new ArrayList<String>();
-                    myList.add("stad1");
-                    myList.add("stad2");
+                    //TODO Lï¿½gg till all tï¿½g  info till request hï¿½r
+
                     request.setAttribute("train_departure", view);
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/train.jspx").forward(request, response);
                     break;
@@ -55,21 +53,21 @@ public class BServlet extends HttpServlet {
         if (tickets != null) {
             switch (tickets) {
                 case "chooseDeparture":
-                    //HITTA alla avgångar från departure request.getParameter(departure_city)
+                    //HITTA alla avgï¿½ngar frï¿½n departure request.getParameter(departure_city)
                     //och till request.getParameter(arrival_city)
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/allDepartures.jspx").forward(request, response);
                     
                     break;
                 case "Confirm":
                     
-                    //Resan som valts  är 
+                    //Resan som valts  ï¿½r 
                    //ID till departure = request.getParameter(id)
                     
                     
                     HttpSession session = request.getSession();
                     session.setMaxInactiveInterval(30);
 
-                    //ändra request.getParam här till värdena från databasen i stället
+                    //ï¿½ndra request.getParam hï¿½r till vï¿½rdena frï¿½n databasen i stï¿½llet
                  //   session.setAttribute("departure_city", request.getParameter("departure_city"));
                    // session.setAttribute("departure_time", request.getParameter("departure_time"));
                     //session.setAttribute("departure_date", request.getParameter("departure_date"));
