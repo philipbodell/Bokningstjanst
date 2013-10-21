@@ -12,12 +12,7 @@ import java.util.List;
  */
 public interface IDepartureCatalogue extends IDAO<Departure, Long> {
 
-    public List<Departure> getByName(String name);
-    
-    //For debugging only
-    public List<Departure> getDummy();
-    
-    public Departure getById(Long id);
+    public Object getById(Long id);
     
     public List<Departure> getByType(String type);
     

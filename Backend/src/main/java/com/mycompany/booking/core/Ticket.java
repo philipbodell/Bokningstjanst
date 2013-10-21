@@ -1,9 +1,7 @@
 package com.mycompany.booking.core;
 
-import java.sql.Time;
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Temporal;
 
 /**
@@ -15,38 +13,60 @@ import javax.persistence.Temporal;
 @Entity
 public class Ticket extends AbstractEntity {
     
-    @Id
-    private Long id;
-    private Departure departure;
-    private double ticketPrice;
+    private String departurelocation;
+    private String destination;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date traveldate;
+    private String traveltime;
+    private double ticketprice;
+    private String type;
+    private Long customerid;
    
     
     public Ticket() {
     }
 
-    public Ticket(Departure departure, double ticketPrice) {
-        this.departure  = departure;
-        this.ticketPrice = ticketPrice;
+    public Ticket(String departurelocation, String destination, Date traveldate, String traveltime, double ticketprice, String type, Long customerid) {
+        this.departurelocation  = departurelocation;
+        this.destination = destination;
+        this.traveldate = traveldate;
+        this.traveltime = traveltime;
+        this.ticketprice = ticketprice;
+        this.type = type;
+        this.customerid = customerid;
     }
 
-    public Ticket(Long id, Departure departure, double ticketPrice) {
-        super(id);
-        this.departure = departure;
-        this.ticketPrice = ticketPrice;
+    public String getDeparturelocation() {
+        return departurelocation;
     }
-
-    public Departure getDeparture() {
-        return departure;
+    
+    public String getDestination(){
+        return destination;
     }
-
-    public double getTicketPrice() {
-        return ticketPrice;
+    
+    public Date getTraveldate(){
+        return traveldate;
+    }
+    
+    public String getTraveltime(){
+        return traveltime;
+    }
+    
+    public double getTicketprice() {
+        return ticketprice;
+    }
+    
+    public String getType(){
+        return type;
+    }
+    
+    public Long getCustomerid(){
+        return customerid;
     }
      
     @Override
     public String toString() {
         //TODO hej
-
-        return "Product{" + "id=" + getId() + ", departure=" + departure + ", ticketPrice=" + ticketPrice + '}';
+        return "Ticket: "+id;
     }      
 }

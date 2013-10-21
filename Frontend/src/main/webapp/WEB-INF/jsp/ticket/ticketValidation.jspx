@@ -26,7 +26,7 @@
                 <div id="ticket">
                     <form  action="ticket" method="POST">
                         <input type="hidden" name="tickets" value="Payment"/>
-                         <input type="hidden" name="id" value="${sessionScope.DEP.id}"/>
+                        <input type="hidden" name="id" value="${sessionScope.DEP.id}"/>
                         <h1>Ticket</h1>
                         <span id="person">Name:</span>
                         <span id="person">Lastname:</span>

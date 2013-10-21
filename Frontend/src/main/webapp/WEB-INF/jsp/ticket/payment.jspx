@@ -22,7 +22,7 @@
             <jsp:directive.include file="../header.jspx" />
             <div id="payment">
                 <form  action="ticket" method="POST">
-                    <input type="hidden" name="tickets" value="PaymentSucess"/>
+                    <input type="hidden" name="tickets" value="PaymentSuccess"/>
                     <input type="hidden" name="departurelocation" value="${sessionScope.DEP.departurelocation}"/>
                     <input type="hidden" name="destination" value="${sessionScope.DEP.destination}"/>
                     <input type="hidden" name="departuredate" value="${sessionScope.DEP.departuredate}"/>

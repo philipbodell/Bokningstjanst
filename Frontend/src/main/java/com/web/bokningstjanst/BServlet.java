@@ -7,6 +7,7 @@ package com.web.bokningstjanst;
 
 import com.mycompany.booking.core.IDepartureCatalogue;
 import com.mycompany.booking.core.ITicketCatalogue;
+import com.mycompany.booking.core.Ticket;
 import java.io.IOException;
 import java.sql.Time;
 import java.util.Date;
@@ -66,12 +67,6 @@ public class BServlet extends HttpServlet {
                 case "chooseDeparture":
                     //HITTA alla avgångar från departure request.getParameter(departure_city)
                     //och till request.getParameter(arrival_city)
-                    Logger logger = Logger.getLogger(getClass().getName());
-                    String tmp = request.getParameter("destination");
-                    logger.severe("Destination: "+tmp);
-                    IDepartureCatalogue d =  Booking.INSTANCE.getDepartureCatalogue();
-                    logger.severe(d.getByDestination(tmp).toString());
-                    //logger.severe(JPABookingFactory.getBooking(Persistence.createEntityManagerFactory("test")).getDepartureCatalogue().getByDestination("Ostersund").toString());
                     request.getSession().setAttribute("MATCHING_DEST", Booking.INSTANCE.getDepartureCatalogue()
                             .getMatchingDeparture(request.getParameter("departure"),request.getParameter("destination")));
                     //logger.severe(d.getMatchingDeparture(request.getParameter("departure"),request.getParameter("destination")).toString());
@@ -80,11 +75,10 @@ public class BServlet extends HttpServlet {
                 case "Confirm":
                     
                     //Resan som valts  är 
-                   //ID till departure = request.getParameter(id)
+                    //ID till departure = request.getParameter(id)
                     HttpSession session = request.getSession();
-                    session.setMaxInactiveInterval(30);
-                    IDepartureCatalogue dc = Booking.INSTANCE.getDepartureCatalogue();
-                    
+                    session.setMaxInactiveInterval(60);
+                   
                     request.getSession().setAttribute("DEP", Booking.INSTANCE.getDepartureCatalogue().getById(Long.valueOf(request.getParameter("id"))));
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/ticketValidation.jspx").forward(request, response);
                     break;
@@ -92,8 +86,6 @@ public class BServlet extends HttpServlet {
                 case "Payment":
                     //Check so the session has not died
                     if (request.getSession(false) != null) {
-                        ITicketCatalogue tc =  Booking.INSTANCE.getTicketCatalogue();
-                        //tc.add(new Ticket(/*CustomerId*/,, ticketPrice));
                         request.getSession().setAttribute("DEP", Booking.INSTANCE.getDepartureCatalogue().getById(Long.valueOf(request.getParameter("id"))));
                         request.getRequestDispatcher("WEB-INF/jsp/ticket/payment.jspx").forward(request, response);
                     } else {
@@ -101,7 +93,14 @@ public class BServlet extends HttpServlet {
                     }
                     break;
                 case "PaymentSuccess":
-                    
+                    Booking.INSTANCE.getTicketCatalogue().add(new Ticket(
+                            request.getParameter("departurelocation"), 
+                            request.getParameter("destination"), 
+                            request.getParameter("departuredate"), 
+                            request.getParameter("traveltime"), 
+                            request.getParameter("type"), 
+                            request.getParameter("price"), 
+                            /*CustomerID*/));
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/paymentSuccess.jspx").forward(request, response);
                     break;
             }
