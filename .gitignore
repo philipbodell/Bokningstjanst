@@ -213,3 +213,5 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+/Backend/target/Booking-1.0-SNAPSHOT.jar

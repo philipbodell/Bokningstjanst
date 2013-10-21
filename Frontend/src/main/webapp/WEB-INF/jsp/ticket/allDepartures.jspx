@@ -20,6 +20,7 @@
         </head>
         <body>
             <jsp:directive.include file="../header.jspx" />
+
             <h1>Choose Departure</h1>
             <table id="all_tickets">
             <c:forEach items="${sessionScope.MATCHING_DEST}" var="d"> 

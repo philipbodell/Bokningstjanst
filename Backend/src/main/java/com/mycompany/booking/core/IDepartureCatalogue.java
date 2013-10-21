@@ -2,8 +2,8 @@
 package com.mycompany.booking.core;
 
 import com.mycompany.booking.utils.IDAO;
+import java.util.Date;
 import java.util.List;
-import javax.persistence.EntityManager;
 
 /**
  * Interface to product catalogue
