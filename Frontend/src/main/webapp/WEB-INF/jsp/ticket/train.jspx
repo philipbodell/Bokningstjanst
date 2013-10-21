@@ -30,27 +30,26 @@
 
 
             <jsp:directive.include file="../header.jspx" />
-            <form  action="ticket" method="POST">
-                
-                <input type="hidden" name="tickets" value="chooseDeparture"/>
-                <input id="city_list" name="departure_city" list="browsers" value="">
-                    <datalist id="city">
-                        <c:forEach items="${departureList}" var="departure">  
-                            <option value="${departure.departureCity}"/>
-
-                        </c:forEach>  
-                    </datalist> 
-                </input>
-                <input id="city_list" name="arrival_city" list="browsers" value="">
-                    <datalist id="city">
-                        <c:forEach items="${departureList}" var="departure">  
-                            <option value="${departure.arrivalCity}"/>
-
-                        </c:forEach>  
-                    </datalist> 
-                </input>
-                <button id="button" type="submit">Next</button>
-            </form>
+            <h1>Select Departure</h1>
+            <div id="city_choose">
+                <form  action="ticket" method="POST">
+                    <input type="hidden" name="tickets" value="chooseDeparture"/>
+                    
+                    <select id="city" name="destination">
+                        <c:forEach var="d" items="${sessionScope.DEPARTURES}">
+                            <option value="${d.destination}">${d.destination}</option>
+                        </c:forEach>
+                    </select> 
+                    
+                    <select id="city" name="departure">
+                        <c:forEach var="d" items="${sessionScope.DEPARTURES}">
+                            <option value="${d.departurelocation}">${d.departurelocation}</option>
+                        </c:forEach>
+                    </select> 
+                    
+                    <button id="button" type="submit">Next</button>
+                </form>
+            </div>
             <jsp:directive.include file="../footer.jspx" />
         </body>
     </html>   

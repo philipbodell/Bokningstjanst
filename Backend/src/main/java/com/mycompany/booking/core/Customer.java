@@ -1,103 +1,135 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.mycompany.booking.core;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Transient;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * A Customer
- * @author hajo
+ *
+ * @author ed
  */
 @Entity
-public class Customer extends AbstractEntity implements Serializable{
-   
-    @Transient
-    private Cart cart = new Cart();
-    private String fname;
-    private String lname;
-    private String pNumber;
+@Table(name = "CUSTOMER")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c"),
+    @NamedQuery(name = "Customer.findById", query = "SELECT c FROM Customer c WHERE c.id = :id"),
+    @NamedQuery(name = "Customer.findByEmail", query = "SELECT c FROM Customer c WHERE c.email = :email"),
+    @NamedQuery(name = "Customer.findByFname", query = "SELECT c FROM Customer c WHERE c.fname = :fname"),
+    @NamedQuery(name = "Customer.findByLname", query = "SELECT c FROM Customer c WHERE c.lname = :lname"),
+    @NamedQuery(name = "Customer.findByPnumber", query = "SELECT c FROM Customer c WHERE c.pnumber = :pnumber"),
+    @NamedQuery(name = "Customer.findByPassword", query = "SELECT c FROM Customer c WHERE c.password = :password")})
+public class Customer implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @Column(name = "ID")
+    private Long id;
+    @Column(name = "EMAIL")
     private String email;
-    private String username;
+    @Column(name = "FNAME")
+    private String fname;
+    @Column(name = "LNAME")
+    private String lname;
+    @Column(name = "PNUMBER")
+    private String pnumber;
+    @Basic(optional = false)
+    @Column(name = "PASSWORD")
     private String password;
 
     public Customer() {
     }
 
-    public Customer(String fname, String lname, String username, String password,
-            String pNumber, String email) {
-
-        //this.address = address;
-        this.fname = fname;
-        this.lname = lname;
-        this.pNumber = pNumber;
-        this.email = email;
-        this.username=username;
-        this.password=password;
-
-    }
-    
-    public Customer(Long id, String fname,
-            String lname, String pNumber,String email) {
-        super(id);
-       // this.address = address;
-        this.fname = fname;
-        this.lname = lname;
-        this.pNumber = pNumber;
-        this.email = email;
+    public Customer(Long id) {
+        this.id = id;
     }
 
-    public void addTicketToCart(Ticket ticket) {
-        cart.add(ticket);
+    public Customer(Long id, String password) {
+        this.id = id;
+        this.password = password;
     }
 
-    public void removeTicketFromCart(Ticket ticket) {
-        cart.remove(ticket);
-    }
-
-    public void emptyCart() {
-        cart = new Cart();
-    }
-
-   /* public Address getAddress() {
-        return address;
-    }*/
-
-    public Cart getCart() {
-        return cart;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-    
-    public String getPass() {
-        return password;
-    }
-
-    public String getUserName() {
-        return username;
-    }
-
-
-    public String getFname() {
-        return fname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-    
-    public String getPnumber(){
-        return pNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" + "id=" + getId() + ", fname=" + fname + ", lname=" + lname + ", pNumber=" + pNumber + ", email=" + email + '}';
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
-}
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public String getPnumber() {
+        return pnumber;
+    }
+
+    public void setPnumber(String pnumber) {
+        this.pnumber = pnumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Customer)) {
+            return false;
+        }
+        Customer other = (Customer) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.mycompany.booking.core.Customer[ id=" + id + " ]";
+    }
+    
+}

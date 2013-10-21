@@ -20,16 +20,24 @@
         </head>
         <body>
             <jsp:directive.include file="../header.jspx" />
-            <c:forEach items="${departureList}" var="departure"> 
+
+            <h1>Choose Departure</h1>
+            <table id="all_tickets">
+            <c:forEach items="${sessionScope.MATCHING_DEST}" var="d"> 
                 <form  action="ticket" method="POST">
                     <input type="hidden" name="tickets" value="Confirm"/>
-                    <input type="hidden" name="id" value="${departure.id}"/>
-                    
-                    ${departure.departureCity} - ${departure.arrivalCity} - ${departure.departureTime} - ${departure.arrivalTime} - ${departure.cost}
-                    <button id="button" type="submit">Accept</button>
+                    <input type="hidden" name="id" value="${d.id}"/>
+                   
+                    <tr>
+                        <td>${d.departurelocation} - ${d.destination}</td>
+                        <td>Departure:${d.departuretime}</td>
+                        <td>Travel time:${d.traveltime}</td>
+                        <td><button id="button" type="submit">Buy</button></td>
+                    </tr>
+                        
                 </form>                        
             </c:forEach>  
-
+            </table>
             <jsp:directive.include file="../footer.jspx" />
         </body>
     </html>   

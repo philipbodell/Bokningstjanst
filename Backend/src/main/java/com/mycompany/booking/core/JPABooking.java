@@ -2,6 +2,7 @@ package com.mycompany.booking.core;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManagerFactory;
 
 /**
  * 
@@ -18,11 +19,11 @@ public class JPABooking implements IBooking {
     private IDepartureCatalogue departureCatalogue;
    
 
-    public JPABooking(String puName) {
+    public JPABooking(EntityManagerFactory emf) {
         Logger.getAnonymousLogger().log(Level.INFO, "Booing alive {0}", this.hashCode());
-        ticketCatalogue = TicketCatalogue.newInstance(puName);
-        customerRegistry = CustomerRegistry.newInstance(puName);
-        departureCatalogue =DepartureCatalogue.newInstance(puName);
+        ticketCatalogue = TicketCatalogue.newInstance(emf);
+        customerRegistry = CustomerRegistry.newInstance(emf);
+        departureCatalogue =DepartureCatalogue.newInstance(emf);
     }
 
     @Override

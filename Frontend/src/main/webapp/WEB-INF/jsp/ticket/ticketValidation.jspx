@@ -19,7 +19,6 @@
             <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/ticket.css" />
             <script type="text/javascript" src="js/countdowntimer.js"><jsp:text /></script>
-
         </head>
         <body>
             <jsp:directive.include file="../header.jspx" />
@@ -27,57 +26,42 @@
                 <div id="ticket">
                     <form  action="ticket" method="POST">
                         <input type="hidden" name="tickets" value="Payment"/>
-
+                        <input type="hidden" name="id" value="${sessionScope.DEP.id}"/>
                         <h1>Ticket</h1>
-                        <span id="person">Name:</span>
-                        <span id="person">Lastname:</span>
-                        <span id="person">Phone:</span>
-                        <span id="person">E-mail:</span>
+                        <span id="personinf">Name:</span>
+                        <span id="personinf">Lastname:</span>
+                        <span id="personinf">Phone:</span>
+                        <span id="personinf">E-mail:</span>
                         <hr/>
                         <table>
                             <tr>
                                 <td>
-                                    ${sessionScope.departure_city} - ${sessionScope.arrival_city}
+                                    Departure:
+                                </td>
+                                <td>
+                                    ${sessionScope.DEP.departurelocation} 
                                 </td>
                             </tr>
                             <tr>
-                                <td>Departure</td>
-                                <td>${sessionScope.departure_date}</td>
-                                <td>${sessionScope.departure_time}</td>
+                                <td>
+                                    Destination:
+                                </td>
+                                <td>
+                                    ${sessionScope.DEP.destination}
+                                </td>
                             </tr>
                             <tr>
-                                <td>Persons</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>Price</td>
-                                <td>20$</td>
+                                <td>Departure Date:</td>
+                                <td>${sessionScope.DEP.departuredate}</td>
+                                <td>${sessionScope.DEP.departuretime}</td>
+
                             </tr>
                         </table>
-                        <table>
-                            <tr>
-                                <td>${sessionScope.arrival_city} - ${sessionScope.departure_city}</td>
-                            </tr>
-                            <tr>
-                                <td>Departure</td>
-                                <td>${sessionScope.arrival_date}</td>
-                                <td>${sessionScope.arrival_time}</td>
-                            </tr>
-                            <tr>
-                                <td>Persons</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>Price</td>
-                                <td>20$</td>
-                            </tr>
-                        </table> 
                         <hr/>
-                        <span id="sumup">Departure ticket 2x20$</span>
-                        <span id="sumup">Departure ticket 2x20$</span>
-                        <span id="sumup">Sum 80$</span>
+                        <span id="sumup">Price 20$</span>
+                        <span id="sumup">Sum 20$</span>
                         <button id="button" type="submit">Accept and go to payment</button>
-                        <span id="countdownClock">a</span>
+                        <span id="countdownClock"></span>
                     </form>
                 </div>
             </section>

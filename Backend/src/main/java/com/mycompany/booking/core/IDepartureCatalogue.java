@@ -2,6 +2,7 @@
 package com.mycompany.booking.core;
 
 import com.mycompany.booking.utils.IDAO;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,12 +12,13 @@ import java.util.List;
  */
 public interface IDepartureCatalogue extends IDAO<Departure, Long> {
 
-    public List<Departure> getByName(String name);
-    
-    public Departure getById(Long id);
+    public Object getById(Long id);
     
     public List<Departure> getByType(String type);
     
     public List<Departure> getByDestination(String dest);
-     
+    
+    public List<Departure> getAll();     
+    
+    public List<Departure> getMatchingDeparture(String departure, String destination);
 }

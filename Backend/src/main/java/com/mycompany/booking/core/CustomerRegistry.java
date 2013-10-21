@@ -3,6 +3,7 @@ package com.mycompany.booking.core;
 import com.mycompany.booking.utils.AbstractDAO;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManagerFactory;
 
 /**
  * All customers
@@ -13,13 +14,13 @@ import java.util.List;
 public final class CustomerRegistry
         extends AbstractDAO<Customer, Long> implements ICustomerRegistry {
 
-    public CustomerRegistry(String puName) {
-        super(Customer.class, puName);
+    public CustomerRegistry(EntityManagerFactory emf) {
+        super(Customer.class, emf);
     }
 
     // Factory method
-    public static ICustomerRegistry newInstance(String puName) {
-        return new CustomerRegistry(puName);
+    public static ICustomerRegistry newInstance(EntityManagerFactory emf) {
+        return new CustomerRegistry(emf);
     }
 
     @Override
@@ -33,13 +34,17 @@ public final class CustomerRegistry
         return found;
     }
 
-    @Override
+/*    @Override
     public boolean authenticate(String name, String password) {
         for (Customer c : getRange(0, getCount())) {
-            if (c.getUserName().equalsIgnoreCase(name)) {
-                return c.getPass().equals(Encrypter.enCrypt(password));
+            if (c.getEmail().equalsIgnoreCase(name)) {
+                return c.getPassword().equals(Encrypter.enCrypt(password));
             }
         }
         return false;
+    }*/
+
+    public boolean authenticate(String name, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
