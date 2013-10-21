@@ -3,7 +3,9 @@ package com.mycompany.booking.core;
 import com.mycompany.booking.utils.AbstractDAO;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 /**
  * All customers
@@ -25,13 +27,13 @@ public final class CustomerRegistry
 
     @Override
     public List<Customer> getByName(String name) {
-        List<Customer> found = new ArrayList<Customer>();
-        for (Customer c : getRange(0, getCount())) {
-            if (c.getFname().equals(name) || c.getLname().equals(name)) {
-                found.add(c);
-            }
-        }
-        return found;
+       EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        Query q = em.createQuery("SELECT d from Customer d WHERE d.fname = :name", Departure.class).setParameter("name", name);
+        List<Customer> p = q.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return p;
     }
 
     @Override

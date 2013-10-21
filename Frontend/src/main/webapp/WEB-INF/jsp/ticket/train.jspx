@@ -24,26 +24,21 @@
 
         </head>
         <body>
-            <script type="text/javascript">
-                
-            </script>
-
-
             <jsp:directive.include file="../header.jspx" />
             <h1>Select Departure</h1>
             <div id="city_choose">
                 <form  action="ticket" method="POST">
                     <input type="hidden" name="tickets" value="chooseDeparture"/>
                     
-                    <select id="city" name="destination">
+                    <select id="city" name="departure">
                         <c:forEach var="d" items="${sessionScope.DEPARTURES}">
-                            <option value="${d.destination}">${d.destination}</option>
+                            <option value="${d}">${d}</option>
                         </c:forEach>
                     </select> 
                     
-                    <select id="city" name="departure">
-                        <c:forEach var="d" items="${sessionScope.DEPARTURES}">
-                            <option value="${d.departurelocation}">${d.departurelocation}</option>
+                    <select id="city" name="destination">
+                        <c:forEach var="d" items="${sessionScope.DESTINATIONS}">
+                            <option value="${d}">${d}</option>
                         </c:forEach>
                     </select> 
                     

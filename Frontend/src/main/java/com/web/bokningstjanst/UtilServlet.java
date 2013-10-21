@@ -7,6 +7,7 @@ package com.web.bokningstjanst;
 import com.mycompany.booking.core.Customer;
 import com.mycompany.booking.core.JPABooking;
 import java.io.IOException;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -84,7 +85,15 @@ public final class UtilServlet extends HttpServlet {
                 case "validate":
                     if (request.getSession().getAttribute("validationstring").equals(request.getParameter("validation"))) {
                         //add user to database
-                        Booking.INSTANCE.getCustomerRegistry().add(new Customer((String) request.getSession().getAttribute("fname"), (String) request.getSession().getAttribute("lname"), (String) request.getSession().getAttribute("email"), (String) request.getSession().getAttribute("password"), (String) request.getSession().getAttribute("pnum"), (String) request.getSession().getAttribute("email")));
+                        Logger logger = Logger.getLogger(getClass().getName());
+                    logger.severe(request.getParameter("lname"));
+                        Booking.INSTANCE.getCustomerRegistry().add(new Customer(
+                                (String) request.getSession().getAttribute("fname"), 
+                                (String) request.getSession().getAttribute("lname"), 
+                                (String) request.getSession().getAttribute("password"), 
+                                (String) request.getSession().getAttribute("pnum"), 
+                                (String) request.getSession().getAttribute("email")));
+                        logger.severe("added");
                         request.getRequestDispatcher("index.jspx?loggedIn=true").forward(request, response);
                     } else {
                         request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
@@ -108,20 +117,23 @@ public final class UtilServlet extends HttpServlet {
                     request.getRequestDispatcher("index.jspx").forward(request, response);
                     break;
                 case "register":
+                    
                     request.getRequestDispatcher("WEB-INF/jsp/register.jspx").forward(request, response);
                     break;
                 case "validate":
-
+                   
+                    Logger logger = Logger.getLogger(getClass().getName());
+                    logger.severe("added");
                     request.getSession().setAttribute("pnum", request.getParameter("pnum"));
                     request.getSession().setAttribute("fname", request.getParameter("fname"));
                     request.getSession().setAttribute("lname", request.getParameter("lname"));
                     request.getSession().setAttribute("password", request.getParameter("password"));
 
                     request.getSession().setAttribute("email", request.getParameter("email"));
-                    request.getSession().setAttribute("validationstring", Mail.sendMail(request.getParameter("email"), (String) request.getAttribute("password")));
+                    request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getAttribute("password")));
 
                     if (request.getSession().getAttribute("validationstring").equals("error")) {
-                        request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
+                        request.getRequestDispatcher("WEB-INF/jsp/register.jspx").forward(request, response);
                     }
 
 
