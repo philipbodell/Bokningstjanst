@@ -25,13 +25,6 @@ public final class DepartureCatalogue extends AbstractDAO<Departure, Long>
     public static IDepartureCatalogue newInstance(EntityManagerFactory emf) {
         return new DepartureCatalogue(emf);
     }
-
-    @Override
-    public List<Departure> getByName(String name) {
-      
-        return getEntityManager().createQuery("SELECT p FROM Departure p WHERE p.name = :name",Departure.class)
-                .setParameter("name", name).getResultList();
-    }
     
     @Override
     public List<Departure> getAll(){
@@ -45,17 +38,10 @@ public final class DepartureCatalogue extends AbstractDAO<Departure, Long>
     }
     
     @Override
-    public List<Departure> getDummy(){
-        ArrayList<Departure> tmp = new ArrayList<Departure>();
-        //tmp.addAll(getAll());
-        return tmp;
-    }
-    
-    @Override
-    public Departure getById(Long id){
+    public Object getById(Long id){
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
-        Query q = em.createQuery("SELECT d from Departure d WHERE d.id = :destination",Departure.class).setParameter("destination", id);
+        Query q = em.createQuery("SELECT d from Departure d WHERE d.id = :id",Departure.class).setParameter("id", id);
         List<Departure> p = q.getResultList();
         em.getTransaction().commit();
         em.close();
@@ -87,7 +73,7 @@ public final class DepartureCatalogue extends AbstractDAO<Departure, Long>
     }
     public List<Departure> getMatchingDeparture(String departurelocation, String destination){
          return getEntityManager().createQuery(
-                 "SELECT p FROM Departure p WHERE p.departurelocation=:departurelocation AND p.destination=:destination AND p.departuredate>=:currentdate",Departure.class)
+                 "SELECT p FROM Departure p WHERE p.departurelocation=:departurelocation AND p.destination=:destination",Departure.class)
                 .setParameter("departurelocation", departurelocation)
                 .setParameter("destination", destination)
                 .getResultList();

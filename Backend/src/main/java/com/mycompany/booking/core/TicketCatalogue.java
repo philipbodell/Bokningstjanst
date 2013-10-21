@@ -22,40 +22,36 @@ public final class TicketCatalogue extends AbstractDAO<Ticket, Long>
     public static ITicketCatalogue newInstance(EntityManagerFactory emf) {
         return new TicketCatalogue(emf);
     }
-
-    @Override
-    public List<Ticket> getByName(String name) {
-      
-        return getEntityManager().createQuery("SELECT p FROM Ticket p WHERE p.name = :name",Ticket.class)
-                .setParameter("name", name).getResultList();
-    }
     
     public List<Ticket> getAll(){
-        EntityManager em = getEntityManager();
-        return em.createNamedQuery("Ticket.getAll",Ticket.class).getResultList();
+        return getEntityManager().createNamedQuery("Ticket.getAll",Ticket.class).getResultList();
     }
     
     @Override
     public Ticket getById(Long id){
         return find(id);
-        
     }  
     
     @Override
     public List<Ticket> getByType(String type){
-        return getEntityManager().createQuery("SELECT p FROM Ticket p WHERE p.type = :type",Ticket.class)
+        return getEntityManager().createQuery("SELECT t FROM Ticket t WHERE t.type = :type",Ticket.class)
                 .setParameter("type", type).getResultList();
     }
     
     @Override
-    public List<Ticket> getByDestination(String dest){
-        return getEntityManager().createQuery("SELECT p FROM Ticket p WHERE p.destination = :destination",Ticket.class)
-                .setParameter("destination", dest).getResultList();
+    public List<Ticket> getByDestination(String destination){
+        return getEntityManager().createQuery("SELECT t FROM Ticket t WHERE t.destination = :destination",Ticket.class)
+                .setParameter("destination", destination).getResultList();
     }
-    
-    public List<Ticket> getByAny(String name, Long id){
-         return getEntityManager().createQuery(
-                 "SELECT p FROM Ticket p WHERE p.name '"+name+"'OR p.id'"+id+"'",Ticket.class)
-                .getResultList();
+
+    @Override
+    public List<Ticket> getByDeparture(String departurelocation) {
+        return getEntityManager().createQuery("SELECT t FROM Ticket t WHERE t.departurelocation = :departurelocation",Ticket.class)
+                .setParameter("departurelocation", departurelocation).getResultList();
+    }
+
+    public List<Ticket> getByCustomerId(Long customerid) {
+        return getEntityManager().createQuery("SELECT t FROM Ticket t WHERE t.customerid = :customerid",Ticket.class)
+                .setParameter("customerid", customerid).getResultList();    
     }
 }
