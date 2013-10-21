@@ -11,11 +11,16 @@
     <body>
         <form method="post" action="util">
             <input type="hidden" name="action" value="validate"/>
+            <label>You have received an email.</label>
+            <label>Do not close this page until you have entered your validation code.</label>
             <label>Enter validation key here</label>
             <input type="text" name="validation"/>
-            <label>${ session.getAttribute( "validationstring" ) } asd asd</label>
             <button type="submit">Validate</button>
         </form>
+         <form method="post" action="util">
+            <input type="hidden" name="action" value="resend"/>
+            <button type="submit">Resend code</button>
+         </form>
     </body>
 
 </jsp:root>

@@ -16,7 +16,7 @@ import javax.mail.internet.MimeMessage;
 
 public class Mail {
 
-    public static String sendMail(String to) {
+    public static String sendMail(String to, String uPassword) {
 
         final String username = "bodellbokning@gmail.com";
         final String password = "bodellbokning123";
@@ -49,7 +49,7 @@ public class Mail {
             message.setRecipients(Message.RecipientType.TO,
                 InternetAddress.parse(to));
             message.setSubject("Validation");
-            message.setText("Here is your validation code: "+validationString
+            message.setText("Welcome, your username is your email and this is your password: "+uPassword+".\nHere is your validation code: "+validationString
                 + "\n\n Please enter it on the site you were redirected to.");
 
             Transport.send(message);

@@ -63,28 +63,36 @@ public final class UtilServlet extends HttpServlet {
                     if (((JPABooking) request.getServletContext().getAttribute(Keys.BOOKING.toString())).getCustomerRegistry().authenticate(request.getParameter("name"), request.getParameter("passwd"))) {
                         request.getSession().setAttribute("USER", request.getParameter("name"));
                         request.getSession().setMaxInactiveInterval(timeout); // Timeout interval
+                        request.getSession().setAttribute("loggedin", true);
                         response.sendRedirect("index.jspx");
                     } else {
                         request.getRequestDispatcher("index.jspx?authInvalid=true").forward(request, response);
                     }
                     break;
+                case "logout": // When logging out send user back to index page.
+                    request.getSession().invalidate();
+                    response.sendRedirect("index.jspx");
+                    break;
                 case "fblogin":
                     request.getSession().setAttribute("fname", request.getParameter("fname"));
                     request.getSession().setAttribute("lname", request.getParameter("lname"));
-
+                    request.getSession().setAttribute("loggedin", true);
+                    request.getSession().setMaxInactiveInterval(timeout);
                     request.getSession().setAttribute("name", request.getParameter("fname") + " " + request.getParameter("lname"));
                     request.getRequestDispatcher("index.jspx").forward(request, response);
                     break;
                 case "validate":
-                    if (request.getSession().getAttribute("validationstring").equals(request.getParameter("validation"))){
+                    if (request.getSession().getAttribute("validationstring").equals(request.getParameter("validation"))) {
                         //add user to database
-                        Booking.INSTANCE.getCustomerRegistry().add(new Customer((String)request.getAttribute("fname"), (String)request.getAttribute("lname")
-                                , (String)request.getAttribute("email"), (String)request.getAttribute("password"), (String)request.getAttribute("pnum")
-                                , (String)request.getAttribute("email")));
-                        request.getRequestDispatcher("index.jspx").forward(request, response);
-                    }else{
+                        Booking.INSTANCE.getCustomerRegistry().add(new Customer((String) request.getSession().getAttribute("fname"), (String) request.getSession().getAttribute("lname"), (String) request.getSession().getAttribute("email"), (String) request.getSession().getAttribute("password"), (String) request.getSession().getAttribute("pnum"), (String) request.getSession().getAttribute("email")));
+                        request.getRequestDispatcher("index.jspx?loggedIn=true").forward(request, response);
+                    } else {
                         request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
                     }
+                    break;
+                case "resend":
+                    request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getSession().getAttribute("password")));
+                    request.getRequestDispatcher("WEB-INF/jsp/validate.jspx").forward(request, response);
                     break;
 
 
@@ -103,17 +111,20 @@ public final class UtilServlet extends HttpServlet {
                     request.getRequestDispatcher("WEB-INF/jsp/register.jspx").forward(request, response);
                     break;
                 case "validate":
-                    request.getSession().setAttribute("email", request.getParameter("email"));
-                    request.getSession().setAttribute("validationstring",Mail.sendMail(request.getParameter("email")));
-                    
-                    if(request.getSession().getAttribute("validationstring").equals("error")){
-                        request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
-                    }
+
                     request.getSession().setAttribute("pnum", request.getParameter("pnum"));
                     request.getSession().setAttribute("fname", request.getParameter("fname"));
                     request.getSession().setAttribute("lname", request.getParameter("lname"));
                     request.getSession().setAttribute("password", request.getParameter("password"));
-                    
+
+                    request.getSession().setAttribute("email", request.getParameter("email"));
+                    request.getSession().setAttribute("validationstring", Mail.sendMail(request.getParameter("email"), (String) request.getAttribute("password")));
+
+                    if (request.getSession().getAttribute("validationstring").equals("error")) {
+                        request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
+                    }
+
+
 
                     request.getRequestDispatcher("WEB-INF/jsp/validate.jspx").forward(request, response);
                     break;

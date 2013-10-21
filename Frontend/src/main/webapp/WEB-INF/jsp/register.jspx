@@ -36,9 +36,9 @@
             <label>pnum</label>
             <input type="text" name="pnum"/>
             <label>Password</label>  
-            <input type="password" name="name"/>
+            <input type="password" name="password"/>
             <label>Repeat password</label>  
-            <input type="password" name="name"/>
+            <input type="password" name="rpassword"/>
 
 
             <button type="submit">Register</button>
@@ -76,9 +76,17 @@
                     return false;
                 }
                 var x = document.forms["registerform"]["pnum"].value;
-                if (!x.isNumeric){
+                if (isNaN(x)){
                     alert("Pnum must be numbers only (without space and dash)");
                     return false;
+                }
+                var x = document.forms["registerform"]["password"].value;
+                var x2 = document.forms["registerform"]["rpassword"].value;
+                if(x===null || x === ""){
+                    alert("Enter a password");
+                }
+                if(!x.equals(x2)){
+                    alert("passwords must match");
                 }
                 return true;
             }
