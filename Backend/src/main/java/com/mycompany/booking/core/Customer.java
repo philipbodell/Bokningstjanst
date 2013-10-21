@@ -29,12 +29,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Customer.findByLname", query = "SELECT c FROM Customer c WHERE c.lname = :lname"),
     @NamedQuery(name = "Customer.findByPnumber", query = "SELECT c FROM Customer c WHERE c.pnumber = :pnumber"),
     @NamedQuery(name = "Customer.findByPassword", query = "SELECT c FROM Customer c WHERE c.password = :password")})
-public class Customer implements Serializable {
+public class Customer extends AbstractEntity {
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "ID")
-    private Long id;
+   
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "FNAME")
@@ -50,13 +47,12 @@ public class Customer implements Serializable {
     public Customer() {
     }
 
-    public Customer(Long id) {
-        this.id = id;
-    }
-
-    public Customer(Long id, String password) {
-        this.id = id;
+    public Customer(String fname,String lname,String password, String pnum, String email) {
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
         this.password = password;
+        this.pnumber = pnum;
     }
 
     public Long getId() {

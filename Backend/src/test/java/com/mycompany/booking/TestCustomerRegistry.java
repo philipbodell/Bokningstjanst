@@ -9,6 +9,7 @@ import com.mycompany.booking.core.Customer;
 import com.mycompany.booking.core.IBooking;
 import com.mycompany.booking.core.ICustomerRegistry;
 import com.mycompany.booking.core.JPABookingFactory;
+import javax.persistence.Persistence;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -22,10 +23,10 @@ public class TestCustomerRegistry {
     static IBooking booking;
     final static String PU = "booking_pu";
     
-/*
+
     @Before // Run before each test
     public void before() {
-        booking = JPABookingFactory.getBooking(PU);
+        booking = JPABookingFactory.getBooking(Persistence.createEntityManagerFactory("booking_pu"));
     }
     
     @Test
@@ -33,8 +34,8 @@ public class TestCustomerRegistry {
         ICustomerRegistry cr = booking.getCustomerRegistry();
         System.out.println(cr.toString());
         
-        Customer c1 = new Customer("Philip","Bodell","Philip","1234","900703","p@b.se");
+        Customer c1 = new Customer("Philip","Bodell","Philip","1234","900703");
         cr.add(c1);
-        assertTrue(cr.getCount()==1);
-    }*/
+        assertTrue(cr.getCount()>=1);
+    }
 }

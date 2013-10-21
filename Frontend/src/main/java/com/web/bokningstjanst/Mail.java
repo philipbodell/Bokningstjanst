@@ -18,8 +18,8 @@ public class Mail {
 
     public static String sendMail(String to, String uPassword) {
 
-        final String username = "bodellbokning@gmail.com";
-        final String password = "bodellbokning123";
+        final String username = "bokelibok@gmail.com";
+        final String password = "Derp1234";
 
         Properties props = new Properties();
         props.put("mail.smtp.starttls.enable", "true");
@@ -29,6 +29,7 @@ public class Mail {
 
         Session session = Session.getInstance(props,
           new javax.mail.Authenticator() {
+            @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
             }

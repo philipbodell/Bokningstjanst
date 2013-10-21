@@ -1,7 +1,7 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this template, choose Tools | Templates
+* and open the template in the editor.
+*/
 package com.mycompany.booking.core;
 
 import java.io.Serializable;
@@ -18,9 +18,9 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
- * @author ed
- */
+*
+* @author ed
+*/
 @Entity
 @Table(name = "DEPARTURE")
 @XmlRootElement
@@ -33,28 +33,23 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Departure.findByDestination", query = "SELECT d FROM Departure d WHERE d.destination = :destination"),
     @NamedQuery(name = "Departure.findByTraveltime", query = "SELECT d FROM Departure d WHERE d.traveltime = :traveltime"),
     @NamedQuery(name = "Departure.findByType", query = "SELECT d FROM Departure d WHERE d.type = :type")})
-public class Departure implements Serializable {
+public class Departure extends AbstractEntity implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "ID")
-    private Long id;
-    @Column(name = "DEPARTUREDATE")
-    @Temporal(TemporalType.DATE)
-    private Date departuredate;
+    
     @Column(name = "DEPARTURELOCATION")
     private String departurelocation;
-    @Column(name = "DEPARTURETIME")
-    @Temporal(TemporalType.TIME)
-    private Date departuretime;
     @Column(name = "DESTINATION")
     private String destination;
+    @Column(name = "DEPARTUREDATE")
+    private String departuredate;
+    @Column(name = "DEPARTURETIME")
+    private String departuretime;
     @Column(name = "TRAVELTIME")
-    @Temporal(TemporalType.TIME)
-    private Date traveltime;
+    private String traveltime;
     @Column(name = "TYPE")
     private String type;
-
+    @Column(name = "PRICE")
+    private int price;
     public Departure() {
     }
 
@@ -70,11 +65,11 @@ public class Departure implements Serializable {
         this.id = id;
     }
 
-    public Date getDeparturedate() {
+    public String getDeparturedate() {
         return departuredate;
     }
 
-    public void setDeparturedate(Date departuredate) {
+    public void setDeparturedate(String departuredate) {
         this.departuredate = departuredate;
     }
 
@@ -86,11 +81,11 @@ public class Departure implements Serializable {
         this.departurelocation = departurelocation;
     }
 
-    public Date getDeparturetime() {
+    public String getDeparturetime() {
         return departuretime;
     }
 
-    public void setDeparturetime(Date departuretime) {
+    public void setDeparturetime(String departuretime) {
         this.departuretime = departuretime;
     }
 
@@ -102,11 +97,11 @@ public class Departure implements Serializable {
         this.destination = destination;
     }
 
-    public Date getTraveltime() {
+    public String getTraveltime() {
         return traveltime;
     }
 
-    public void setTraveltime(Date traveltime) {
+    public void setTraveltime(String traveltime) {
         this.traveltime = traveltime;
     }
 
@@ -116,6 +111,14 @@ public class Departure implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+    
+    public void setPrice(int price){
+        this.price = price;
+    }
+    
+    public int getPrice(){
+        return price;
     }
 
     @Override

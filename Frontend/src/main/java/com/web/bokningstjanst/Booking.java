@@ -13,8 +13,7 @@ public enum Booking {
 
     INSTANCE;
     private final IBooking b;
-    
-    
+
     private Booking() {
         b = JPABookingFactory.getBooking(Persistence.createEntityManagerFactory("test"));
     }

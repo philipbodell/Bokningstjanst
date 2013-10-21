@@ -26,15 +26,13 @@
             <c:forEach items="${sessionScope.MATCHING_DEST}" var="d"> 
                 <form  action="ticket" method="POST">
                     <input type="hidden" name="tickets" value="Confirm"/>
-                    <input type="hidden" name="id" value="${d.id}"/>
-                   
+                    <input type="hidden" name="id" value="${d.id}"/>            
                     <tr>
                         <td>${d.departurelocation} - ${d.destination}</td>
                         <td>Departure:${d.departuretime}</td>
                         <td>Travel time:${d.traveltime}</td>
                         <td><button id="button" type="submit">Buy</button></td>
-                    </tr>
-                        
+                    </tr>         
                 </form>                        
             </c:forEach>  
             </table>

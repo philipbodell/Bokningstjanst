@@ -24,6 +24,11 @@
             <p> Do not close this page until you have entered your validation code</p>
             <p>Enter validation key </p>
             <input type="text" name="validation"/>
+            <input type="hidden" name ="fname" value="${sessionScope.fname}"/>
+            <input type="hidden" name ="lname" value="${sessionScope.lname}"/>
+            <input type="hidden" name ="email" value="${sessionScope.email}"/>
+            <input type="hidden" name ="password" value="${sessionScope.password}"/>
+            <input type="hidden" name ="pnumb" value="${sessionScope.pnumb}"/>
             <button id="button" type="submit">Validate</button>
         </form>
          <form method="post" action="util">
