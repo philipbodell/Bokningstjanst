@@ -16,7 +16,7 @@ public interface ICustomerRegistry extends IDAO<Customer, Long> {
     
     String getFnameByEmail(String email);
     
-    long getIdByEmail(String email);
+    Long getIdByEmail(String email);
     
     boolean authenticate(String name, String password);
 }

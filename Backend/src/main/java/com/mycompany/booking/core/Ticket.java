@@ -1,24 +1,20 @@
 package com.mycompany.booking.core;
 
-import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
 
 /**
  * A Ticket
  * @author hajo
  * Details changed to match our project
  */
-//@NamedQuery(destination="Ticket.getAll",query="SELECT t FROM Ticket t")
 @Entity
 public class Ticket extends AbstractEntity {
     
     private String departurelocation;
     private String destination;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date traveldate;
+    private String traveldate;
     private String traveltime;
-    private double ticketprice;
+    private int ticketprice;
     private String type;
     private Long customerid;
    
@@ -26,7 +22,7 @@ public class Ticket extends AbstractEntity {
     public Ticket() {
     }
 
-    public Ticket(String departurelocation, String destination, Date traveldate, String traveltime, double ticketprice, String type, Long customerid) {
+    public Ticket(String departurelocation, String destination, String traveldate, String traveltime, String type,int ticketprice,  Long customerid) {
         this.departurelocation  = departurelocation;
         this.destination = destination;
         this.traveldate = traveldate;
@@ -44,7 +40,7 @@ public class Ticket extends AbstractEntity {
         return destination;
     }
     
-    public Date getTraveldate(){
+    public String getTraveldate(){
         return traveldate;
     }
     

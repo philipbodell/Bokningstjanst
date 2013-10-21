@@ -96,11 +96,11 @@ public final class CustomerRegistry
         return false;
     }
 
-    public long getIdByEmail(String email) {
+    public Long getIdByEmail(String email) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
-        Query q = em.createQuery("SELECT c.id from Customer c WHERE d.email = :email", Departure.class).setParameter("email", email);
-        long p = (Long) q.getResultList().get(0);
+        Query q = em.createQuery("SELECT c.id from Customer c WHERE c.email = :email", Departure.class).setParameter("email", email);
+        Long p = (Long) q.getResultList().get(0);
         em.getTransaction().commit();
         em.close();
         return p;

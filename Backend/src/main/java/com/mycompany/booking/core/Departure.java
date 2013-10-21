@@ -4,36 +4,15 @@
 */
 package com.mycompany.booking.core;
 
-import java.io.Serializable;
-import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
 *
 * @author ed
 */
 @Entity
-@Table(name = "DEPARTURE")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Departure.findAll", query = "SELECT d FROM Departure d"),
-    @NamedQuery(name = "Departure.findById", query = "SELECT d FROM Departure d WHERE d.id = :id"),
-    @NamedQuery(name = "Departure.findByDeparturedate", query = "SELECT d FROM Departure d WHERE d.departuredate = :departuredate"),
-    @NamedQuery(name = "Departure.findByDeparturelocation", query = "SELECT d FROM Departure d WHERE d.departurelocation = :departurelocation"),
-    @NamedQuery(name = "Departure.findByDeparturetime", query = "SELECT d FROM Departure d WHERE d.departuretime = :departuretime"),
-    @NamedQuery(name = "Departure.findByDestination", query = "SELECT d FROM Departure d WHERE d.destination = :destination"),
-    @NamedQuery(name = "Departure.findByTraveltime", query = "SELECT d FROM Departure d WHERE d.traveltime = :traveltime"),
-    @NamedQuery(name = "Departure.findByType", query = "SELECT d FROM Departure d WHERE d.type = :type")})
-public class Departure extends AbstractEntity implements Serializable {
+public class Departure extends AbstractEntity {
     private static final long serialVersionUID = 1L;
     
     @Column(name = "DEPARTURELOCATION")

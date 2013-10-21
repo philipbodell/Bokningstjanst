@@ -90,7 +90,7 @@ public class BServlet extends HttpServlet {
                     }
                     break;
                 case "PaymentSuccess":
-                   /* Booking.INSTANCE.getTicketCatalogue().add(new Ticket(
+                    Booking.INSTANCE.getTicketCatalogue().add(new Ticket(
                             request.getParameter("departurelocation"), 
                             request.getParameter("destination"), 
                             request.getParameter("departuredate"), 
@@ -98,9 +98,14 @@ public class BServlet extends HttpServlet {
                             request.getParameter("type"), 
                             Integer.valueOf(request.getParameter("price")), 
                             Booking.INSTANCE.getCustomerRegistry().getIdByEmail(request.getSession().getAttribute("email").toString())));
-                    /*Mail.sendMail((String)request.getSession()
-                            .getAttribute("email"),"Departure Location: \n"+request.getParameter("departurelocation")+"\n"+
-                            ,"ticket");*/
+                    Mail.sendMail((String)request.getSession()
+                            .getAttribute("email"),"Name: \n"+request.getSession().getAttribute("fname")+" "+request.getSession().getAttribute("lname")+"\n"+
+                            "Departure Location: \n"+request.getParameter("departurelocation")+"\n"+
+                            "Destination: \n"+request.getParameter("destination")+"\n"+
+                            "Date: \n"+request.getParameter("departuredate")+"\n"+
+                            "Traveltime: \n"+request.getParameter("traveltime")+"\n"+
+                            "Price: \n"+request.getParameter("price")+":-\n"
+                            ,"ticket");
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/paymentSuccess.jspx").forward(request, response);
                     break;
             }
