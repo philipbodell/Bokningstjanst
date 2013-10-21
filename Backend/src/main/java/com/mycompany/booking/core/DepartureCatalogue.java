@@ -2,6 +2,7 @@ package com.mycompany.booking.core;
 
 import com.mycompany.booking.utils.AbstractDAO;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -86,7 +87,7 @@ public final class DepartureCatalogue extends AbstractDAO<Departure, Long>
     }
     public List<Departure> getMatchingDeparture(String departurelocation, String destination){
          return getEntityManager().createQuery(
-                 "SELECT p FROM Departure p WHERE p.departurelocation=:departurelocation AND p.destination=:destination",Departure.class)
+                 "SELECT p FROM Departure p WHERE p.departurelocation=:departurelocation AND p.destination=:destination AND p.departuredate>=:currentdate",Departure.class)
                 .setParameter("departurelocation", departurelocation)
                 .setParameter("destination", destination)
                 .getResultList();

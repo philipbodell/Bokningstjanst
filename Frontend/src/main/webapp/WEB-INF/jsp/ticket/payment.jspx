@@ -22,7 +22,11 @@
             <jsp:directive.include file="../header.jspx" />
             <div id="payment">
                 <form  action="ticket" method="POST">
-                    <input type="hidden" name="tickets" value="PaymentComplete"/>
+                    <input type="hidden" name="tickets" value="PaymentSucess"/>
+                    <input type="hidden" name="departurelocation" value="${sessionScope.DEP.departurelocation}"/>
+                    <input type="hidden" name="destination" value="${sessionScope.DEP.destination}"/>
+                    <input type="hidden" name="departuredate" value="${sessionScope.DEP.departuredate}"/>
+                    <input type="hidden" name="departuretime" value="${sessionScope.DEP.departuretime}"/>
                     <h1>Order Payment</h1>
 
                     <label for="name">Surename: </label>
@@ -39,7 +43,7 @@
 
                     <label for="cardnr">Card Number: </label>
                     <input id="cardnr" name="cardnr" type="number" required="true"/>
-                    <label for="ccv">Ccv Code </label>
+                    <label for="ccv">Ccv Code: </label>
                     <input id="cardnr" name="ccv" type="ccv" required="true"/>
 
                     <button id="button" type="submit">Submit payment</button>

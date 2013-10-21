@@ -19,7 +19,6 @@
             <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/ticket.css" />
             <script type="text/javascript" src="js/countdowntimer.js"><jsp:text /></script>
-
         </head>
         <body>
             <jsp:directive.include file="../header.jspx" />
@@ -27,7 +26,7 @@
                 <div id="ticket">
                     <form  action="ticket" method="POST">
                         <input type="hidden" name="tickets" value="Payment"/>
-
+                         <input type="hidden" name="id" value="${sessionScope.DEP.id}"/>
                         <h1>Ticket</h1>
                         <span id="person">Name:</span>
                         <span id="person">Lastname:</span>
@@ -38,21 +37,19 @@
                             <tr>
                                 <td>
                                     Departure Station: ${sessionScope.DEP.departurelocation}
-                                    <input type="hidden" name="departurelocation" value="${sessionScope.DEP.departureLocation}"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     Destination: ${sessionScope.DEP.destination}
-                                    <input type="hidden" name="destination" value="${sessionScope.DEP.desination}"/>
+                                    
                                 </td>
                             </tr>
                             <tr>
                                 <td>Departure</td>
                                 <td>${sessionScope.DEP.departuredate}</td>
                                 <td>${sessionScope.DEP.departuretime}</td>
-                                <input type="hidden" name="departuredate" value="${sessionScope.DEP.departuredate}"/>
-                                <input type="hidden" name="departuretime" value="${sessionScope.DEP.departuretime}"/>
+                                
                             </tr>
                             <tr>
                                 <td>Persons</td>
