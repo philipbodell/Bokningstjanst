@@ -38,7 +38,7 @@
                     </select>
 
                     <label for="cardnr">Card Number: </label>
-                    <input id="cardnr" name="cardnr" type="number" required="true"/>
+                    <input id="cardnr" name="cardnr"  required="true"/>
                     <label for="ccv">Ccv Code </label>
                     <input id="cardnr" name="ccv" type="ccv" required="true"/>
 
