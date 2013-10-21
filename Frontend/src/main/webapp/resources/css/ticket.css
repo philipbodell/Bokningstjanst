@@ -22,10 +22,7 @@
 }
 
 
-#ticket table tr:first-child {
-    text-align:center;
-    vertical-align:middle;
-}
+
 #sumup {
     clear:both;
     float:right;

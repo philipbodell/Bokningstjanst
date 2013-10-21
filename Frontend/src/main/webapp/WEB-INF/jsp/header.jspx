@@ -18,7 +18,8 @@
                 <li><a href="navigate?view=contact">Contact Us</a></li>
                 <li>
                     <c:if test="${not empty sessionScope.name}" >
-                         You are logged in as ${sessionScope.name}
+                        You are logged in as ${sessionScope.name}
+                        <a href="util?action=logout">Logout</a>
                     </c:if>
                 </li>
 

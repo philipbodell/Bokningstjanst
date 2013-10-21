@@ -25,17 +25,20 @@
 
 
             <jsp:directive.include file="WEB-INF/jsp/header.jspx" />
-            <h1>Welcome to this bokningssystem!</h1>
+            <h1>Welcome to our bookingsystem!</h1>
             <div id="welcome_text">
-                dsfsggrredsfsdsfsggrregregregretgrtgregregrtegtregrtegtregrt
-                egretgrtegrtegrt4egretgtrgtreg
-                ertgregretgretgretgretgrtegretgretgretgretgtregrtegretgrtegretgretgergergerg
-                ggrregregregretgrtgregregrtegtregrtegtregrtegretgrtegrtegrt4egretgtrgtreg
-                ertgregretgretgretgretgrtegretgretgretgretgtregrtegretgrtegretgretgergergerg
-                gregregretgrtgregregrtegtregrtegtregrtegretgrtegrtegrt4egretgtrgtreg
-                ertgregretgretgretgretgrtegretgretgretgretgtregrtegretgrtegretgretgergerger
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+                sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
+                est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius 
+                modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+                quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+                Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quamnihil molestiae consequatur.
             </div>
             <div id="login">
+                <button id="facebookloginlink" onClick = "fblogin()">Login using facebook</button>
+
                 <form method="post" action="util">
                     <input type="hidden" name="action" value="login" />
 
@@ -47,27 +50,19 @@
                     <input type="text" name="name" maxlength="20"/>
                     <label>Password</label>
                     <input type="password" name="passwd" maxlength="20"/>
-                    <p></p>
-                    <button type="submit">Login</button> 
+
+                    <button id="login_button" type="submit">Login</button> 
 
                 </form>
-                <form  method="post" action="util">
-                    <input type="hidden" name="action" value="logout" />
-                    <button type="submit">Logout</button>
-                </form>
+
                 <form  method="post" action="util">
                     <input type="hidden" name="view" value="register" />
-                    <button type="submit">Register</button> 
+                    <button id="register_button" type="submit">Register</button> 
 
                 </form>
-                
-
-                <button id="facebookloginlink" onClick = "fblogin()">Login using facebook</button>
-
-
 
             </div>
-            
+
             <div>
                 <form id="fbform" method="post" action="util">
                     <p>
@@ -76,7 +71,7 @@
                         <input type="hidden" id="lname" name="lname" value=""/>
                     </p>
 
-                    
+
                     <div id="fb-root"></div>
 
                     <script>

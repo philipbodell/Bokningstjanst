@@ -6,18 +6,21 @@ body {
     margin-right: auto;
     margin-top: 0px;
     margin-bottom: 0px;
-
     padding: 0px;
-
     background-color:#272727;
     overflow:auto;
 }
+
 footer {
 
     position:absolute; 
     bottom:0;
     background-color:#131313;
-
+}
+button {
+    background-color:#2099f6;
+    border-style:none;
+    margin:0.3em;
 
 }
 
@@ -40,56 +43,31 @@ footer {
     width: 16em;
 }
 
-input {
 
-    background-color:#131313;
+#login button {
+    float:right;
+}
+
+input {
     border: none;
     height:2em;
     padding-left:0.5em;
     margin-bottom:0.5em;
 }
-#clear {
-    clear:both;
-}
 
-
-
-#fieldset-container {
-    float:left;
-    padding: 1em;
-}
-
-#fieldset-container legend {
-    color:#2099f6;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#fieldset-container input {
-    background-color:#131313;
-    border: none;
-    height:2em;
-    margin-bottom:0.5em;
-    opacity: 0.5;
-
-    color:#7D7D7D;
-    font-family:Tahoma, Geneva, sans-serif;
-    font-size: 0.8em;
-}
 #login label {
     float:left;
     margin: 0.3em;
-        
-    
+
+
 }
 #login input {
-    float:left;
     background-color:#131313;
-    border: none;
-    height:2em;
-    padding-left:0.5em;
-    margin-bottom:0.5em;
-    
+    float:right;
+}
+
+#register button {
+    margin: 0.3em;
 }
 
 #payment input,select , label , button {
@@ -137,9 +115,3 @@ input {
 
 #all_tickets tr:nth-child(odd) {background-color:rgba(129,139,139,0.5);}
 
-
-#register button {
-    background-color:#2099f6;
-    border: none;
-    margin: 0.3em;
-}

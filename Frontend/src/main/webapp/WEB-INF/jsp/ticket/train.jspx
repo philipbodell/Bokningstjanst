@@ -24,11 +24,6 @@
 
         </head>
         <body>
-            <script type="text/javascript">
-                
-            </script>
-
-
             <jsp:directive.include file="../header.jspx" />
             <h1>Select Departure</h1>
             <div id="city_choose">
