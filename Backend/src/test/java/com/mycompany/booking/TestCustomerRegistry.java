@@ -27,15 +27,16 @@ public class TestCustomerRegistry {
     @Before // Run before each test
     public void before() {
         booking = JPABookingFactory.getBooking(Persistence.createEntityManagerFactory("booking_pu"));
+        
     }
     
     @Test
     public void testAddCustomer(){
         ICustomerRegistry cr = booking.getCustomerRegistry();
         System.out.println(cr.toString());
-        
-        Customer c1 = new Customer("Philip","Bodell","Philip","1234","900703");
+        cr.remove(cr.getIdByEmail("p@b.se"));
+        Customer c1 = new Customer("Philip","Bodell","1234","900703","p@b.se");
         cr.add(c1);
-        assertTrue(cr.getCount()>=1);
+        assertTrue(cr.getByEmail("p@b.se").equals(c1));
     }
 }

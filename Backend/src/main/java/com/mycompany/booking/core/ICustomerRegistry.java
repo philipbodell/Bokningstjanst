@@ -10,14 +10,23 @@ import java.util.List;
  */
 public interface ICustomerRegistry extends IDAO<Customer, Long> {
 
-    List<Customer> getByName(String name);
+     List<Customer> getByName(String name);
+    
+    public Object getById(Long id);
+   
+    public List<Customer> getByMail(String email);
+    
+    public String getUserPassword(String email);   
     
     String getLnameByEmail(String email);
     
     String getFnameByEmail(String email);
-    
-    Long getIdByEmail(String email);
-    
+
     boolean authenticate(String name, String password);
+
+    Long getIdByEmail(String email);
+
+    public Customer getByEmail(String email);
 }
+    
 

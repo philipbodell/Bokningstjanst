@@ -2,7 +2,6 @@ package com.mycompany.booking.core;
 
 import com.mycompany.booking.utils.AbstractDAO;
 import java.util.List;
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 /**
@@ -23,6 +22,7 @@ public final class TicketCatalogue extends AbstractDAO<Ticket, Long>
         return new TicketCatalogue(emf);
     }
     
+    @Override
     public List<Ticket> getAll(){
         return getEntityManager().createNamedQuery("Ticket.getAll",Ticket.class).getResultList();
     }
@@ -50,6 +50,7 @@ public final class TicketCatalogue extends AbstractDAO<Ticket, Long>
                 .setParameter("departurelocation", departurelocation).getResultList();
     }
 
+    @Override
     public List<Ticket> getByCustomerId(Long customerid) {
         return getEntityManager().createQuery("SELECT t FROM Ticket t WHERE t.customerid = :customerid",Ticket.class)
                 .setParameter("customerid", customerid).getResultList();    
