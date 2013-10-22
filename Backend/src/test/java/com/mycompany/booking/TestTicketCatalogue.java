@@ -61,7 +61,6 @@ public class TestTicketCatalogue {
         ITicketCatalogue tc = booking.getTicketCatalogue();
         Ticket p = new Ticket("DepartureTest","DestinationTest","2013-05-12", "08:02", "Train",240,(long)12);
         tc.add(p);
-
         List<Ticket> ps = tc.getByDestination("DestinationTest");
         assertTrue(ps.size() >= 1);
     }
