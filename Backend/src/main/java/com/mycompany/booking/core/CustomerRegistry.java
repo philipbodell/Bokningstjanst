@@ -39,7 +39,7 @@ public final class CustomerRegistry
     public Object getById(Long id) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
-        Query q = em.createQuery("SELECT d from Departure d WHERE d.id = :id", Departure.class).setParameter("id", id);
+        Query q = em.createQuery("SELECT c from Customer c WHERE c.id = :id", Departure.class).setParameter("id", id);
         List<Departure> p = q.getResultList();
         em.getTransaction().commit();
         em.close();
@@ -55,13 +55,14 @@ public final class CustomerRegistry
         em.getTransaction().commit();
         em.close();
         return p;
+        
     }
     
     @Override
     public String getUserPassword(String email) {
        EntityManager em = getEntityManager();
         em.getTransaction().begin();
-        Query q = em.createQuery("SELECT d.password from Customer d WHERE d.email = :email", Departure.class).setParameter("email", email);
+        Query q = em.createQuery("SELECT c.password from Customer c WHERE c.email = :email", Departure.class).setParameter("email", email);
         String p = (String)q.getResultList().get(0);
         em.getTransaction().commit();
         em.close();
@@ -97,11 +98,6 @@ public final class CustomerRegistry
         }else if(getUserPassword(email).equals(password)){
             return true;
         }
-            
-             //c.getPassword().equals(Encrypter.enCrypt(password));
-            
-            
-        
         return false;
     }
 
@@ -116,7 +112,7 @@ public final class CustomerRegistry
         return p;
     }
     
-    @Override
+    /*@Override
     public Customer getByEmail(String email){
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -125,5 +121,5 @@ public final class CustomerRegistry
         em.getTransaction().commit();
         em.close();
         return c;
-    }
+    */
 }

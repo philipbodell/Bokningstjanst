@@ -35,6 +35,7 @@
                             <option value="${d}">${d}</option>
                         </c:forEach>
                     </select> 
+                    
                     <button id="button" type="submit">Next</button>
                 </form>
             </div>

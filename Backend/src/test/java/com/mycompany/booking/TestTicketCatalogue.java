@@ -1,5 +1,19 @@
 package com.mycompany.booking;
 
+import com.mycompany.booking.core.Departure;
+import com.mycompany.booking.core.IBooking;
+import com.mycompany.booking.core.ITicketCatalogue;
+import com.mycompany.booking.core.JPABookingFactory;
+import com.mycompany.booking.core.Ticket;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -20,74 +34,36 @@ package com.mycompany.booking;
  */
 public class TestTicketCatalogue {
 
-    /*static IBooking booking;
+    static IBooking booking;
     final static String PU = "booking_pu";
     
 
     @Before // Run before each test
     public void before() {
-        booking = JPABookingFactory.getBooking(PU);  
+        booking = JPABookingFactory.getBooking(Persistence.createEntityManagerFactory(PU));  
     }
-/*
+
     @Test
     public void testGetRange() {
         ITicketCatalogue tc = booking.getTicketCatalogue();
 
         for (int i = 0; i < 10; i++) {
-            tc.add(new Ticket("Tåg",String.valueOf(i),String.valueOf(i+1), i));
+            tc.add(new Ticket("DepartureTest","DestinationTest","2013-05-12", "08:02", "Train",240,Long.valueOf(i)));
         }
         List<Ticket> ps = tc.getRange(0, 2);
         assertTrue(ps.size() == 2);
     }
 
-    @Test
-    public void testAddUpdateAndRemoveTicket() {
-        ITicketCatalogue tc = booking.getTicketCatalogue();
-        System.out.println(tc.toString());
-        
-        //TODO fixa
-        Ticket p1 = new Ticket(new Departure("Tåg", "Kungsbacka","Göteborg", , null, null), 57);
-        tc.add(p1);
-        assertTrue(tc.getCount() == 1);
-
-        Ticket p2 = tc.find(p1.getId());
-        // Not same transaction
-        assertTrue(p2 != p1);
-        // Equal by value
-        
-        assertTrue(p2.equals(p1));
-
-        Ticket p = new Ticket(p1.getId(), "updated_med_swing", p1.getTicketPrice());
-        tc.update(p);
-        p1 = tc.find(p1.getId());
-        /*
-         * Id NOT changed here we have two Tickets with
-         * same id but different state! 
-         * Seems to be no single simple solution to this..?!
-         */
-    /*
-        assertTrue(p2.equals(p1));
-        assertFalse(p2.getDestination().equals(p1.getDestination()));
-        //assertTrue(tc.getCount() == 1);
-
-        tc.remove(p1.getId());
-        assertTrue(tc.getCount() == 0);
-        assertTrue(tc.find(p1.getId()) == null);
-
-        // No change in program (but deleted from database)
-        assertTrue(p2.equals(p1));
-        assertFalse(p2.getDestination().equals(p1.getDestination()));
-
-    }
+    
 
     @Test
     public void testGetByDestination() {
         ITicketCatalogue tc = booking.getTicketCatalogue();
-        Ticket p = new Ticket("Tåg","Kungsbacka", "Göteborg", 11.11);
+        Ticket p = new Ticket("DepartureTest","DestinationTest","2013-05-12", "08:02", "Train",240,(long)12);
         tc.add(p);
 
-        List<Ticket> ps = tc.getByDestination("Kungsbacka");
-        assertTrue(ps.size() == 1);
+        List<Ticket> ps = tc.getByDestination("DestinationTest");
+        assertTrue(ps.size() >= 1);
     }
     
     //@After
@@ -99,5 +75,5 @@ public class TestTicketCatalogue {
         q2.executeUpdate();
         em.getTransaction().commit();
         em.close();
-    }*/
+    }
 }

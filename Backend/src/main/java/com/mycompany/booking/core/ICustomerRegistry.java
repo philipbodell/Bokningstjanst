@@ -26,7 +26,7 @@ public interface ICustomerRegistry extends IDAO<Customer, Long> {
 
     Long getIdByEmail(String email);
 
-    public Customer getByEmail(String email);
+    //public Customer getByEmail(String email);
 }
     
 

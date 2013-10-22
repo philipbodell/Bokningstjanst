@@ -38,18 +38,11 @@ public class TicketServlet extends HttpServlet {
 
         //Get the view parameter.
         String view = request.getParameter("view");
-        
         //Used when ticket of some sort should be handeled
         String tickets = request.getParameter("tickets");
-
         if (view != null) {
             switch (view) {
-
                 case "train":
-                    Logger logger = Logger.getLogger(getClass().getName());
-
-                   
-                    //Departure dep = d.getAll(emf.createEntityMnager().getAl);
                     request.getSession().setAttribute("DEPARTURES", Booking.INSTANCE.getDepartureCatalogue().getDepartures());
                     request.getSession().setAttribute("DESTINATIONS", Booking.INSTANCE.getDepartureCatalogue().getDestinations());
                     if(request.getSession().getAttribute("loggedin") == null){
@@ -59,7 +52,6 @@ public class TicketServlet extends HttpServlet {
                     }else{
                         request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
                     }
-                   
                     break;
             }
         }
@@ -68,19 +60,14 @@ public class TicketServlet extends HttpServlet {
                 case "chooseDeparture":
                     request.getSession().setAttribute("MATCHING_DEST", Booking.INSTANCE.getDepartureCatalogue()
                             .getMatchingDeparture(request.getParameter("departure"),request.getParameter("destination")));
-                    //logger.severe(d.getMatchingDeparture(request.getParameter("departure"),request.getParameter("destination")).toString());
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/allDepartures.jspx").forward(request, response);  
                     break;
                 case "Confirm":
-                    
-                    //Resan som valts  är 
-                    //ID till departure = request.getParameter(id)
                     HttpSession session = request.getSession();
                     session.setMaxInactiveInterval(60);
                     request.getSession().setAttribute("DEP", Booking.INSTANCE.getDepartureCatalogue().getById(Long.valueOf(request.getParameter("id"))));
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/ticketValidation.jspx").forward(request, response);
                     break;
-
                 case "Payment":
                     //Check so the session has not died
                     if (request.getSession(false) != null) {
@@ -95,7 +82,7 @@ public class TicketServlet extends HttpServlet {
                             request.getParameter("departurelocation"), 
                             request.getParameter("destination"), 
                             request.getParameter("departuredate"), 
-                            request.getParameter("traveltime"), 
+                            request.getParameter("departuretime"), 
                             request.getParameter("type"), 
                             Integer.valueOf(request.getParameter("price")), 
                             Booking.INSTANCE.getCustomerRegistry().getIdByEmail(request.getSession().getAttribute("email").toString())));
@@ -104,26 +91,15 @@ public class TicketServlet extends HttpServlet {
                             "Departure Location: \n"+request.getParameter("departurelocation")+"\n"+
                             "Destination: \n"+request.getParameter("destination")+"\n"+
                             "Date: \n"+request.getParameter("departuredate")+"\n"+
-                            "Traveltime: \n"+request.getParameter("traveltime")+"\n"+
+                            "Traveltime: \n"+request.getParameter("departuretime")+"\n"+
                             "Price: \n"+request.getParameter("price")+":-\n"
                             ,"ticket");
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/paymentSuccess.jspx").forward(request, response);
                     break;
             }
         }
-
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP
-     * <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP
@@ -164,6 +140,6 @@ public class TicketServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Handles action and view requests in ticket pages. ";
     }// </editor-fold>
 }

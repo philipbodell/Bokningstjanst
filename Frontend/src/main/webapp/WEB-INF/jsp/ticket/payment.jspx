@@ -27,7 +27,8 @@
                     <input type="hidden" name="destination" value="${sessionScope.DEP.destination}"/>
                     <input type="hidden" name="departuredate" value="${sessionScope.DEP.departuredate}"/>
                     <input type="hidden" name="departuretime" value="${sessionScope.DEP.departuretime}"/>
-                     <input type="hidden" name="price" value="${sessionScope.DEP.price}"/>
+                    <input type="hidden" name="price" value="${sessionScope.DEP.price}"/>
+                    <input type="hidden" name="price" value="${sessionScope.DEP.type}"/>
                     <h1>Order Payment</h1>
 
                     <label for="name">Surename: </label>
