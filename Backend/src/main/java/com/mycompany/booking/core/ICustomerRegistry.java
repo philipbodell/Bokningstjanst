@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * Interface to customer registry
  * @author hajo
+ * Details changed to fit our project
  */
 public interface ICustomerRegistry extends IDAO<Customer, Long> {
 
@@ -25,8 +26,6 @@ public interface ICustomerRegistry extends IDAO<Customer, Long> {
     boolean authenticate(String name, String password);
 
     Long getIdByEmail(String email);
-
-    //public Customer getByEmail(String email);
 }
     
 

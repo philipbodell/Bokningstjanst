@@ -10,7 +10,8 @@ import javax.persistence.Query;
 /**
  * All products
  *
- * @author hajo Modified for our project
+ * @author hajo 
+ * Modified for our project
  */
 public final class DepartureCatalogue extends AbstractDAO<Departure, Long>
         implements IDepartureCatalogue {

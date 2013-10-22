@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 
 /**
  *
- * @author ed
+ * @author Philip och Johan
  */
 @Entity
 public class Customer extends AbstractEntity {

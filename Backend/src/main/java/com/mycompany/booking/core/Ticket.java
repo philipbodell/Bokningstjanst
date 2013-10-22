@@ -62,7 +62,6 @@ public class Ticket extends AbstractEntity {
      
     @Override
     public String toString() {
-        //TODO hej
         return "Ticket: "+id;
     }      
 }

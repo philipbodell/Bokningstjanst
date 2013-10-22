@@ -6,10 +6,14 @@ package com.mycompany.booking.core;
 
 /**
  *
- * @author ed
+ * @author hajo
+ * Details changed to fit our project
  */
 public interface IBooking {
+    
     public ITicketCatalogue getTicketCatalogue();
+    
     public ICustomerRegistry getCustomerRegistry();
+    
     public IDepartureCatalogue getDepartureCatalogue();
 }

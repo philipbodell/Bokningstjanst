@@ -9,7 +9,8 @@ import javax.persistence.Query;
 /**
  * All customers
  *
- * @author hajo Details changed to fit our project
+ * @author hajo 
+ * Details changed to fit our project
  *
  */
 public final class CustomerRegistry
