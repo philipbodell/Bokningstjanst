@@ -12,9 +12,9 @@ var refreshIntervalId = setInterval(function() {
 
     if (secondsLeft === 0) {
         clearInterval(refreshIntervalId);
-        document.getElementById('countdownClock').innerHTML = "";
+        document.getElementById('button').innerHTML = "Expired";
     }
-    //Update countdownId inner html with seconds 
+    //Update button inner html with seconds 
     document.getElementById('button').innerHTML = "Accept Expire in "+ secondsLeft + " s";
 
 }, 1000);

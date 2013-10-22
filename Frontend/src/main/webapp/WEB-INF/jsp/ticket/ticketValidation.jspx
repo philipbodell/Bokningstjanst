@@ -17,7 +17,6 @@
             <link rel="stylesheet" type="text/css" href="resources/css/layout.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
             <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
-            <link rel="stylesheet" type="text/css" href="resources/css/ticket.css" />
             <script type="text/javascript" src="js/countdowntimer.js"><jsp:text /></script>
         </head>
         <body>

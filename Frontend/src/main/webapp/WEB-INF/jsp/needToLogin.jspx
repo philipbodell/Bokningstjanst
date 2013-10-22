@@ -24,9 +24,9 @@
         </head>
         <body>
             <jsp:directive.include file="header.jspx" />
-            <section>
+            <p>
                 You need to login to reach this page.
-            </section>
+            </p>
             <jsp:directive.include file="footer.jspx" />
         </body>
     </html>

@@ -11,10 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Patrik
- */
+
 @WebServlet(name = "RouterServlet", urlPatterns = {"/navigate/*"})
 public class RouterServlet extends HttpServlet {
 
@@ -33,6 +30,7 @@ public class RouterServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         //Get the view parameter.
         String view = request.getParameter("view");
+        
         if (view != null) {
             switch (view) {
 
@@ -46,7 +44,6 @@ public class RouterServlet extends HttpServlet {
                 case "home":
                     request.getRequestDispatcher("index.jspx").forward(request, response);
                     break;
-
 
                 case "notFound":
                     request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);

@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  * @author Patrik
  */
 @WebServlet(name = "BookingServlet", urlPatterns = {"/ticket/*"})
-public class BServlet extends HttpServlet {
+public class TicketServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -38,6 +38,7 @@ public class BServlet extends HttpServlet {
 
         //Get the view parameter.
         String view = request.getParameter("view");
+        
         //Used when ticket of some sort should be handeled
         String tickets = request.getParameter("tickets");
 
@@ -46,7 +47,7 @@ public class BServlet extends HttpServlet {
 
                 case "train":
                     Logger logger = Logger.getLogger(getClass().getName());
-                    //TODO Lägg till all tåg  info till request här
+
                    
                     //Departure dep = d.getAll(emf.createEntityMnager().getAl);
                     request.getSession().setAttribute("DEPARTURES", Booking.INSTANCE.getDepartureCatalogue().getDepartures());

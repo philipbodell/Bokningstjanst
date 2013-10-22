@@ -23,6 +23,8 @@
 
             <h1>Choose Departure</h1>
             <table id="all_tickets">
+                
+                <!--Loop out all tickets-->
             <c:forEach items="${sessionScope.MATCHING_DEST}" var="d"> 
                 <form  action="ticket" method="POST">
                     <input type="hidden" name="tickets" value="Confirm"/>

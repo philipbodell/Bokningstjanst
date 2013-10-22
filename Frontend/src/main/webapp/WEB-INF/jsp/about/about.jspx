@@ -24,11 +24,11 @@
         <body>
             <jsp:directive.include file="../header.jspx" />
             <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
-            <section>
+    
                 <h3>About</h3>
                 Website made by Jacob Engdahl, Patrik Fritzner, Philip Bodell, Johan Stenberg and Fredrik Lönnstam
                  As a project in the Chalmers course Webbapplications
-            </section>
+
             <jsp:directive.include file="../footer.jspx" />
         </body>
     </html>
