@@ -12,17 +12,17 @@ import java.util.List;
  */
 public interface IDepartureCatalogue extends IDAO<Departure, Long> {
 
+    public List<Departure> getAll();
+    
     public Object getById(Long id);
     
     public List<Departure> getByType(String type);
     
+    public List<String> getDepartures();
+     
     public List<String> getDestinations();
     
-    public List<String> getDepartures();
-    
     public List<Departure> getByDestination(String dest);
-    
-    public List<Departure> getAll();     
     
     public List<Departure> getMatchingDeparture(String departure, String destination);
 }

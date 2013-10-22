@@ -11,13 +11,15 @@ import java.util.List;
  */
 public interface ITicketCatalogue extends IDAO<Ticket, Long> {
 
-    public List<Ticket> getByDeparture(String departurelocation);
-    
-    public List<Ticket> getByDestination(String dest);    
+    public List<Ticket> getAll();
     
     public Ticket getById(Long id);
     
     public List<Ticket> getByType(String type);
+    
+    public List<Ticket> getByDestination(String dest);    
+    
+    public List<Ticket> getByDeparture(String departurelocation);
     
     public List<Ticket> getByCustomerId(Long customerid);
 }

@@ -1,7 +1,6 @@
 package com.mycompany.booking.core;
 
 import com.mycompany.booking.utils.AbstractDAO;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -36,17 +35,30 @@ public final class CustomerRegistry
         return p;
     }
     
-    public List<Customer> getMail(String email) {
+    @Override
+    public Object getById(Long id) {
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        Query q = em.createQuery("SELECT d from Departure d WHERE d.id = :id", Departure.class).setParameter("id", id);
+        List<Departure> p = q.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return p.get(0);
+    }
+    
+    @Override
+    public List<Customer> getByMail(String email) {
        EntityManager em = getEntityManager();
         em.getTransaction().begin();
-        Query q = em.createQuery("SELECT d from Customer d WHERE d.email = :email", Departure.class).setParameter("email", email);
+        Query q = em.createQuery("SELECT c from Customer c WHERE c.email = :email", Departure.class).setParameter("email", email);
         List<Customer> p = q.getResultList();
         em.getTransaction().commit();
         em.close();
         return p;
     }
     
-    private String getUserPassword(String email) {
+    @Override
+    public String getUserPassword(String email) {
        EntityManager em = getEntityManager();
         em.getTransaction().begin();
         Query q = em.createQuery("SELECT d.password from Customer d WHERE d.email = :email", Departure.class).setParameter("email", email);
@@ -78,14 +90,11 @@ public final class CustomerRegistry
         return p;   
     }
 
-
     @Override
-    public boolean authenticate(String name, String password) {
-        
-        
-        if(getMail(name).size()<1){
+    public boolean authenticate(String email, String password) {
+        if(getByMail(email).size()<1){
             return false;
-        }else if(getUserPassword(name).equals(password)){
+        }else if(getUserPassword(email).equals(password)){
             return true;
         }
             
@@ -96,6 +105,7 @@ public final class CustomerRegistry
         return false;
     }
 
+    @Override
     public Long getIdByEmail(String email) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -105,6 +115,15 @@ public final class CustomerRegistry
         em.close();
         return p;
     }
-
     
+    @Override
+    public Customer getByEmail(String email){
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        Query q = em.createQuery("SELECT c from Customer c WHERE c.email = :email", Departure.class).setParameter("email", email);
+        Customer c = (Customer)q.getResultList().get(0);
+        em.getTransaction().commit();
+        em.close();
+        return c;
+    }
 }
