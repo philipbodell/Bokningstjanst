@@ -97,7 +97,7 @@ public final class UtilServlet extends HttpServlet {
                     break;
                 case "resend":
                     request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getSession().getAttribute("password"),"validation"));
-                    request.getRequestDispatcher("WEB-INF/jsp/validate.jspx").forward(request, response);
+                    request.getRequestDispatcher("WEB-INF/jsp/register/validate.jspx").forward(request, response);
                     break;
 
 
@@ -114,7 +114,7 @@ public final class UtilServlet extends HttpServlet {
                     break;
                 case "register":
                     
-                    request.getRequestDispatcher("WEB-INF/jsp/register.jspx").forward(request, response);
+                    request.getRequestDispatcher("WEB-INF/jsp/register/register.jspx").forward(request, response);
                     break;
                 case "validate":
                    
@@ -130,7 +130,7 @@ public final class UtilServlet extends HttpServlet {
                         request.getRequestDispatcher("WEB-INF/jsp/register.jspx").forward(request, response);
                     }
                     
-                    request.getRequestDispatcher("WEB-INF/jsp/validate.jspx").forward(request, response);
+                    request.getRequestDispatcher("WEB-INF/jsp/register/validate.jspx").forward(request, response);
                     break;
                 default:
                     break;
