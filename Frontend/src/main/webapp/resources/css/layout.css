@@ -1,0 +1,146 @@
+
+body { 
+    display: block;
+    width: 70em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+    background-color:#272727;
+    overflow:auto;
+}
+
+footer {
+
+    position:absolute; 
+    bottom:0;
+    background-color:#131313;
+}
+button {
+    background-color:#2099f6;
+    border-style:none;
+    margin:0.3em;
+
+}
+
+#header_wrapper {
+    height:25em;
+    background-image:url('../pictures/train.jpg');
+    background-position:center; 
+}
+
+#welcome_text {
+    position:relative;
+    float:left;
+    width: 50em;
+}
+
+#login {
+    position:relative;
+    float:right;
+    background:none;
+    width: 16em;
+}
+
+
+#login button {
+    float:right;
+}
+
+input {
+    border: none;
+    height:2em;
+    padding-left:0.5em;
+    margin-bottom:0.5em;
+}
+
+#login label {
+    float:left;
+    margin: 0.3em;
+
+
+}
+#login input {
+    background-color:#131313;
+    float:right;
+}
+
+#register button {
+    margin: 0.3em;
+}
+
+#payment input,select , label , button {
+    float:left;
+    clear:both;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+#payment button {
+    margin-top: 0.4em;
+}
+
+
+#register input , label , button {
+    float:left;
+    clear: both;
+}
+
+#city_choose select {
+    float:left;
+    clear:none;
+    width:10em;
+    padding:0.2em;
+    margin-right: 1em;
+
+    border-radius: 0.3em;
+    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    background: #f8f8f8;
+    color:#888;
+    border:none;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+}
+#city_choose button {
+    margin-top: 0.8em;
+    margin-left: 1em;
+}
+
+#all_tickets tr:nth-child(odd) {background-color:rgba(129,139,139,0.5);}
+
+#ticket {
+    width: 100%;
+    padding: 2em;
+}
+
+
+
+#ticket hr {
+    width:100%;
+    float:left;
+}
+
+
+#ticket table {
+    margin-right: auto;
+    float:left;
+    border-collapse:collapse;
+}
+
+
+
+#sumup {
+    clear:both;
+    float:right;
+}
+
+
+
+
+
+

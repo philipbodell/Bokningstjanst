@@ -1,0 +1,31 @@
+<!-- Using static include, so no need for anything else -->
+<header xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <div id="header_wrapper">
+        <nav>
+            <ul id="menu-bar">
+                <li class="active"><a href="navigate?view=home">Home</a></li>
+                <li><a href="#">Tickets</a>
+                    <ul>
+                        <li><a href="ticket?view=train">Train</a></li>
+                        <li><a href="navigate?view=notFound">Flight</a></li>
+                        <li><a href="navigate?view=notFound">Bus</a></li>
+                        <li><a href="navigate?view=notFound">Boat</a></li>
+                    </ul>
+                </li>
+                <li><a href="navigate?view=notFound">Services</a></li>
+                <li><a href="navigate?view=about">About</a></li>
+                <li><a href="navigate?view=contact">Contact Us</a></li>
+                <li>
+                    <c:if test="${not empty sessionScope.fname}" >
+                        You are logged in as ${sessionScope.fname}
+                        <a href="util?action=logout">Logout</a>
+                    </c:if>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+</header>   
+

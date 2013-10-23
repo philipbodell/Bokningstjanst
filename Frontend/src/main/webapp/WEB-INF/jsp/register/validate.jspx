@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jsp:root 
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns="http://www.w3.org/1999/xhtml"
+    version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" 
+                doctype-system="about:legacy-compat" />
+
+        <head>
+            <title>Validate E-mail</title> 
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <link rel="stylesheet" type="text/css" href="resources/css/layout.css" />
+            <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+        </head>
+    <body>
+        <form method="post" action="util">
+            <input type="hidden" name="action" value="validate"/>
+            <p> You have received an email.</p>
+            <p> Do not close this page until you have entered your validation code</p>
+            <p>Enter validation key </p>
+            <input type="text" name="validation"/>
+            <input type="hidden" name ="fname" value="${sessionScope.fname}"/>
+            <input type="hidden" name ="lname" value="${sessionScope.lname}"/>
+            <input type="hidden" name ="email" value="${sessionScope.email}"/>
+            <input type="hidden" name ="password" value="${sessionScope.password}"/>
+            <input type="hidden" name ="pnumb" value="${sessionScope.pnumb}"/>
+            <button id="button" type="submit">Validate</button>
+        </form>
+         <form method="post" action="util">
+            <input type="hidden" name="action" value="resend"/>
+            <button id="button" type="submit">Resend code</button>
+         </form>
+    </body>
+
+</jsp:root>

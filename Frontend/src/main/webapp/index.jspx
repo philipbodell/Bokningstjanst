@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jsp:root 
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns="http://www.w3.org/1999/xhtml"
+    version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" 
+                doctype-system="about:legacy-compat" />
+
+    <html xmlns:fb="http://www.facebook.com/2008/fbml">
+
+        <head>
+            <title>Ontour</title> 
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <link rel="stylesheet" type="text/css" href="resources/css/layout.css" />
+            <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
+            <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+        </head>
+        <body>
+
+
+            <jsp:directive.include file="WEB-INF/jsp/header.jspx" />
+            <h1>Welcome to our bookingsystem!</h1>
+            <div id="welcome_text">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+                sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
+                est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius 
+                modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+                quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+                Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quamnihil molestiae consequatur.
+            </div>
+            
+            <!-- Login -->
+            <div id="login">
+                <button id="facebookloginlink" onClick = "fblogin()">Login using facebook</button>
+
+                <form method="post" action="util">
+                    <input type="hidden" name="action" value="login" />
+
+                    <c:if test="${not empty param.authInvalid}" >
+                        <p class="error"> Authorization failed!</p>
+                    </c:if>
+
+                    <label>User Name</label>  
+                    <input type="text" name="name" maxlength="100"/>
+                    <label>Password</label>
+                    <input type="password" name="passwd" maxlength="20"/>
+
+                    <button id="login_button" type="submit">Login</button> 
+
+                </form>
+
+                <form  method="post" action="util">
+                    <input type="hidden" name="view" value="register" />
+                    <button id="register_button" type="submit">Register</button> 
+
+                </form>
+
+            </div>
+
+            <div>
+                <form id="fbform" method="post" action="util">
+                    <p>
+                        <input type="hidden" name="action" value="fblogin" />
+                        <input type="hidden" id="fname" name="fname" value=""/>
+                        <input type="hidden" id="lname" name="lname" value=""/>
+                    </p>
+
+
+                    <div id="fb-root"></div>
+                    <script type="text/javascript" src="js/fblogin.js"><jsp:text /></script>
+                </form>
+
+            </div>
+
+            <jsp:directive.include file="WEB-INF/jsp/footer.jspx" />
+
+        </body>
+    </html>
+</jsp:root>
+
