@@ -43,12 +43,45 @@ public class TicketServlet extends HttpServlet {
         if (view != null) {
             switch (view) {
                 case "train":
-                    request.getSession().setAttribute("DEPARTURES", Booking.INSTANCE.getDepartureCatalogue().getDepartures());
-                    request.getSession().setAttribute("DESTINATIONS", Booking.INSTANCE.getDepartureCatalogue().getDestinations());
+                    request.getSession().setAttribute("DEPARTURES", Booking.INSTANCE.getDepartureCatalogue().getDeparturesByType("Train"));
+                    request.getSession().setAttribute("DESTINATIONS", Booking.INSTANCE.getDepartureCatalogue().getDestinationsByType("Train"));
                     if(request.getSession().getAttribute("loggedin") == null){
                         request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
                     }else if((boolean)request.getSession().getAttribute("loggedin")){
                         request.getRequestDispatcher("WEB-INF/jsp/ticket/train.jspx").forward(request, response);
+                    }else{
+                        request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
+                    }
+                    break;
+                    case "flight":
+                    request.getSession().setAttribute("DEPARTURES", Booking.INSTANCE.getDepartureCatalogue().getDeparturesByType("Flight"));
+                    request.getSession().setAttribute("DESTINATIONS", Booking.INSTANCE.getDepartureCatalogue().getDestinationsByType("Flight"));
+                    if(request.getSession().getAttribute("loggedin") == null){
+                        request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
+                    }else if((boolean)request.getSession().getAttribute("loggedin")){
+                        request.getRequestDispatcher("WEB-INF/jsp/ticket/flight.jspx").forward(request, response);
+                    }else{
+                        request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
+                    }
+                    break;
+                    case "bus":
+                    request.getSession().setAttribute("DEPARTURES", Booking.INSTANCE.getDepartureCatalogue().getDeparturesByType("Bus"));
+                    request.getSession().setAttribute("DESTINATIONS", Booking.INSTANCE.getDepartureCatalogue().getDestinationsByType("Bus"));
+                    if(request.getSession().getAttribute("loggedin") == null){
+                        request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
+                    }else if((boolean)request.getSession().getAttribute("loggedin")){
+                        request.getRequestDispatcher("WEB-INF/jsp/ticket/bus.jspx").forward(request, response);
+                    }else{
+                        request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
+                    }
+                    break;
+                    case "boat":
+                    request.getSession().setAttribute("DEPARTURES", Booking.INSTANCE.getDepartureCatalogue().getDeparturesByType("Boat"));
+                    request.getSession().setAttribute("DESTINATIONS", Booking.INSTANCE.getDepartureCatalogue().getDestinationsByType("Boat"));
+                    if(request.getSession().getAttribute("loggedin") == null){
+                        request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
+                    }else if((boolean)request.getSession().getAttribute("loggedin")){
+                        request.getRequestDispatcher("WEB-INF/jsp/ticket/boat.jspx").forward(request, response);
                     }else{
                         request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
                     }

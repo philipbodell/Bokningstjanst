@@ -22,7 +22,13 @@ public interface IDepartureCatalogue extends IDAO<Departure, Long> {
      
     public List<String> getDestinations();
     
+    public List<String> getDestinationsByType(String type);
+    
+    public List<String> getDeparturesByType(String type);
+    
     public List<Departure> getByDestination(String dest);
+    
+    public List<Departure> getMatchingDepartureType(String departurelocation, String destination, String Type);
     
     public List<Departure> getMatchingDeparture(String departure, String destination);
 }

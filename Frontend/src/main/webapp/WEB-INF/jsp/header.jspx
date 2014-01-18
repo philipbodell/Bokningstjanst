@@ -8,9 +8,9 @@
                 <li><a href="#">Tickets</a>
                     <ul>
                         <li><a href="ticket?view=train">Train</a></li>
-                        <li><a href="navigate?view=notFound">Flight</a></li>
-                        <li><a href="navigate?view=notFound">Bus</a></li>
-                        <li><a href="navigate?view=notFound">Boat</a></li>
+                        <li><a href="ticket?view=flight">Flight</a></li>
+                        <li><a href="ticket?view=bus">Bus</a></li>
+                        <li><a href="ticket?view=boat">Boat</a></li>
                     </ul>
                 </li>
                 <li><a href="navigate?view=notFound">Services</a></li>

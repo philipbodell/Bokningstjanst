@@ -85,6 +85,36 @@ public final class DepartureCatalogue extends AbstractDAO<Departure, Long>
     }
 
     @Override
+    public List<String> getDeparturesByType(String type) {
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        Query q = em.createQuery("SELECT d.departurelocation from Departure d WHERE d.type = :type", Departure.class).setParameter("type", type);
+        List<String> p = q.getResultList();
+        HashSet hs = new HashSet();
+        hs.addAll(p);
+        p.clear();
+        p.addAll(hs);
+        em.getTransaction().commit();
+        em.close();
+        return p;
+    }
+    
+    @Override
+    public List<String> getDestinationsByType(String type) {
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        Query q = em.createQuery("SELECT d.destination from Departure d WHERE d.type = :type", Departure.class).setParameter("type", type);
+        List<String> p = q.getResultList();
+        HashSet hs = new HashSet();
+        hs.addAll(p);
+        p.clear();
+        p.addAll(hs);
+        em.getTransaction().commit();
+        em.close();
+        return p;
+    }
+    
+    @Override
     public List<Departure> getByDestination(String dest) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -101,6 +131,16 @@ public final class DepartureCatalogue extends AbstractDAO<Departure, Long>
                 "SELECT p FROM Departure p WHERE p.departurelocation=:departurelocation AND p.destination=:destination", Departure.class)
                 .setParameter("departurelocation", departurelocation)
                 .setParameter("destination", destination)
+                .getResultList();
+
+    }
+    @Override
+    public List<Departure> getMatchingDepartureType(String departurelocation, String destination, String Type) {
+        return getEntityManager().createQuery(
+                "SELECT p FROM Departure p WHERE p.departurelocation=:departurelocation AND p.destination=:destination AND p.type=:type", Departure.class)
+                .setParameter("departurelocation", departurelocation)
+                .setParameter("destination", destination)
+                .setParameter("type", Type)
                 .getResultList();
 
     }
