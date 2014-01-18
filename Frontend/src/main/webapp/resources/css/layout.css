@@ -23,6 +23,10 @@ button {
     margin:0.3em;
 
 }
+#contact_name, #contact_subject,#contact_email{
+    width: 10em;
+    border: none;
+}
 
 #header_wrapper {
     height:25em;
@@ -48,12 +52,14 @@ button {
     float:right;
 }
 
-input {
+
+#login_passwd,#login_name{
     border: none;
     height:2em;
     padding-left:0.5em;
     margin-bottom:0.5em;
 }
+
 
 #login label {
     float:left;

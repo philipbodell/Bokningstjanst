@@ -55,13 +55,13 @@ public final class UtilServlet extends HttpServlet {
                 case "login":
                     //if (true){
                     
-                    if (Booking.INSTANCE.getCustomerRegistry().authenticate(request.getParameter("name"), request.getParameter("passwd"))) {
-                        request.getSession().setAttribute("USER", request.getParameter("name"));
+                    if (Booking.INSTANCE.getCustomerRegistry().authenticate(request.getParameter("login_name"), request.getParameter("login_passwd"))) {
+                        request.getSession().setAttribute("USER", request.getParameter("login_name"));
                         request.getSession().setMaxInactiveInterval(timeout); // Timeout interval
                         request.getSession().setAttribute("loggedin", true);
-                        request.getSession().setAttribute("lname", Booking.INSTANCE.getCustomerRegistry().getLnameByEmail(request.getParameter("name")));
-                        request.getSession().setAttribute("email", request.getParameter("name"));
-                        request.getSession().setAttribute("fname", Booking.INSTANCE.getCustomerRegistry().getFnameByEmail(request.getParameter("name")));
+                        request.getSession().setAttribute("lname", Booking.INSTANCE.getCustomerRegistry().getLnameByEmail(request.getParameter("login_name")));
+                        request.getSession().setAttribute("email", request.getParameter("login_name"));
+                        request.getSession().setAttribute("fname", Booking.INSTANCE.getCustomerRegistry().getFnameByEmail(request.getParameter("login_name")));
                         //logger.severe(Booking.INSTANCE.getCustomerRegistry().getLnameByEmail(request.getParameter("name")));
                         response.sendRedirect("index.jspx");
                     } else {
@@ -99,8 +99,22 @@ public final class UtilServlet extends HttpServlet {
                     request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getSession().getAttribute("password"),"validation"));
                     request.getRequestDispatcher("WEB-INF/jsp/register/validate.jspx").forward(request, response);
                     break;
-
-
+                case "contact":
+                    //Send email to ourselves
+                    request.getSession().getAttribute("email");
+                    request.getSession().getAttribute("subject");
+                    request.getSession().getAttribute("message");
+                    
+                    request.getRequestDispatcher("WEB-INF/jsp/contact/contact.jspx").forward(request, response);
+                    break;
+                case "submitScore":
+                    request.getSession().setAttribute("fname", request.getParameter("fname"));
+                    request.getSession().setAttribute("lname", request.getParameter("lname"));
+                    request.getSession().setAttribute("email", request.getParameter("email"));
+                    request.getSession().setAttribute("phone", request.getParameter("phone"));
+                    request.getSession().setAttribute("score", request.getParameter("score"));
+                    request.getRequestDispatcher("WEB-INF/jsp/contact/contact.jspx").forward(request, response);
+                    break;
             }
 
         }
@@ -132,6 +146,13 @@ public final class UtilServlet extends HttpServlet {
                     
                     request.getRequestDispatcher("WEB-INF/jsp/register/validate.jspx").forward(request, response);
                     break;
+                    
+                case "gameover":
+                    request.getSession().setAttribute("score", request.getParameter("score"));
+                    request.getRequestDispatcher("WEB-INF/jsp/competitions/competitions.jspx").forward(request, response);
+                    break;
+                
+                    
                 default:
                     break;
             }

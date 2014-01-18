@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Will output HTML5 
+
+-->
+<jsp:root 
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns="http://www.w3.org/1999/xhtml"
+    version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+    <jsp:output omit-xml-declaration="true" />
+    <jsp:output doctype-root-element="HTML" 
+                doctype-system="about:legacy-compat" />
+    <html>
+        <head>
+            <title>About</title> 
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <link rel="stylesheet" type="text/css" href="resources/css/layout.css" />
+            <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+        </head>
+        <body>
+            <jsp:directive.include file="../header.jspx" />
+            <link rel="stylesheet" type="text/css" href="resources/css/menu.css" />
+            
+            <c:if test="${empty param.score}" >
+                 <jsp:directive.include file="snake.html"/>
+            </c:if>
+            <c:if test="${not empty param.score}" >
+           
+                 <form id="submitScore" onsubmit="return validateForm();" method="post" action="util">
+                        <input type="hidden" name="action" value="submitScore" />
+                        <label for="fname">Your first name</label>
+                        <input type="text" id="fname" name="fname" value=""/>
+                        <br/>
+                        <label for="lname">Your last name</label>
+                        <input type="text" id="lname" name="lname" value=""/>
+                        <br/>
+                        <label for="email">Your Email</label>
+                        <input type="text" id="mail" name="mail" value=""/>
+                        <br/>
+                        <label for="phone">Your phone number</label>
+                        <input type="number" id="phone" name="phone" value=""/>
+                        <br/>
+                        <input type="text" id="score" name="score" value="${param.score}" disabled="true"/>
+                        
+                        <button id="submit_score_button" type="submit">Submit</button> 
+                        
+                 </form>
+                 
+            </c:if>
+            <script type="text/javascript" src="js/validateForm.js"><jsp:text /></script>
+            <jsp:directive.include file="../footer.jspx" />
+        </body>
+    </html>
+</jsp:root>
+

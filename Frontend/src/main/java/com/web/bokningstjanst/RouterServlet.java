@@ -48,6 +48,9 @@ public class RouterServlet extends HttpServlet {
                 case "notFound":
                     request.getRequestDispatcher("WEB-INF/jsp/notFound.jspx").forward(request, response);
                     break;
+                case "snake":
+                    request.getRequestDispatcher("WEB-INF/jsp/competitions/competitions.jspx").forward(request, response);
+                    break;
             }
         }
     }
