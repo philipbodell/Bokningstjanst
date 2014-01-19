@@ -99,7 +99,19 @@ public final class UtilServlet extends HttpServlet {
                     request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getSession().getAttribute("password"),"validation"));
                     request.getRequestDispatcher("WEB-INF/jsp/register/validate.jspx").forward(request, response);
                     break;
-
+				case "contact":
+                    //Send email to ourselves
+                    Mail.sendMail((String) request.getParameter("contact_email"), (String) request.getParameter("contact_message"),"contact");
+                    request.getRequestDispatcher("WEB-INF/jsp/contact/contact.jspx").forward(request, response);
+                    break;
+                case "submitScore":
+                    request.getSession().setAttribute("fname", request.getParameter("fname"));
+                    request.getSession().setAttribute("lname", request.getParameter("lname"));
+                    request.getSession().setAttribute("email", request.getParameter("email"));
+                    request.getSession().setAttribute("phone", request.getParameter("phone"));
+                    request.getSession().setAttribute("score", request.getParameter("score"));
+                    request.getRequestDispatcher("WEB-INF/jsp/contact/contact.jspx").forward(request, response);
+                    break;
 
             }
 
@@ -132,6 +144,12 @@ public final class UtilServlet extends HttpServlet {
                     
                     request.getRequestDispatcher("WEB-INF/jsp/register/validate.jspx").forward(request, response);
                     break;
+					
+				case "gameover":
+                    request.getSession().setAttribute("score", request.getParameter("score"));
+                    request.getRequestDispatcher("WEB-INF/jsp/competitions/competitions.jspx").forward(request, response);
+                    break;
+					
                 default:
                     break;
             }

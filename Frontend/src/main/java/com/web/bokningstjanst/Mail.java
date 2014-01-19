@@ -46,7 +46,7 @@ public class Mail {
             
             
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("bodellbokning@gmail.com"));
+            message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO,
                 InternetAddress.parse(to));
             
@@ -54,12 +54,20 @@ public class Mail {
                 message.setSubject("Validation");
                 message.setText("Welcome, your username is your email and this is your password: "+extra+".\nHere is your validation code: "+validationString
                     + "\n\n Please enter it on the site you were redirected to.");
+                Transport.send(message);
+                
             }else if(mode.equals("ticket")){
                 message.setSubject("Your ticket");
                 message.setText("Here is your ticket\n\n"+extra);//add ticket here
+                Transport.send(message);
+                
+            }else if(mode.equals("contact")){
+                message.setSubject("User feedback");
+                message.setText("Your message have been recieved and will be answered shortly.");
+                Transport.send(message);
             }
             
-            Transport.send(message);
+            
 
             System.out.println("Done");
             return validationString;
