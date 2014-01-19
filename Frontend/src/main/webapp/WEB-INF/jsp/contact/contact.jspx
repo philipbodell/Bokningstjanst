@@ -32,15 +32,11 @@
                         <legend>Contact us</legend>
                         <label for="email">Your Email</label>
                         <br/>
-                        <input id="contact_name" name="email" type="text"/>
-                        <br/>
-                        <label for="subject">Subject</label>
-                        <br/>
-                        <input id="contact_subject" name="subject" type="text"/>
+                        <input id="contact_email" name="contact_email" type="text"/>
                         <br/>
                         <label for="message">Message</label>
                         <br/>
-                        <textarea class="FormElement" id="contact_email" name="message" style="height:20em;width:20em">Message</textarea>
+                        <textarea class="FormElement" id="contact_message" name="contact_message" style="height:20em;width:20em">Message</textarea>
                         
                         <br/>
                         <button id="button" type="submit">Send</button>

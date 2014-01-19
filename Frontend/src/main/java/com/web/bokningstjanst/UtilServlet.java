@@ -101,10 +101,7 @@ public final class UtilServlet extends HttpServlet {
                     break;
                 case "contact":
                     //Send email to ourselves
-                    request.getSession().getAttribute("email");
-                    request.getSession().getAttribute("subject");
-                    request.getSession().getAttribute("message");
-                    
+                    request.getSession().setAttribute("doge", Mail.sendMail((String) request.getParameter("contact_email"), (String) request.getParameter("contact_message"),"contact"));
                     request.getRequestDispatcher("WEB-INF/jsp/contact/contact.jspx").forward(request, response);
                     break;
                 case "submitScore":
@@ -128,10 +125,19 @@ public final class UtilServlet extends HttpServlet {
                     break;
                 case "register":
                     
+                    
+                    
                     request.getRequestDispatcher("WEB-INF/jsp/register/register.jspx").forward(request, response);
                     break;
                 case "validate":
-                   
+                   request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getSession().getAttribute("password").toString(),"validation"));
+                    if (request.getSession().getAttribute("validationstring").equals("error")) {
+                        request.getRequestDispatcher("WEB-INF/jsp/register.jspx").forward(request, response);
+                    }
+                    
+                    request.getRequestDispatcher("WEB-INF/jsp/register/validate.jspx").forward(request, response);
+                    break;
+                case "captch":
                     Logger logger = Logger.getLogger(getClass().getName());
                     logger.severe(request.getParameter("password").toString());
                     request.getSession().setAttribute("pnum", request.getParameter("pnum"));
@@ -139,12 +145,9 @@ public final class UtilServlet extends HttpServlet {
                     request.getSession().setAttribute("lname", request.getParameter("lname"));
                     request.getSession().setAttribute("password", request.getParameter("password"));
                     request.getSession().setAttribute("email", request.getParameter("email"));
-                    request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getSession().getAttribute("password").toString(),"validation"));
-                    if (request.getSession().getAttribute("validationstring").equals("error")) {
-                        request.getRequestDispatcher("WEB-INF/jsp/register.jspx").forward(request, response);
-                    }
+                    request.getSession().setAttribute("ip", request.getRemoteAddr());
                     
-                    request.getRequestDispatcher("WEB-INF/jsp/register/validate.jspx").forward(request, response);
+                    request.getRequestDispatcher("WEB-INF/jsp/register/registerCaptch.jspx").forward(request, response);
                     break;
                     
                 case "gameover":

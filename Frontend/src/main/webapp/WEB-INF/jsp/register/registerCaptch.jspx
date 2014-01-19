@@ -24,25 +24,22 @@
     <body>
         <jsp:directive.include file="../header.jspx" />
         <h1>Register</h1>
-        <form id="register" name="registerform" onsubmit="return validateForm();"  method="post" action="util">
-            <input type="hidden" name="view" value="captch" />
+        <form id="register" name="registerform"  method="post" action="http://www.google.com/recaptcha/api/verify?privatekey=6LevK-0SAAAAAM_bC9D8UHd-HpJ5bPshDGbFNNuN&remoteip=${param.ip}&">
+            <input type="hidden" name="view" value="validate" />
 
-            <label>First name</label>  
-            <input type="text" name="fname" maxlength="20"/>
-            <label>Last name</label>  
-            <input type="text" name="lname" maxlength="20"/>
-            <label>E-mail</label>  
-            <input type="text" name="email"/>
-            <label>pnum</label>
-            <input type="text" name="pnum"/>
-            <label>Password</label>  
-            <input type="password" name="password"/>
-            <label>Repeat password</label>  
-            <input type="password" name="rpassword"/>
-
-
-            <button type="submit">Register</button>
-
+            <button type="submit">OK</button>
+            <script type="text/javascript"
+                    src="http://www.google.com/recaptcha/api/challenge?k=6LevK-0SAAAAAAr1Nzih_xIqDMfoXfnyyM2IZf4r">
+            </script>
+            <noscript>
+                <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LevK-0SAAAAAAr1Nzih_xIqDMfoXfnyyM2IZf4r"
+                        height="300" width="500" frameborder="0"></iframe><br/>
+                <textarea name="recaptcha_challenge_field" rows="3" cols="40">
+                </textarea>
+                <input type="hidden" name="recaptcha_response_field"
+                       value="manual_challenge"/>
+            </noscript>
+       
         </form>
 
 
