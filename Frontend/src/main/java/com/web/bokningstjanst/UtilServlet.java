@@ -4,6 +4,7 @@
  */
 package com.web.bokningstjanst;
 
+import com.mycompany.booking.core.Competition;
 import com.mycompany.booking.core.Customer;
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -99,12 +100,23 @@ public final class UtilServlet extends HttpServlet {
                     request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getSession().getAttribute("password"),"validation"));
                     request.getRequestDispatcher("WEB-INF/jsp/register/validate.jspx").forward(request, response);
                     break;
-				case "contact":
+		case "contact":
                     //Send email to ourselves
                     Mail.sendMail((String) request.getParameter("contact_email"), (String) request.getParameter("contact_message"),"contact");
                     request.getRequestDispatcher("WEB-INF/jsp/contact/contact.jspx").forward(request, response);
                     break;
                 case "submitScore":
+                    Booking.INSTANCE.getCompetitionCatalogue().add(new Competition(request.getParameter("fname"),
+                            request.getParameter("lname"),
+                            request.getParameter("phone"),
+                            request.getParameter("mail"),
+                            request.getParameter("score")));
+                    Logger logger = Logger.getLogger(getClass().getName());
+                    logger.severe(request.getParameter("fname")+
+                            request.getParameter("lname")+
+                            request.getParameter("phone")+
+                            request.getParameter("mail")+
+                            request.getParameter("score"));
                     request.getSession().setAttribute("fname", request.getParameter("fname"));
                     request.getSession().setAttribute("lname", request.getParameter("lname"));
                     request.getSession().setAttribute("email", request.getParameter("email"));

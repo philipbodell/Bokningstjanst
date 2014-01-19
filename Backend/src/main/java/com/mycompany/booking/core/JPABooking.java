@@ -17,6 +17,7 @@ public class JPABooking implements IBooking {
     private ITicketCatalogue ticketCatalogue;
     private ICustomerRegistry customerRegistry;
     private IDepartureCatalogue departureCatalogue;
+    private ICompetitionCatalogue competitionCatalogue;
    
 
     public JPABooking(EntityManagerFactory emf) {
@@ -24,6 +25,7 @@ public class JPABooking implements IBooking {
         ticketCatalogue = TicketCatalogue.newInstance(emf);
         customerRegistry = CustomerRegistry.newInstance(emf);
         departureCatalogue =DepartureCatalogue.newInstance(emf);
+        competitionCatalogue =CompetitionCatalogue.newInstance(emf);
     }
 
     @Override
@@ -39,5 +41,9 @@ public class JPABooking implements IBooking {
     @Override
     public IDepartureCatalogue getDepartureCatalogue(){
         return departureCatalogue;
+    }
+    @Override
+    public ICompetitionCatalogue getCompetitionCatalogue(){
+        return competitionCatalogue;
     }
 }

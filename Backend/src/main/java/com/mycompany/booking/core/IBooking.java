@@ -16,4 +16,6 @@ public interface IBooking {
     public ICustomerRegistry getCustomerRegistry();
     
     public IDepartureCatalogue getDepartureCatalogue();
+    
+    public ICompetitionCatalogue getCompetitionCatalogue();
 }

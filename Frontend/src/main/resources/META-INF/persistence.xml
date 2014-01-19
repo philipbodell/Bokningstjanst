@@ -6,6 +6,7 @@
     <class>com.mycompany.booking.core.Customer</class>
     <class>com.mycompany.booking.core.Ticket</class>
     <class>com.mycompany.booking.core.Departure</class>
+    <class>com.mycompany.booking.core.Competition</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/booking"/>

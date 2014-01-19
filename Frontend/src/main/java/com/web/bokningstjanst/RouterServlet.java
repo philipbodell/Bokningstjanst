@@ -38,6 +38,10 @@ public class RouterServlet extends HttpServlet {
                    
                     request.getRequestDispatcher("WEB-INF/jsp/about/about.jspx").forward(request, response);
                     break;
+                   case "snake":
+                    request.getRequestDispatcher("WEB-INF/jsp/competitions/competitions.jspx").forward(request, response);
+                    break;
+                    
                 case "contact":
                     request.getRequestDispatcher("WEB-INF/jsp/contact/contact.jspx").forward(request, response);
                     break;

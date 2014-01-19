@@ -24,6 +24,12 @@
 
 
             <jsp:directive.include file="WEB-INF/jsp/header.jspx" />
+            
+            <form method="post" action="navigate">
+                    <input type="hidden" name="view" value="snake" />
+                    <button id="competition" type="submit">Click here for a chance to win a free ticket</button>
+            </form>
+            
             <h1>Welcome to our bookingsystem!</h1>
             <div id="welcome_text">
                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
