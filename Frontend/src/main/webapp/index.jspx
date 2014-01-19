@@ -40,7 +40,7 @@
             <div id="login">
                 <button id="facebookloginlink" onClick = "fblogin()">Login using facebook</button>
 
-                <form method="post" action="util">
+                <form name="discountCode" method="post" action="util">
                     <input type="hidden" name="action" value="login" />
 
                     <c:if test="${not empty param.authInvalid}" >
@@ -75,6 +75,7 @@
 
                     <div id="fb-root"></div>
                     <script type="text/javascript" src="js/fblogin.js"><jsp:text /></script>
+                     
                 </form>
 
             </div>

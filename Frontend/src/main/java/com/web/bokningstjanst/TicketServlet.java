@@ -4,7 +4,6 @@
  */
 package com.web.bokningstjanst;
 
-
 import com.mycompany.booking.core.Ticket;
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -45,44 +44,44 @@ public class TicketServlet extends HttpServlet {
                 case "train":
                     request.getSession().setAttribute("DEPARTURES", Booking.INSTANCE.getDepartureCatalogue().getDeparturesByType("Train"));
                     request.getSession().setAttribute("DESTINATIONS", Booking.INSTANCE.getDepartureCatalogue().getDestinationsByType("Train"));
-                    if(request.getSession().getAttribute("loggedin") == null){
+                    if (request.getSession().getAttribute("loggedin") == null) {
                         request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
-                    }else if((boolean)request.getSession().getAttribute("loggedin")){
+                    } else if ((boolean) request.getSession().getAttribute("loggedin")) {
                         request.getRequestDispatcher("WEB-INF/jsp/ticket/train.jspx").forward(request, response);
-                    }else{
+                    } else {
                         request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
                     }
                     break;
-                    case "flight":
+                case "flight":
                     request.getSession().setAttribute("DEPARTURES", Booking.INSTANCE.getDepartureCatalogue().getDeparturesByType("Flight"));
                     request.getSession().setAttribute("DESTINATIONS", Booking.INSTANCE.getDepartureCatalogue().getDestinationsByType("Flight"));
-                    if(request.getSession().getAttribute("loggedin") == null){
+                    if (request.getSession().getAttribute("loggedin") == null) {
                         request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
-                    }else if((boolean)request.getSession().getAttribute("loggedin")){
+                    } else if ((boolean) request.getSession().getAttribute("loggedin")) {
                         request.getRequestDispatcher("WEB-INF/jsp/ticket/flight.jspx").forward(request, response);
-                    }else{
+                    } else {
                         request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
                     }
                     break;
-                    case "bus":
+                case "bus":
                     request.getSession().setAttribute("DEPARTURES", Booking.INSTANCE.getDepartureCatalogue().getDeparturesByType("Bus"));
                     request.getSession().setAttribute("DESTINATIONS", Booking.INSTANCE.getDepartureCatalogue().getDestinationsByType("Bus"));
-                    if(request.getSession().getAttribute("loggedin") == null){
+                    if (request.getSession().getAttribute("loggedin") == null) {
                         request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
-                    }else if((boolean)request.getSession().getAttribute("loggedin")){
+                    } else if ((boolean) request.getSession().getAttribute("loggedin")) {
                         request.getRequestDispatcher("WEB-INF/jsp/ticket/bus.jspx").forward(request, response);
-                    }else{
+                    } else {
                         request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
                     }
                     break;
-                    case "boat":
+                case "boat":
                     request.getSession().setAttribute("DEPARTURES", Booking.INSTANCE.getDepartureCatalogue().getDeparturesByType("Boat"));
                     request.getSession().setAttribute("DESTINATIONS", Booking.INSTANCE.getDepartureCatalogue().getDestinationsByType("Boat"));
-                    if(request.getSession().getAttribute("loggedin") == null){
+                    if (request.getSession().getAttribute("loggedin") == null) {
                         request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
-                    }else if((boolean)request.getSession().getAttribute("loggedin")){
+                    } else if ((boolean) request.getSession().getAttribute("loggedin")) {
                         request.getRequestDispatcher("WEB-INF/jsp/ticket/boat.jspx").forward(request, response);
-                    }else{
+                    } else {
                         request.getRequestDispatcher("WEB-INF/jsp/needToLogin.jspx").forward(request, response);
                     }
                     break;
@@ -92,8 +91,8 @@ public class TicketServlet extends HttpServlet {
             switch (tickets) {
                 case "chooseDeparture":
                     request.getSession().setAttribute("MATCHING_DEST", Booking.INSTANCE.getDepartureCatalogue()
-                            .getMatchingDeparture(request.getParameter("departure"),request.getParameter("destination")));
-                    request.getRequestDispatcher("WEB-INF/jsp/ticket/allDepartures.jspx").forward(request, response);  
+                            .getMatchingDeparture(request.getParameter("departure"), request.getParameter("destination")));
+                    request.getRequestDispatcher("WEB-INF/jsp/ticket/allDepartures.jspx").forward(request, response);
                     break;
                 case "Confirm":
                     HttpSession session = request.getSession();
@@ -112,21 +111,22 @@ public class TicketServlet extends HttpServlet {
                     break;
                 case "PaymentSuccess":
                     Booking.INSTANCE.getTicketCatalogue().add(new Ticket(
-                            request.getParameter("departurelocation"), 
-                            request.getParameter("destination"), 
-                            request.getParameter("departuredate"), 
-                            request.getParameter("departuretime"), 
-                            request.getParameter("type"), 
-                            Integer.valueOf(request.getParameter("price")), 
-                            Booking.INSTANCE.getCustomerRegistry().getIdByEmail(request.getSession().getAttribute("email").toString())));
-                    Mail.sendMail((String)request.getSession()
-                            .getAttribute("email"),"Name: \n"+request.getSession().getAttribute("fname")+" "+request.getSession().getAttribute("lname")+"\n"+
-                            "Departure Location: \n"+request.getParameter("departurelocation")+"\n"+
-                            "Destination: \n"+request.getParameter("destination")+"\n"+
-                            "Date: \n"+request.getParameter("departuredate")+"\n"+
-                            "Traveltime: \n"+request.getParameter("departuretime")+"\n"+
-                            "Price: \n"+request.getParameter("price")+":-\n"
-                            ,"ticket");
+                            request.getParameter("departurelocation"),
+                            request.getParameter("destination"),
+                            request.getParameter("departuredate"),
+                            request.getParameter("departuretime"),
+                            request.getParameter("type"),
+                            Integer.valueOf(request.getParameter("price")),
+                            Booking.INSTANCE.getCustomerRegistry().getIdByEmail(request.getSession().getAttribute("email").toString()),
+                            request.getParameter("code")));
+                    Mail.sendMail((String) request.getSession()
+                            .getAttribute("email"), "Name: \n" + request.getSession().getAttribute("fname") + " " + request.getSession().getAttribute("lname") + "\n"
+                            + "Departure Location: \n" + request.getParameter("departurelocation") + "\n"
+                            + "Destination: \n" + request.getParameter("destination") + "\n"
+                            + "Date: \n" + request.getParameter("departuredate") + "\n"
+                            + "Traveltime: \n" + request.getParameter("departuretime") + "\n"
+                            + "Price: \n" + request.getParameter("price") + ":-\n", "ticket"
+                            + "Discount code: \n" + request.getParameter("code"));
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/paymentSuccess.jspx").forward(request, response);
                     break;
             }

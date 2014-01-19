@@ -4,7 +4,7 @@ function validateForm()
      * 
      * ContactForm
      */
-    var x = document.forms["contactform"]["email"].value;
+    var x = document.forms["contactform"]["contact_email"].value;
     if (x === null || x === "")
     {
         alert("Not a valid e-mail address");

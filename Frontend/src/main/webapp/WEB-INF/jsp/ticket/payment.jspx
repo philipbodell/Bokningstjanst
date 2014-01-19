@@ -49,7 +49,10 @@
 
                     <label for="ccv">Ccv Code: </label>
                     <input id="cardnr" name="ccv" type="ccv" required="true"/>
-
+                    
+                    <label for="code">Discount Code: </label>
+                    <input id="code" name="code" type="text" />
+                    
                     <button id="button" type="submit">Submit payment</button>
                 </form>
             </div>

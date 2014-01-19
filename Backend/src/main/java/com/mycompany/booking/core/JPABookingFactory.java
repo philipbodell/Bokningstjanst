@@ -8,6 +8,7 @@ import javax.persistence.EntityManagerFactory;
  * @author hajo
  * Details changed to fit our project
  */
+
 public class JPABookingFactory {
 
     private JPABookingFactory() {

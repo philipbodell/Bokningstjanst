@@ -5,6 +5,7 @@
     <class>com.mycompany.booking.core.Customer</class>
     <class>com.mycompany.booking.core.Ticket</class>
     <class>com.mycompany.booking.core.Departure</class>
+    <class>com.mycompany.booking.core.Code</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/booking"/>
       <property name="javax.persistence.jdbc.password" value="app"/>

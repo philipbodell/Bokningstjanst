@@ -99,7 +99,7 @@ public final class UtilServlet extends HttpServlet {
                     request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getSession().getAttribute("password"),"validation"));
                     request.getRequestDispatcher("WEB-INF/jsp/register/validate.jspx").forward(request, response);
                     break;
-				case "contact":
+		case "contact":
                     //Send email to ourselves
                     Mail.sendMail((String) request.getParameter("contact_email"), (String) request.getParameter("contact_message"),"contact");
                     request.getRequestDispatcher("WEB-INF/jsp/contact/contact.jspx").forward(request, response);
