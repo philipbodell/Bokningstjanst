@@ -5,6 +5,7 @@
 package com.web.bokningstjanst;
 
 import com.mycompany.booking.core.Competition;
+import com.mycompany.booking.core.ContactMessages;
 import com.mycompany.booking.core.Customer;
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -103,6 +104,7 @@ public final class UtilServlet extends HttpServlet {
 		case "contact":
                     //Send email to ourselves
                     Mail.sendMail((String) request.getParameter("contact_email"), (String) request.getParameter("contact_message"),"contact");
+                    Booking.INSTANCE.getContactMessagesRegistry().add(new ContactMessages(request.getParameter("contact_email"),request.getParameter("contact_message")));
                     request.getRequestDispatcher("WEB-INF/jsp/contact/contact.jspx").forward(request, response);
                     break;
                 case "submitScore":

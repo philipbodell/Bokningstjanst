@@ -18,4 +18,6 @@ public interface IBooking {
     public IDepartureCatalogue getDepartureCatalogue();
     
     public ICompetitionCatalogue getCompetitionCatalogue();
+    
+    public IContactMessagesRegistry getContactMessagesRegistry();
 }

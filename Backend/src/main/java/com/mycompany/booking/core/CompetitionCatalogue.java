@@ -41,7 +41,7 @@ public final class CompetitionCatalogue
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         Query q = em.createQuery("SELECT c from Competition c WHERE c.id = :id", Departure.class).setParameter("id", id);
-        List<Departure> p = q.getResultList();
+        List<Competition> p = q.getResultList();
         em.getTransaction().commit();
         em.close();
         return p.get(0);
