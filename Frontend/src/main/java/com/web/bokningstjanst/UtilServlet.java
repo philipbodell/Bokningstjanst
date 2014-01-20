@@ -85,6 +85,7 @@ public final class UtilServlet extends HttpServlet {
                 case "validate":
                     if (request.getSession().getAttribute("validationstring").equals(request.getParameter("validation"))) {
                         //add user to database
+                       
                         Booking.INSTANCE.getCustomerRegistry().add(new Customer(
                                 (String) request.getSession().getAttribute("fname"), 
                                 (String) request.getSession().getAttribute("lname"), 
@@ -144,16 +145,16 @@ public final class UtilServlet extends HttpServlet {
                     break;
                 case "validate":
                    
-                    Logger logger = Logger.getLogger(getClass().getName());
-                    logger.severe(request.getParameter("password").toString());
+                     Logger logger = Logger.getLogger(getClass().getName());
+                    logger.severe("This what was stored" + request.getSession().getAttribute("captcha").toString()+request.getParameter("captchacode"));
                     request.getSession().setAttribute("pnum", request.getParameter("pnum"));
                     request.getSession().setAttribute("fname", request.getParameter("fname"));
                     request.getSession().setAttribute("lname", request.getParameter("lname"));
                     request.getSession().setAttribute("password", request.getParameter("password"));
                     request.getSession().setAttribute("email", request.getParameter("email"));
                     request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getSession().getAttribute("password").toString(),"validation"));
-                    if (request.getSession().getAttribute("validationstring").equals("error")) {
-                        request.getRequestDispatcher("WEB-INF/jsp/register.jspx").forward(request, response);
+                    if (request.getSession().getAttribute("validationstring").equals("error") || !request.getSession().getAttribute("captcha").toString().equals(request.getParameter("captchacode"))) {
+                        request.getRequestDispatcher("WEB-INF/jsp/register/register.jspx").forward(request, response);
                     }
                     
                     request.getRequestDispatcher("WEB-INF/jsp/register/validate.jspx").forward(request, response);

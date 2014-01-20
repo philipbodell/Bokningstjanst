@@ -39,8 +39,9 @@
             <input type="password" name="password"/>
             <label>Repeat password</label>  
             <input type="password" name="rpassword"/>
-
-
+            <label>Are you human?</label>
+            <input type="text" name="captchacode"/>
+            <img src="http://localhost:8080/Frontend/captcha"/> 
             <button type="submit">Register</button>
         </form>
         <script type="text/javascript" src="js/validateForm.js"><jsp:text /></script>
