@@ -21,6 +21,13 @@
         <body>
             <jsp:directive.include file="../header.jspx" />
 
+            
+            <form  action="ticket" method="POST">
+                <input type="hidden" name="tickets" value="discount"/>
+                <label for="code">Discount Code: </label>
+                <input id="code" name="code" type="text" />
+                <button id="button" type="submit">Activate</button>
+            </form>
             <h1>Choose Departure</h1>
             <table id="all_tickets">
                 
@@ -28,12 +35,14 @@
             <c:forEach items="${sessionScope.MATCHING_DEST}" var="d"> 
                 <form  action="ticket" method="POST">
                     <input type="hidden" name="tickets" value="Confirm"/>
-                    <input type="hidden" name="id" value="${d.id}"/>            
+                    <input type="hidden" name="id" value="${d.id}"/>
+                    <input type="hidden" name="finalprice" value="${d.price*(sessionScope.discount.percentage/100)}"/>  
                     <tr>
                         <td>${d.departurelocation} - ${d.destination}</td>
                         <td>Departure:${d.departuretime}</td>
                         <td>Travel time:${d.traveltime}</td>
-                        <td>Price:${d.price}</td>
+                        <td>Price:${d.price*(sessionScope.discount.percentage/100)}</td>
+                        
                         <td><button id="button" type="submit">Buy</button></td>
                     </tr>         
                 </form>                        

@@ -4,8 +4,10 @@
  */
 package com.web.bokningstjanst;
 
+import com.mycompany.booking.core.Code;
 import com.mycompany.booking.core.Ticket;
 import java.io.IOException;
+import java.util.Set;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -92,12 +94,15 @@ public class TicketServlet extends HttpServlet {
                 case "chooseDeparture":
                     request.getSession().setAttribute("MATCHING_DEST", Booking.INSTANCE.getDepartureCatalogue()
                             .getMatchingDeparture(request.getParameter("departure"), request.getParameter("destination")));
+                    request.getSession().setAttribute("discount", new Code("a", 100, false));
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/allDepartures.jspx").forward(request, response);
                     break;
                 case "Confirm":
                     HttpSession session = request.getSession();
                     session.setMaxInactiveInterval(60);
                     request.getSession().setAttribute("DEP", Booking.INSTANCE.getDepartureCatalogue().getById(Long.valueOf(request.getParameter("id"))));
+                    request.getSession().setAttribute("finalprice", request.getParameter("finalprice"));
+
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/ticketValidation.jspx").forward(request, response);
                     break;
                 case "Payment":
@@ -110,6 +115,13 @@ public class TicketServlet extends HttpServlet {
                     }
                     break;
                 case "PaymentSuccess":
+
+                    if (Booking.INSTANCE.getCodeCatalogue().getByCode(request.getParameter("code")) != null) {
+                        if (((Code) Booking.INSTANCE.getCodeCatalogue().getByCode(request.getParameter("code"))).isSingleUse()) {
+                            Booking.INSTANCE.getCodeCatalogue().remove((Long) request.getSession().getAttribute("codeId"));
+                        }
+                    }
+
                     Booking.INSTANCE.getTicketCatalogue().add(new Ticket(
                             request.getParameter("departurelocation"),
                             request.getParameter("destination"),
@@ -128,6 +140,19 @@ public class TicketServlet extends HttpServlet {
                             + "Price: \n" + request.getParameter("price") + ":-\n", "ticket"
                             + "Discount code: \n" + request.getParameter("code"));
                     request.getRequestDispatcher("WEB-INF/jsp/ticket/paymentSuccess.jspx").forward(request, response);
+                    break;
+                case "discount":
+
+                    /*request.getSession().setAttribute("MATCHING_DEST", Booking.INSTANCE.getDepartureCatalogue()
+                     .getMatchingDeparture(request.getParameter("departure"), request.getParameter("destination")));*/
+                    if (Booking.INSTANCE.getCodeCatalogue().getByCode(request.getParameter("code")) != null) {
+                        request.getSession().setAttribute("discount", Booking.INSTANCE.getCodeCatalogue().getByCode(request.getParameter("code")));
+                        request.getSession().setAttribute("codeId", ((Code) Booking.INSTANCE.getCodeCatalogue().getByCode("code")).getId());
+                    } else {
+                        request.getSession().setAttribute("discount", new Code("a", 100, false));
+                    }
+
+                    request.getRequestDispatcher("WEB-INF/jsp/ticket/allDepartures.jspx").forward(request, response);
                     break;
             }
         }

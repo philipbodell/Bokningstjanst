@@ -17,7 +17,6 @@ public class Ticket extends AbstractEntity {
     private int ticketprice;
     private String type;
     private Long customerid;
-    private String code;
 
     
     
@@ -25,7 +24,7 @@ public class Ticket extends AbstractEntity {
     }
 
     
-    public Ticket(String departurelocation, String destination, String traveldate, String traveltime, String type,int ticketprice,  Long customerid, String code) {
+    public Ticket(String departurelocation, String destination, String traveldate, String traveltime, String type,int ticketprice,  Long customerid) {
         this.departurelocation  = departurelocation;
         this.destination = destination;
         this.traveldate = traveldate;
@@ -33,22 +32,9 @@ public class Ticket extends AbstractEntity {
         this.ticketprice = ticketprice;
         this.type = type;
         this.customerid = customerid;
-        if (code==null || code==""){
-            code="No code";
-        }else{
-            this.code=code;
-        }
         
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-   
     
     public String getDeparturelocation() {
         return departurelocation;

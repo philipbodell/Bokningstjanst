@@ -55,7 +55,7 @@
                             </tr>
                         </table>
                         <hr/>
-                        <span id="sumup">Price ${sessionScope.DEP.price}:-</span>
+                        <span id="sumup">Price ${sessionScope.finalprice}:-</span>
                         <button id="button" type="submit">Accept and go to payment</button>
                         <span id="countdownClock"></span>
                     </form>

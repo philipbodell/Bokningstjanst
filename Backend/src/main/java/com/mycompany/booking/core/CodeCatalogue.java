@@ -25,15 +25,16 @@ public final class CodeCatalogue extends AbstractDAO<Code, Long>
     }
 
     @Override
-    public Object getByCode(String Code) {
+    public Object getByCode(String code) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
-        Query q = em.createQuery("SELECT d from Code d WHERE d.code = :code", Code.class).setParameter("code", Code);
+        Query q = em.createQuery("SELECT d from Code d WHERE d.code = :code", Code.class).setParameter("code", code);
         List<Code> p = q.getResultList();
         em.getTransaction().commit();
         em.close();
         return p.get(0);
     }
+    
 
     
     
