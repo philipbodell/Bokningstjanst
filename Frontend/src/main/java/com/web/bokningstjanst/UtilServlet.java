@@ -105,7 +105,7 @@ public final class UtilServlet extends HttpServlet {
                 case "contact":
                     //Send email to ourselves
                     Mail.sendMail((String) request.getParameter("contact_email"), (String) request.getParameter("contact_message"), "contact");
-                    Booking.INSTANCE.getContactMessagesRegistry().add(new ContactMessages(request.getParameter("contact_email"), request.getParameter("contact_message")));
+                    Booking.INSTANCE.getContactMessagesRegistry().add(new ContactMessages(request.getParameter("contact_message"), request.getParameter("contact_email")));
                     request.getRequestDispatcher("WEB-INF/jsp/contact/contact.jspx").forward(request, response);
                     break;
                 case "submitScore":
