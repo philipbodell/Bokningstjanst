@@ -7,6 +7,7 @@
     <class>com.mycompany.booking.core.Departure</class>
     <class>com.mycompany.booking.core.Competition</class>
     <class>com.mycompany.booking.core.ContactMessages</class>
+    <class>com.mycompany.booking.core.Code</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/booking"/>
       <property name="javax.persistence.jdbc.password" value="app"/>

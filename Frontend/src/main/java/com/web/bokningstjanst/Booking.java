@@ -3,6 +3,7 @@
 package com.web.bokningstjanst;
 
 import com.mycompany.booking.core.IBooking;
+import com.mycompany.booking.core.ICodeCatalogue;
 import com.mycompany.booking.core.ICompetitionCatalogue;
 import com.mycompany.booking.core.IContactMessagesRegistry;
 import com.mycompany.booking.core.ICustomerRegistry;
@@ -36,5 +37,8 @@ public enum Booking {
     }
     public IContactMessagesRegistry getContactMessagesRegistry() {
         return b.getContactMessagesRegistry();
+    }
+     public ICodeCatalogue getCodeCatalogue() {
+        return b.getCodeCatalogue();
     }
 }

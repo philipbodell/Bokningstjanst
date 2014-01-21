@@ -20,4 +20,6 @@ public interface IBooking {
     public ICompetitionCatalogue getCompetitionCatalogue();
     
     public IContactMessagesRegistry getContactMessagesRegistry();
+
+    public ICodeCatalogue getCodeCatalogue();
 }

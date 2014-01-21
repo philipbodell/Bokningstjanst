@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 @WebServlet(name = "RouterServlet", urlPatterns = {"/navigate/*"})
 public class RouterServlet extends HttpServlet {
 
@@ -30,18 +29,18 @@ public class RouterServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         //Get the view parameter.
         String view = request.getParameter("view");
-        
+
         if (view != null) {
             switch (view) {
 
                 case "about":
-                   
+
                     request.getRequestDispatcher("WEB-INF/jsp/about/about.jspx").forward(request, response);
                     break;
-                   case "snake":
+                case "snake":
                     request.getRequestDispatcher("WEB-INF/jsp/competitions/competitions.jspx").forward(request, response);
                     break;
-                    
+
                 case "contact":
                     request.getRequestDispatcher("WEB-INF/jsp/contact/contact.jspx").forward(request, response);
                     break;
