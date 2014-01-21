@@ -4,10 +4,14 @@
  */
 package com.mycompany.booking;
 
+import static com.mycompany.booking.TestCustomerRegistry.booking;
 import com.mycompany.booking.core.Code;
 import com.mycompany.booking.core.Customer;
 import com.mycompany.booking.core.Departure;
+import com.mycompany.booking.core.IBooking;
 import com.mycompany.booking.core.JPABooking;
+import com.mycompany.booking.core.JPABookingFactory;
+import javax.persistence.Persistence;
 import org.junit.Test;
 
 /**
@@ -17,7 +21,9 @@ import org.junit.Test;
 public class TestData {
     
     @Test
-    public void TestData(JPABooking booking){
+    public void TestData(){
+        
+        IBooking booking = JPABookingFactory.getBooking(Persistence.createEntityManagerFactory("booking_pu"));
         
         booking.getCodeCatalogue().add(new Code("QWE", 20, true));
         booking.getCodeCatalogue().add(new Code("WER", 10, false));
