@@ -25,10 +25,10 @@ public class TestData {
         
         IBooking booking = JPABookingFactory.getBooking(Persistence.createEntityManagerFactory("booking_pu"));
         
-        booking.getCodeCatalogue().add(new Code("QWE", 20, true));
-        booking.getCodeCatalogue().add(new Code("WER", 10, false));
-        booking.getCodeCatalogue().add(new Code("ERT", 30, true));
-        booking.getCodeCatalogue().add(new Code("RTY", 40, true));
+        booking.getCodeCatalogue().add(new Code("QWE", 20));
+        booking.getCodeCatalogue().add(new Code("WER", 10));
+        booking.getCodeCatalogue().add(new Code("ERT", 30));
+        booking.getCodeCatalogue().add(new Code("RTY", 40));
         
         booking.getCustomerRegistry().add(new Customer("Jacob", "Engdahl", "qwe", "9104041232", "jacob@wow.com"));
         booking.getCustomerRegistry().add(new Customer("Peter", "Hamilton", "123", "5405115434", "peter@such.com"));
@@ -40,6 +40,8 @@ public class TestData {
         booking.getDepartureCatalogue().add(new Departure("Öland", "Gotland", "20140402","13:37","00:56","Boat",125));
         booking.getDepartureCatalogue().add(new Departure("Kalmar", "Umeå", "20140525","04:45","6:47","Train",545));
         
+        
+        booking.getCodeCatalogue().remove((long)452);
         
     }
     

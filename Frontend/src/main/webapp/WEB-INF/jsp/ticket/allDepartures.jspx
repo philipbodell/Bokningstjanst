@@ -35,12 +35,13 @@
             <c:forEach items="${sessionScope.MATCHING_DEST}" var="d"> 
                 <form  action="ticket" method="POST">
                     <input type="hidden" name="tickets" value="Confirm"/>
-                    <input type="hidden" name="id" value="${d.id}"/>            
+                    <input type="hidden" name="id" value="${d.id}"/> 
+                    <input type="hidden" name="finalprice" value="${d.price*(discount.percentage/100)}"/> 
                     <tr>
                         <td>${d.departurelocation} - ${d.destination}</td>
                         <td>Departure:${d.departuretime}</td>
                         <td>Travel time:${d.traveltime}</td>
-                        <td>Price:${d.price}</td>
+                        <td>Price:${d.price*(discount.percentage/100)}</td>
                         <td><button id="button" type="submit">Buy</button></td>
                     </tr>         
                 </form>                        

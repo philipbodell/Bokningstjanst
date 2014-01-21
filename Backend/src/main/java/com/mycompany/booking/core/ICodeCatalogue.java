@@ -12,4 +12,5 @@ import com.mycompany.booking.utils.IDAO;
  */
 public interface ICodeCatalogue extends IDAO<Code, Long>{
     public Object getByCode(String Code);
+    public long getIdByCode(String code);
 }

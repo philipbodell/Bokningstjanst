@@ -17,16 +17,14 @@ public class Code extends AbstractEntity {
     private String code;
     @Column(name = "PERCENTAGE")
     private int percentage;
-    @Column(name = "SINGLEUSE")
-    private boolean singleUse;
+
 
     public Code() {
     }
     
-    public Code(String code, int percentage, boolean singleUse){
+    public Code(String code, int percentage){
         this.code=code;
         this.percentage=percentage;
-        this.singleUse=singleUse;
     }
     public String getCode() {
         return code;
@@ -44,12 +42,5 @@ public class Code extends AbstractEntity {
         this.percentage = percentage;
     }
 
-    public boolean isSingleUse() {
-        return singleUse;
-    }
-    
-     public void setSingleUse(boolean singleUse) {
-        this.singleUse = singleUse;
-    }
-
+ 
 }
