@@ -13,7 +13,7 @@
                         <li><a href="ticket?view=boat">Boat</a></li>
                     </ul>
                 </li>
-                <li><a href="navigate?view=notFound">Services</a></li>
+                <li><a href="navigate?view=services">Services</a></li>
                 <li><a href="navigate?view=about">About</a></li>
                 <li><a href="navigate?view=contact">Contact Us</a></li>
                 <li>
