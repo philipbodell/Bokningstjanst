@@ -21,6 +21,13 @@
         <body>
             <jsp:directive.include file="../header.jspx" />
 
+            <form  action="ticket" method="POST">
+                <input type="hidden" name="tickets" value="discount"/>
+                <label for="code">Discount Code: </label>
+                <input id="code" name="code" type="text" />
+                <button id="button" type="submit">Activate</button>
+            </form>
+            
             <h1>Choose Departure</h1>
             <table id="all_tickets">
                 

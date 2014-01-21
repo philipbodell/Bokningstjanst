@@ -31,6 +31,16 @@ public class Departure extends AbstractEntity {
     private int price;
     public Departure() {
     }
+    
+    public Departure(String departure, String destination, String date, String depTime, String travelTime, String type, int price) {
+        this.departurelocation = departure;
+        this.destination = destination;
+        this.departuredate = date;
+        this.departuretime = depTime;
+        this.traveltime = travelTime;
+        this.type = type;
+        this.price = price;
+    }
 
     public Departure(Long id) {
         this.id = id;
