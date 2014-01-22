@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Authentication Servlet.
@@ -140,7 +141,9 @@ public final class UtilServlet extends HttpServlet {
                     request.getRequestDispatcher("index.jspx").forward(request, response);
                     break;
                 case "register":
-
+                    if (request.getSession(false) != null) {
+                        request.getSession(false).invalidate();
+                       }
                     request.getRequestDispatcher("WEB-INF/jsp/register/register.jspx").forward(request, response);
                     break;
                 case "validate":
@@ -149,6 +152,7 @@ public final class UtilServlet extends HttpServlet {
                     logger.severe("This what was stored" + request.getSession().getAttribute("captcha").toString() + request.getParameter("captchacode"));
                     if (!request.getSession().getAttribute("captcha").toString().equals(request.getParameter("captchacode"))) {
                         request.getRequestDispatcher("WEB-INF/jsp/register/register.jspx").forward(request, response);
+                        break;
                     }
                     request.getSession().setAttribute("pnum", request.getParameter("pnum"));
                     request.getSession().setAttribute("fname", request.getParameter("fname"));
@@ -158,6 +162,7 @@ public final class UtilServlet extends HttpServlet {
                     request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getSession().getAttribute("password").toString(), "validation"));
                     if (request.getSession().getAttribute("validationstring").equals("error") ) {
                         request.getRequestDispatcher("WEB-INF/jsp/register/register.jspx").forward(request, response);
+                        break;
                     }
 
                     request.getRequestDispatcher("WEB-INF/jsp/register/validate.jspx").forward(request, response);
