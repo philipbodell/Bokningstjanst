@@ -120,12 +120,12 @@ public final class UtilServlet extends HttpServlet {
                             + request.getParameter("phone")
                             + request.getParameter("mail")
                             + request.getParameter("score"));
-                    request.getSession().setAttribute("fname", request.getParameter("fname"));
+                    /*request.getSession().setAttribute("fname", request.getParameter("fname"));
                     request.getSession().setAttribute("lname", request.getParameter("lname"));
                     request.getSession().setAttribute("email", request.getParameter("email"));
                     request.getSession().setAttribute("phone", request.getParameter("phone"));
-                    request.getSession().setAttribute("score", request.getParameter("score"));
-                    request.getRequestDispatcher("WEB-INF/jsp/contact/contact.jspx").forward(request, response);
+                    request.getSession().setAttribute("score", request.getParameter("score"));*/
+                    request.getRequestDispatcher("index.jspx").forward(request, response);
                     break;
 
             }
@@ -147,13 +147,16 @@ public final class UtilServlet extends HttpServlet {
 
                     Logger logger = Logger.getLogger(getClass().getName());
                     logger.severe("This what was stored" + request.getSession().getAttribute("captcha").toString() + request.getParameter("captchacode"));
+                    if (!request.getSession().getAttribute("captcha").toString().equals(request.getParameter("captchacode"))) {
+                        request.getRequestDispatcher("WEB-INF/jsp/register/register.jspx").forward(request, response);
+                    }
                     request.getSession().setAttribute("pnum", request.getParameter("pnum"));
                     request.getSession().setAttribute("fname", request.getParameter("fname"));
                     request.getSession().setAttribute("lname", request.getParameter("lname"));
                     request.getSession().setAttribute("password", request.getParameter("password"));
                     request.getSession().setAttribute("email", request.getParameter("email"));
                     request.getSession().setAttribute("validationstring", Mail.sendMail((String) request.getSession().getAttribute("email"), (String) request.getSession().getAttribute("password").toString(), "validation"));
-                    if (request.getSession().getAttribute("validationstring").equals("error") || !request.getSession().getAttribute("captcha").toString().equals(request.getParameter("captchacode"))) {
+                    if (request.getSession().getAttribute("validationstring").equals("error") ) {
                         request.getRequestDispatcher("WEB-INF/jsp/register/register.jspx").forward(request, response);
                     }
 
